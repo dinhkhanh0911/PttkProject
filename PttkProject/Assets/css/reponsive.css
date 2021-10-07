@@ -50,6 +50,14 @@
     .DataMedicalRecord::-webkit-scrollbar{
         display:none;
     }
+    ::-webkit-scrollbar {
+        display:none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #C2C3C9;
+        border-radius: 10px;
+    }
 }
 @media(max-width:739px){
     .btn-container{
@@ -76,6 +84,16 @@
     }
     .container__page-content{
         padding:0;
+    }
+    .name__page{
+        flex-direction:column;
+    }
+    .name__page-tilte{
+        justify-content:center;
+        text-align:center;
+    }
+    .name__page-tilte-button{
+        margin-bottom:20px
     }
 }
 @media(max-width:539px){
