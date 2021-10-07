@@ -44,6 +44,12 @@
     .wrapper__custom-height-mobile{
         align-items:center;
     }
+    .border-left{
+        display:none;
+    }
+    .DataMedicalRecord::-webkit-scrollbar{
+        display:none;
+    }
 }
 @media(max-width:739px){
     .btn-container{
@@ -68,8 +74,8 @@
         margin-right:0;
         margin-bottom:30px;
     }
-
-    .btn-search {
+    .container__page-content{
+        padding:0;
     }
 }
 @media(max-width:539px){
@@ -79,7 +85,6 @@
         width: 100%;
         display:flex;
         flex-direction:column;
-        justify-content:center;
     }
     .module_name{
         justify-content:center;

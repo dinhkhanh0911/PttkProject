@@ -15,3 +15,16 @@ html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+/* thanh cuon */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C2C3C9;
+    border-radius: 10px;
+}
+

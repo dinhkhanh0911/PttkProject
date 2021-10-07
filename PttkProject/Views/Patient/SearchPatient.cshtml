@@ -5,41 +5,102 @@
 
 <div class="wrapper wrapper__custom-height wrapper-block">
     <div class="container__form-fullWidth">
-        <div class="form_name">
-            <h4 class="form_name-tilte">
-                Tìm kiếm bệnh nhân
-            </h4>
-        </div>
-        <div class="form form__pc">
-            <div class="row">
-                <div class="col l-12 m-12 c-12">
-                    <div class="search__container">
-                        <input class="search__input" placeholder="Tìm kiếm" />
-                        <button class="btn btn-primary btn-search btn-submit">Tìm kiếm</button>
-                    </div>
-
-                    <div class="search__data">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-
-                        </table>
-                    </div>
+        <div class="container__page-fullWidth">
+            <div class="name__page">
+                <h4 class="name__page-tilte">Tìm kiếm bệnh nhân</h4>
+            </div>
+            
+            <div class="container__page-content">
+                <div class="search__container">
+                    <input class="search__input" placeholder="Tìm kiếm" />
+                    <button class="btn btn-primary btn-search btn-submit">Tìm kiếm</button>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Date Created</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Michael Holz</td>
+                            <td>04/10/2013</td>
+                            <td>Admin</td>
+                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td>
+                                <a href="#" class="settings" title="Settings" data-toggle="tooltip">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td> Paula Wilson</td>
+                            <td>05/08/2014</td>
+                            <td>Publisher</td>
+                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td>
+                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td> Antonio Moreno</td>
+                            <td>11/05/2015</td>
+                            <td>Publisher</td>
+                            <td><span class="status text-danger">&bull;</span> Suspended</td>
+                            <td>
+                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Mary Saveley</td>
+                            <td>06/09/2016</td>
+                            <td>Reviewer</td>
+                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td>
+                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td> Martin Sommer</td>
+                            <td>12/08/2017</td>
+                            <td>Moderator</td>
+                            <td><span class="status text-warning">&bull;</span> Inactive</td>
+                            <td>
+                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
