@@ -8,6 +8,7 @@ namespace PttkProject.models
 {
     public class tbl_xa
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string tenXa { get; set; }
         public string moTa { get; set; }
