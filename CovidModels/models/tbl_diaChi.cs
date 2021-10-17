@@ -19,7 +19,7 @@ namespace PttkProject.models
         [ForeignKey("huyenID")]
         public virtual tbl_huyen huyen { get; set; }
         public int xaID { get; set; }
-        [ForeignKey("benhNhanID")]
+        [ForeignKey("xaID")]
         public virtual tbl_xa xa { get; set; }
 
     }

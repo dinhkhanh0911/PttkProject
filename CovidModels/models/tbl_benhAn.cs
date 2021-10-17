@@ -25,13 +25,16 @@ namespace PttkProject.models
         public int benhNhanID { get; set; }
         public int? phongBenhID { get; set; }
         public int trangThaiID { get; set; }
+
         [ForeignKey("trangThaiID")]
         public virtual tbl_trangThai trangThai { get; set; }
+
         [ForeignKey("phongBenhID")]
         public virtual tbl_phongBenh phongBenh { get; set; }
+
         [ForeignKey("benhNhanID")]
         public virtual tbl_benhNhan benhNhan { get; set; }
-        public virtual ICollection<tbl_thongTinDieuTri> ThongTinDieuTri { get; set; }
-        public virtual ICollection<tbl_thongTinDieuTri> ThongTinTruyVet { get; set; }
+        public virtual ICollection<tbl_thongTinDieuTri> tbl_thongTinDieuTri { get; set; }
+        public virtual ICollection<tbl_thongTinTruyVet> tbl_thongTinTruyVet { get; set; }
     }
 }

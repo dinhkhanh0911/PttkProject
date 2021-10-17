@@ -7,7 +7,8 @@ using System.Web;
 
 namespace PttkProject.models
 {
-    public class tbl_nhanVienYTe : tbl_nguoi
+    [Table("tbl_nhanVienYTe")]
+    public class tbl_nhanVienYTe :tbl_nguoi
     {
         public string chuyenKhoa { get; set; }
         public string bangCap { get; set; }
@@ -16,6 +17,7 @@ namespace PttkProject.models
         public int viTriLamViecID { get; set; }
         [ForeignKey("viTriLamViecID")]
         public virtual tbl_viTriLamViec viTriLamViec { get; set; }
+
         public virtual ICollection<tbl_thongTinDieuTri> ThongTinDieuTri { get; set; }
 
 

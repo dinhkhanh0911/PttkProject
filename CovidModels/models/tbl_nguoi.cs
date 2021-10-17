@@ -10,12 +10,13 @@ namespace PttkProject.models
     public class tbl_nguoi
     {
         [Key]
+        [Column(Order =1)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string ten { get; set; }
         public DateTime ngaySinh { get; set; }
         [Required]
-        [Key]
+
         public string CMND { get; set; }
         public string gioiTinh { get; set; }
         public int diaChiID { get; set; }

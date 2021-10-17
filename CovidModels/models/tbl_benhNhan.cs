@@ -7,9 +7,9 @@ using System.Web;
 
 namespace PttkProject.models
 {
+    [Table("tbl_benhNhan")]
     public class tbl_benhNhan:tbl_nguoi
     {
-        [Key]
         public string maBHYT { get; set; }
         public string sdtBenhNhan { get; set; }
         public string sdtNguoiThan { get; set; }
