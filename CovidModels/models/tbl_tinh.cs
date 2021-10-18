@@ -13,7 +13,5 @@ namespace PttkProject.models
         public string tenTinh { get; set; }
         public string moTa { get; set; }
         public virtual ICollection<tbl_huyen> Huyen { get; set; }
-        public virtual ICollection<tbl_diaChi> diaChi { get; set; }
-
     }
 }
