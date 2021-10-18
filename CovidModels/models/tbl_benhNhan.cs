@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PttkProject.models
+namespace CovidModels.models
 {
     [Table("tbl_benhNhan")]
     public class tbl_benhNhan:tbl_nguoi

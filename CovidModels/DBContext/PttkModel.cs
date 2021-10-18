@@ -1,4 +1,4 @@
-﻿using PttkProject.models;
+﻿using CovidModels.models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.dbContext
+namespace CovidModels.DBContext
 {
-    public class PttkModel : DbContext
+    public partial class PttkModel : DbContext
     {
-        public PttkModel() : base("BenhNhanCovid")
+
+        public PttkModel() : base("CovidMysql")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
