@@ -16,7 +16,5 @@ namespace PttkProject.models
         [ForeignKey("tinhID")]
         public virtual tbl_tinh tinh { get; set; }
         public virtual ICollection<tbl_xa> Xa { get; set; }
-        public virtual ICollection<tbl_diaChi> diaChi { get; set; }
-
     }
 }
