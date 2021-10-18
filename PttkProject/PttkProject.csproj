@@ -366,6 +366,10 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Patient\ImportMedicalRecord.cshtml" />
     <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
+    <Content Include="Views\Room\addRoom.cshtml" />
+    <Content Include="Views\Room\updateRoom.cshtml" />
+    <Content Include="Views\Room\deleteRoom.cshtml" />
+    <Content Include="Views\Room\searchRoom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

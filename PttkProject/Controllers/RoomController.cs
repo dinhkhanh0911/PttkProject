@@ -13,5 +13,21 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        public ActionResult addRoom()
+        {
+            return View();
+        }
+        public ActionResult updateRoom()
+        {
+            return View();
+        }
+        public ActionResult deleteRoom()
+        {
+            return View();
+        }
+        public ActionResult searchRoom()
+        {
+            return View();
+        }
     }
 }

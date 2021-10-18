@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class update : DbMigration
     {
         public override void Up()
         {
@@ -51,17 +51,24 @@
                         ID = c.Int(nullable: false, identity: true),
                         chiTiet = c.String(),
                         moTa = c.String(),
-                        tinhID = c.Int(nullable: false),
-                        huyenID = c.Int(nullable: false),
                         xaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_huyen", t => t.huyenID, cascadeDelete: true)
-                .ForeignKey("dbo.tbl_tinh", t => t.tinhID, cascadeDelete: true)
                 .ForeignKey("dbo.tbl_xa", t => t.xaID, cascadeDelete: true)
-                .Index(t => t.tinhID)
-                .Index(t => t.huyenID)
                 .Index(t => t.xaID);
+            
+            CreateTable(
+                "dbo.tbl_xa",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        tenXa = c.String(),
+                        moTa = c.String(),
+                        huyenID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.tbl_huyen", t => t.huyenID, cascadeDelete: true)
+                .Index(t => t.huyenID);
             
             CreateTable(
                 "dbo.tbl_huyen",
@@ -85,19 +92,6 @@
                         moTa = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.tbl_xa",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        tenXa = c.String(),
-                        moTa = c.String(),
-                        huyenID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_huyen", t => t.huyenID, cascadeDelete: true)
-                .Index(t => t.huyenID);
             
             CreateTable(
                 "dbo.tbl_phongBenh",
@@ -259,10 +253,8 @@
             DropForeignKey("dbo.tbl_benhVien", "diaChiID", "dbo.tbl_diaChi");
             DropForeignKey("dbo.tbl_benhAn", "phongBenhID", "dbo.tbl_phongBenh");
             DropForeignKey("dbo.tbl_xa", "huyenID", "dbo.tbl_huyen");
-            DropForeignKey("dbo.tbl_diaChi", "xaID", "dbo.tbl_xa");
             DropForeignKey("dbo.tbl_huyen", "tinhID", "dbo.tbl_tinh");
-            DropForeignKey("dbo.tbl_diaChi", "tinhID", "dbo.tbl_tinh");
-            DropForeignKey("dbo.tbl_diaChi", "huyenID", "dbo.tbl_huyen");
+            DropForeignKey("dbo.tbl_diaChi", "xaID", "dbo.tbl_xa");
             DropForeignKey("dbo.tbl_benhAn", "benhNhanID", "dbo.tbl_benhNhan");
             DropIndex("dbo.tbl_nhanVienYTe", new[] { "viTriLamViecID" });
             DropIndex("dbo.tbl_nhanVienYTe", new[] { "ID" });
@@ -276,11 +268,9 @@
             DropIndex("dbo.tbl_benhVien", new[] { "diaChiID" });
             DropIndex("dbo.tbl_phongBenh", new[] { "loaiPhongID" });
             DropIndex("dbo.tbl_phongBenh", new[] { "benhVienID" });
-            DropIndex("dbo.tbl_xa", new[] { "huyenID" });
             DropIndex("dbo.tbl_huyen", new[] { "tinhID" });
+            DropIndex("dbo.tbl_xa", new[] { "huyenID" });
             DropIndex("dbo.tbl_diaChi", new[] { "xaID" });
-            DropIndex("dbo.tbl_diaChi", new[] { "huyenID" });
-            DropIndex("dbo.tbl_diaChi", new[] { "tinhID" });
             DropIndex("dbo.tbl_nguoi", new[] { "diaChiID" });
             DropIndex("dbo.tbl_benhAn", new[] { "trangThaiID" });
             DropIndex("dbo.tbl_benhAn", new[] { "phongBenhID" });
@@ -295,9 +285,9 @@
             DropTable("dbo.tbl_loaiPhong");
             DropTable("dbo.tbl_benhVien");
             DropTable("dbo.tbl_phongBenh");
-            DropTable("dbo.tbl_xa");
             DropTable("dbo.tbl_tinh");
             DropTable("dbo.tbl_huyen");
+            DropTable("dbo.tbl_xa");
             DropTable("dbo.tbl_diaChi");
             DropTable("dbo.tbl_nguoi");
             DropTable("dbo.tbl_benhAn");
