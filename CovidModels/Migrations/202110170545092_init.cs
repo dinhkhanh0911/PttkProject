@@ -73,7 +73,7 @@
                         tinhID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_tinh", t => t.tinhID, cascadeDelete: true)
+                .ForeignKey("dbo.tbl_tinh", t => t.tinhID, cascadeDelete: false)
                 .Index(t => t.tinhID);
             
             CreateTable(
@@ -96,7 +96,7 @@
                         huyenID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_huyen", t => t.huyenID, cascadeDelete: true)
+                .ForeignKey("dbo.tbl_huyen", t => t.huyenID, cascadeDelete: false)
                 .Index(t => t.huyenID);
             
             CreateTable(
