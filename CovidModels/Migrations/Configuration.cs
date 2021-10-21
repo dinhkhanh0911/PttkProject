@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.dbContext.PttkModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<CovidModels.DBContext.PttkModel>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.dbContext.PttkModel context)
+        protected override void Seed(CovidModels.DBContext.PttkModel context)
         {
             //  This method will be called after migrating to the latest version.
 

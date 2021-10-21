@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PttkProject.models
+namespace CovidModels.models
 {
     public class tbl_loaiPhong
     {
