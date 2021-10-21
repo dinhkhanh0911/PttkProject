@@ -75,11 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBContext\PttkModel.cs" />
-    <Compile Include="Migrations\202110170545092_init.cs" />
-    <Compile Include="Migrations\202110170545092_init.designer.cs">
-      <DependentUpon>202110170545092_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\tbl_benhAn.cs" />
     <Compile Include="models\tbl_benhNhan.cs" />
     <Compile Include="models\tbl_benhVien.cs" />
@@ -108,9 +103,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110170545092_init.resx">
-      <DependentUpon>202110170545092_init.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
