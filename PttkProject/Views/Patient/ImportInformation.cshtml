@@ -25,7 +25,7 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                Số CMND
                             </span>
                             <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
@@ -33,7 +33,7 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                Giới tính
                             </span>
                             <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
@@ -41,7 +41,15 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                Ngày sinh
+                            </span>
+                            <input class="form__import-select" type="date" />
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Số điện thoại
                             </span>
                             <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
@@ -49,102 +57,85 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                Mã bảo hiểm y tế
                             </span>
-                            <input class="form__import-select" type="date" />
+                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                Người thân
                             </span>
-                            <input class="form__import-select" type="date" />
+                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
+                                SĐT người thân
                             </span>
-                            <input class="form__import-select" type="date" />
+                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
                     </div>
+
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" type="date" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
+                                Đối tượng cách ly
                             </span>
                             <select class="form__import-select">
+                                <option value="F0" selected>F0</option>
+                                <option value="F1">F1</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Tỉnh
+                            </span>
+                            <select class="form__import-select">
+                                <option value="" selected>Tỉnh</option>
                                 <option value="volvo">Volvo</option>
                                 <option value="saab">Saab</option>
                                 <option value="vw">VW</option>
-                                <option value="audi" selected>Audi</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Huyện
+                            </span>
+                            <select class="form__import-select">
+                                <option value="" selected>Huyện</option>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="vw">VW</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Xã
+                            </span>
+                            <select class="form__import-select">
+                                <option value="" selected>Xã</option>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="vw">VW</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col l-12 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Địa chỉ chi tiết
+                            </span>
+                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
                         </div>
                     </div>
                 </div>

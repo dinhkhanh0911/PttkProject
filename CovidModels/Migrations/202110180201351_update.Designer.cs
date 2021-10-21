@@ -7,13 +7,13 @@ namespace CovidModels.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class init1 : IMigrationMetadata
+    public sealed partial class update : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(init1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(update));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110180134366_init1"; }
+            get { return "202110180201351_update"; }
         }
         
         string IMigrationMetadata.Source
