@@ -1,19 +1,16 @@
 namespace DBCovid.models
 {
+    using DBCovid.Abstact;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class tbl_nhanVienYTe
+    public partial class tbl_nhanVienYTe:Nguoi
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_nhanVienYTe()
-        {
-            tbl_thongTinDieuTri = new HashSet<tbl_thongTinDieuTri>();
-        }
-
+        
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
@@ -25,13 +22,6 @@ namespace DBCovid.models
 
         public string moTa { get; set; }
 
-        public int viTriLamViecID { get; set; }
-
-        public virtual tbl_nguoi tbl_nguoi { get; set; }
-
-        public virtual tbl_viTriLamViec tbl_viTriLamViec { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_thongTinDieuTri> tbl_thongTinDieuTri { get; set; }
+        
     }
 }
