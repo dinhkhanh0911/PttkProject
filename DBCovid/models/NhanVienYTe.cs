@@ -11,9 +11,6 @@ namespace DBCovid.models
     [Table("Tbl_NhanVienYTes")]
     public partial class NhanVienYTe:Nguoi
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
         public string chuyenKhoa { get; set; }
 
         public string bangCap { get; set; }

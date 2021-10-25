@@ -8,9 +8,6 @@ namespace DBCovid.models
     [Table("tbl_BenhNhans")]
     public partial class BenhNhan:Nguoi
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
         public string maBHYT { get; set; }
         public string sdtBenhNhan { get; set; }
         public string tenNguoiThan { set; get; }

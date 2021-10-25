@@ -8,7 +8,10 @@ namespace DBCovid.Abstact
 {
     public abstract class Nguoi
     {
-        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
+
         [Required]
         public string ten { get; set; }
 

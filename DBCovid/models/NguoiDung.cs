@@ -7,9 +7,6 @@ namespace DBCovid.models
     [Table("Tbl_NguoiDungs")]
     public partial class NguoiDung:Nguoi
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { set; get; }
 
         [Required]
 
