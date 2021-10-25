@@ -56,13 +56,26 @@
   <ItemGroup>
     <Compile Include="Abstact\Nguoi.cs" />
     <Compile Include="Data\DBCovidContext.cs" />
-    <Compile Include="Migrations\202110212213563_update.cs" />
-    <Compile Include="Migrations\202110212213563_update.designer.cs">
-      <DependentUpon>202110212213563_update.cs</DependentUpon>
+    <Compile Include="Migrations\202110250701000_create.cs" />
+    <Compile Include="Migrations\202110250701000_create.designer.cs">
+      <DependentUpon>202110250701000_create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="models\tbl_nguoiDung.cs" />
-    <Compile Include="models\tbl_nhanVienYTe.cs" />
+    <Compile Include="models\BenhAn.cs" />
+    <Compile Include="models\BenhNhan.cs" />
+    <Compile Include="models\BenhVien.cs" />
+    <Compile Include="models\DiaChi.cs" />
+    <Compile Include="models\Huyen.cs" />
+    <Compile Include="models\LoaiPhong.cs" />
+    <Compile Include="models\NguoiDung.cs" />
+    <Compile Include="models\NhanVienYTe.cs" />
+    <Compile Include="models\PhongBenh.cs" />
+    <Compile Include="models\ThongTinDieuTri.cs" />
+    <Compile Include="models\ThongTinTruyVet.cs" />
+    <Compile Include="models\Tinh.cs" />
+    <Compile Include="models\TrangThai.cs" />
+    <Compile Include="models\ViTriLamViec.cs" />
+    <Compile Include="models\Xa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,8 +83,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110212213563_update.resx">
-      <DependentUpon>202110212213563_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110250701000_create.resx">
+      <DependentUpon>202110250701000_create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
