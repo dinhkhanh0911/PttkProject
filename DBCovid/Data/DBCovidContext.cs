@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DBCovid.Data
 {
-    class DBCovidContext : DbContext
+    public class DBCovidContext : DbContext
     {
         public DBCovidContext()
             : base("DBCovidContext")

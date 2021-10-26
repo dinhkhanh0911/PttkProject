@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PttkProject.DatabaseDAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace PttkProject.Controllers
 {
     public class PatientController : Controller
     {
+        private DBIO dBIO = new DBIO();
         // GET: Patient
         public ActionResult Index()
         {
@@ -32,6 +34,24 @@ namespace PttkProject.Controllers
         public ActionResult UpdateMedicalRecord()
         {
             return View();
+        }
+        [HttpPost]
+        public JsonResult getPatientList(string input)
+        {
+            try
+            {
+                if(input.Length == 0)
+                {
+                    return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
+                }
+                var data = dBIO.layDSBenhNhan(input);
+                return Json(new {code= 200,data=data},JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new { code = 404}, JsonRequestBehavior.AllowGet);
+            }
+
         }
     }
 }
