@@ -390,13 +390,7 @@ table.table tr th, table.table tr td {
     vertical-align: middle;
 }
 
-    table.table tr th:first-child {
-        width: 60px;
-    }
-
-    table.table tr th:last-child {
-        width: 100px;
-    }
+    
 table.table-striped.table-hover tbody tr:hover {
     background: #f5f5f5;
 }
@@ -504,4 +498,20 @@ table.table td i {
     float: left;
     margin-top: 10px;
     font-size: 13px;
+}
+
+/*Modal-patient*/
+.modal-title {
+    color: #333;
+}
+.modal-group {
+    display: flex;
+}
+.modal-group label {
+    color: #333;
+    font-size:1.2rem;
+    
+}
+.modal-lable{
+    min-width:230px;
 }

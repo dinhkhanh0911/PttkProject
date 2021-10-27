@@ -1,4 +1,5 @@
-﻿using PttkProject.DatabaseDAO;
+﻿using DBCovid.models;
+using PttkProject.DatabaseDAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace PttkProject.Controllers
                 {
                     return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
                 }
-                var data = dBIO.layDSBenhNhan(input);
+                List<BenhNhan> data = dBIO.layDSBenhNhan();
                 return Json(new {code= 200,data=data},JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
