@@ -55,6 +55,24 @@ namespace PttkProject.DatabaseDAO
             List<TrangThai> t = data.trangThai.ToList();
             return t;
         }
+
+        /*Bệnh Án*/
+        public bool themBenhAn(BenhAn model)
+        {
+
+            try
+            {
+                data.benhAn.Add(model);
+                data.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+
+            
+        }
     }
 
 }

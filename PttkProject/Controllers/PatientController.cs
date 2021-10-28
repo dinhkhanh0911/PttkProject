@@ -36,28 +36,39 @@ namespace PttkProject.Controllers
             string tenBenhNhan = dBIO.layTenBenhNhan(ID);
             if(tenBenhNhan != "")
             {
-                BenhNhan b = new BenhNhan();
+                setViewBagTenBenhNhan(ID);
+                setViewBagImportMedicalRecord();
+                BenhAn model = new BenhAn();
+                model.benhNhanID = ID;
+                return View(model);
             }
-            MediaRecord model = new MediaRecord();
-            model.tenBenhNhan = "Đinh Văn Khánh";
-            model.benhNhanID = 1;
-            setViewBagImportMedicalRecord();
-            return View(model);
+            return Redirect("ImportInformation");
         }
         [HttpPost]
-        public ActionResult ImportMedicalRecord(MediaRecord model)
+        public JsonResult ImportMedicalRecord(BenhAn model)
         {
             if (ModelState.IsValid)
             {
                 setViewBagImportMedicalRecord();
-                return View(model);
+                var ok = dBIO.themBenhAn(model);
+                if (ok)
+                {
+                    return Json(new { code = 200, model = model,msg ="Thêm thành công"}, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500, model = model,msg = "Thêm không thành công" }, JsonRequestBehavior.AllowGet);
             }
             else
             {
+                setViewBagTenBenhNhan(model.benhNhanID);
                 setViewBagImportMedicalRecord();
-                return View(model);
+                return Json(new { code = 500,model = model,msg = "Thuộc tính chưa chính xác"}, JsonRequestBehavior.AllowGet);
             }
             
+        }
+        private void setViewBagTenBenhNhan(int benhNhanID)
+        {
+            var ten = dBIO.layTenBenhNhan(benhNhanID);
+            ViewBag.tenBenhNhan = ten;
         }
         [HttpPost]
         public JsonResult getListRoom(int loaiPhongID)

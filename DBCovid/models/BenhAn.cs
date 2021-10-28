@@ -13,7 +13,7 @@ namespace DBCovid.models
         public int ID { get; set; }
         [Column(TypeName = "date")]
         
-        public DateTime? ngayNhapVien { get; set; }
+        public DateTime ngayNhapVien { get; set; }
         [Column(TypeName = "date")]
         public DateTime? ngayXuatVien { get; set; }
         [StringLength(255)]
@@ -22,8 +22,11 @@ namespace DBCovid.models
         public string trieuChung { get; set; }
         [StringLength(255)]
         public string moTa { get; set; }
+        
         public int benhNhanID { get; set; }
+        [Range(1, Int32.MaxValue, ErrorMessage = "Vui lòng chọn phòng bệnh"),]
         public int phongBenhID { get; set; }
+        [Range(1, Int32.MaxValue, ErrorMessage = "Vui lòng chọn trạng thái"),]
         public int trangThaiID { get; set; }
 
         [ForeignKey("trangThaiID")]
