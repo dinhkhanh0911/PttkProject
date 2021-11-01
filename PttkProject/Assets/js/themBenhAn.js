@@ -54,6 +54,8 @@ function fill(data) {
             
             if (response != null) {
                 alert(response.msg)
+                console.log(response.model)
+                
             }
         });
         even.preventDefault();

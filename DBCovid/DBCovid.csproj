@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202110250715543_fixNguoiDung.designer.cs">
       <DependentUpon>202110250715543_fixNguoiDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110282206156_fixBenhAn.cs" />
+    <Compile Include="Migrations\202110282206156_fixBenhAn.designer.cs">
+      <DependentUpon>202110282206156_fixBenhAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\BenhAn.cs" />
     <Compile Include="models\BenhNhan.cs" />
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110250715543_fixNguoiDung.resx">
       <DependentUpon>202110250715543_fixNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110282206156_fixBenhAn.resx">
+      <DependentUpon>202110282206156_fixBenhAn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

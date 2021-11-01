@@ -55,7 +55,8 @@
                             @Html.DropDownList("phongBenhID", (IEnumerable<SelectListItem>)ViewBag.phongBenh, new { @class = "form__import-select", @id = "phongBenh", @name = "phongBenhID" })
                         </div>
 
-                        @Html.ValidationMessageFor(m => m.phongBenhID,"" ,new { @class = "text-danger" })
+                        <span data-valmsg-for="phongBenhID"
+                              data-valmsg-replace="true"/>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">

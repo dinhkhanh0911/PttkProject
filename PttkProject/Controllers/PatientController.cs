@@ -4,6 +4,7 @@ using PttkProject.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -44,6 +45,7 @@ namespace PttkProject.Controllers
             }
             return Redirect("ImportInformation");
         }
+        
         [HttpPost]
         public JsonResult ImportMedicalRecord(BenhAn model)
         {
@@ -59,7 +61,6 @@ namespace PttkProject.Controllers
             }
             else
             {
-                setViewBagTenBenhNhan(model.benhNhanID);
                 setViewBagImportMedicalRecord();
                 return Json(new { code = 500,model = model,msg = "Thuộc tính chưa chính xác"}, JsonRequestBehavior.AllowGet);
             }

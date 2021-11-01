@@ -13,7 +13,7 @@ namespace DBCovid.models
         public int ID { get; set; }
         [Column(TypeName = "date")]
         
-        public DateTime ngayNhapVien { get; set; }
+        public DateTime? ngayNhapVien { get; set; }
         [Column(TypeName = "date")]
         public DateTime? ngayXuatVien { get; set; }
         [StringLength(255)]

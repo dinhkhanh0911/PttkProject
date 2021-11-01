@@ -138,13 +138,16 @@ function handerDeleteClick() {
     var deleteElement = document.querySelectorAll('.delete')
     console.log(deleteElement)
     for (var item of deleteElement) {
-        item.addEventListener('click', deletePatient)
+        item.addEventListener('click', confirmDelete)
     }
 }
-function deletePatient() {
+function confirmDelete() {
     if (confirm("Bạn có thực sự muốn xóa không?")) {
         var element = document.querySelector(`#${this.id}`)
+
+        
         var parent = element.parentElement.parentElement
-        parent.remove()
+        console.log(parent.id)
+        //parent.remove()
     }
 }
