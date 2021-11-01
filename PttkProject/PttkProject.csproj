@@ -492,6 +492,8 @@
     <Content Include="Assets\css\reponsive.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\js\themBenhAn.js" />
+    <Content Include="Assets\js\themThongTinDieuTri.js" />
+    <Content Include="Assets\js\themThongTinTruyVet.js" />
     <Content Include="Assets\js\timKiemBenhNhan.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -728,6 +730,7 @@
     <Content Include="Views\Patient\ImportMedicalRecord.cshtml" />
     <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
     <Content Include="Views\Patient\themThongTinDieuTri.cshtml" />
+    <Content Include="Views\Patient\ThemThongTinTruyVet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

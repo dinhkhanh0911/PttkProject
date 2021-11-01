@@ -73,6 +73,85 @@ namespace PttkProject.DatabaseDAO
 
             
         }
+        public int layBenhNhanID(int benhAnID)
+        {
+            try
+            {
+                return data.benhAn.Where(b => b.ID == benhAnID).FirstOrDefault().benhNhanID;
+            }
+            catch(Exception e)
+            {
+                return 0;
+            }
+            
+        }
+
+        /*Nhân viên y tế*/
+        public List<NhanVienYTe> layDSNhanVienYTe()
+        {
+            return data.nhanVienYTe.ToList();
+        }
+
+        /* Thông tin điều trị */
+        public bool themThongTinDieuTri(ThongTinDieuTri t)
+        {
+            try
+            {
+                data.thongtinDieuTri.Add(t);
+                data.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+        }
+
+        /*Thông tin truy vết*/
+        public bool themThongTinTruyVet(ThongTinTruyVet t)
+        {
+            try
+            {
+                data.thongTinTruyVet.Add(t);
+                data.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        /*Địa chỉ*/
+        public List<Tinh> layDSTinh()
+        {
+            return data.tinh.ToList();
+        }
+        public List<Huyen> layDSHuyen(int tinhID)
+        {
+            List<Huyen> list;
+            try
+            {
+                list = data.huyen.Where(h => h.tinhID == tinhID).ToList();
+            }
+            catch(Exception e)
+            {
+                list = new List<Huyen>();
+            }
+            return list;
+        }
+        public List<Xa> layDSXa(int huyenID)
+        {
+            List<Xa> list;
+            try
+            {
+                list = data.xa.Where(x => x.huyenID == huyenID).ToList();
+            }
+            catch (Exception e)
+            {
+                list = new List<Xa>();
+            }
+            return list;
+        }
     }
 
 }

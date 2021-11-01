@@ -37,7 +37,7 @@ namespace PttkProject.Controllers
             string tenBenhNhan = dBIO.layTenBenhNhan(ID);
             if(tenBenhNhan != "")
             {
-                setViewBagTenBenhNhan(ID);
+                setViewBagTenBenhNhan(tenBenhNhan);
                 setViewBagImportMedicalRecord();
                 BenhAn model = new BenhAn();
                 model.benhNhanID = ID;
@@ -66,10 +66,9 @@ namespace PttkProject.Controllers
             }
             
         }
-        private void setViewBagTenBenhNhan(int benhNhanID)
+        private void setViewBagTenBenhNhan(string tenBenhNhan)
         {
-            var ten = dBIO.layTenBenhNhan(benhNhanID);
-            ViewBag.tenBenhNhan = ten;
+            ViewBag.tenBenhNhan = tenBenhNhan;
         }
         [HttpPost]
         public JsonResult getListRoom(int loaiPhongID)
@@ -120,9 +119,97 @@ namespace PttkProject.Controllers
             }
 
         }
+
+        /*Thông tin điều trị */
         public ActionResult themThongTinDieuTri()
         {
-            return View();
+            int ID = 3;
+            int benhNhanID = dBIO.layBenhNhanID(ID);
+            string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
+            if(tenBenhNhan != null)
+            {
+                setViewBagTenBenhNhan(tenBenhNhan);
+                setViewbagNVYT();
+                ThongTinDieuTri thongTinDieuTri = new ThongTinDieuTri();
+                thongTinDieuTri.benhAnID = ID;
+                return View(thongTinDieuTri);
+            }
+            return Redirect("ImportInformation");
+        }
+        [HttpPost]
+        public JsonResult themThongTinDieuTri(ThongTinDieuTri model)
+        {
+            if (ModelState.IsValid)
+            {
+                bool oke = false;
+                oke = dBIO.themThongTinDieuTri(model);
+                if (oke)
+                {
+                    return Json(new { code = 200, msg = "Thêm thành công", model = model }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500, msg = "Có lỗi xảy ra", model = model }, JsonRequestBehavior.AllowGet);
+
+            }
+            return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
+        }
+        private void setViewbagNVYT()
+        {
+            List<NhanVienYTe> list = dBIO.layDSNhanVienYTe();
+
+            SelectList s = new SelectList(list, "ID", "ten");
+            ViewBag.nhanVienYTe = s;
+        }
+
+        /*Thông tin truy vết*/
+        public ActionResult ThemThongTinTruyVet()
+        {
+            int ID = 3;
+            int benhNhanID = dBIO.layBenhNhanID(ID);
+            string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
+            if (tenBenhNhan != null)
+            {
+                setViewBagTenBenhNhan(tenBenhNhan);
+                setViewBagDiaChi();
+                ThongTinTruyVet thongTinTruyVet = new ThongTinTruyVet();
+                thongTinTruyVet.benhAnID = ID;
+                return View(thongTinTruyVet);
+            }
+            return Redirect("ImportInformation");
+        }
+        [HttpPost]
+        public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
+        {
+            if (ModelState.IsValid)
+            {
+                bool oke = false;
+                oke = dBIO.themThongTinTruyVet(model);
+                if (oke)
+                {
+                    return Json(new { code = 200, msg = "Thêm thành công", model = model }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500, msg = "Có lỗi xảy ra", model = model }, JsonRequestBehavior.AllowGet);
+
+            }
+            return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
+        }
+        private void setViewBagDiaChi()
+        {
+            List<Tinh> tinhs = dBIO.layDSTinh();
+            List<Huyen> huyens = new List<Huyen>();
+            List<Xa> xas = new List<Xa>();
+            if (tinhs.Count > 0)
+            {
+                huyens = dBIO.layDSHuyen(tinhs[0].ID);
+            }
+            if(huyens.Count > 0)
+            {
+                xas = dBIO.layDSXa(huyens[0].ID);
+            }
+
+            ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
+            ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
+            ViewBag.xas = new SelectList(xas, "ID", "tenXa");
+
         }
     }
 }

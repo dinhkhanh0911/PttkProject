@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202111010319032_fix-benhan.designer.cs">
       <DependentUpon>202111010319032_fix-benhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111010934038_fix-thongtinhdieutri.cs" />
+    <Compile Include="Migrations\202111010934038_fix-thongtinhdieutri.designer.cs">
+      <DependentUpon>202111010934038_fix-thongtinhdieutri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\BenhAn.cs" />
     <Compile Include="models\BenhNhan.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111010319032_fix-benhan.resx">
       <DependentUpon>202111010319032_fix-benhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111010934038_fix-thongtinhdieutri.resx">
+      <DependentUpon>202111010934038_fix-thongtinhdieutri.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
-﻿@model DBCovid.models.ThongTinDieuTri
+﻿@model DBCovid.models.ThongTinTruyVet
 @{
-    ViewBag.Title = "themThongTinDieuTri";
+    ViewBag.Title = "ThemThongTinTruyVet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -8,11 +8,11 @@
     <div class="container__page-fullWidth">
         <div class="name__page">
             <h4 class="name__page-tilte">
-                Thêm thông tin điều trị
+                Thêm thông tin truy vết
             </h4>
         </div>
         <div class="container__page-content">
-            <form action="/Patient/themThongTinDieuTri" class="form" method="post" id="themThongTinDieuTri">
+            <form action="/Patient/ThemThongTinTruyVet" class="form" method="post" id="themThongTinTruyVet">
                 <div class="row">
                     @Html.HiddenFor(m => m.benhAnID)
                     <div class="col l-4 m-6 c-12">
@@ -27,15 +27,7 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Giờ phút
-                            </span>
-                            <input class="form__import-select" type="text" name="gioPhut" />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Ngày
+                                Ngày tháng
                             </span>
                             <input class="form__import-select" type="date" name="ngay" />
                         </div>
@@ -43,32 +35,35 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Nhân viên y tế
+                                Địa chỉ chi tiết
                             </span>
-                            @Html.DropDownList("nhanVienYTeID", (IEnumerable<SelectListItem>)ViewBag.nhanVienYTe, new { @class = "form__import-select", @id = "nhanVienYTe" })
-                        </div>
-                    </div>
-                    
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tình trạng bệnh
-                            </span>
-                            <textarea class="form__import-select" placeholder="Nhập dữ liệu" name="tinhTrangBenh"></textarea>
-
+                            <input class="form__import-select" type="text" name="diaChiChiTiet" />
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Y lệnh
+                                Tỉnh
                             </span>
-                            <textarea class="form__import-select" placeholder="Nhập dữ liệu" name="yLenh"></textarea>
+                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, new { @class = "form__import-select", @id = "tinh" })
                         </div>
                     </div>
-
-
-
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Huyện
+                            </span>
+                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, new { @class = "form__import-select", @id = "huyen" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Xã
+                            </span>
+                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, new { @class = "form__import-select", @id = "xa" })
+                        </div>
+                    </div>
 
                 </div>
                 <div class="btn-container">
@@ -88,5 +83,5 @@
 
 
 </div>
-<script src="~/Assets/js/themThongTinDieuTri.js"></script>
+<script src="~/Assets/js/themThongTinTruyVet.js"></script>
 
