@@ -727,6 +727,7 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Patient\ImportMedicalRecord.cshtml" />
     <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
+    <Content Include="Views\Patient\themThongTinDieuTri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

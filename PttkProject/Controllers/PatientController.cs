@@ -120,5 +120,9 @@ namespace PttkProject.Controllers
             }
 
         }
+        public ActionResult themThongTinDieuTri()
+        {
+            return View();
+        }
     }
 }

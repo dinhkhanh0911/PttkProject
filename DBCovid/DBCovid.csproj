@@ -56,23 +56,18 @@
   <ItemGroup>
     <Compile Include="Abstact\Nguoi.cs" />
     <Compile Include="Data\DBCovidContext.cs" />
-    <Compile Include="Migrations\202110250701000_create.cs" />
-    <Compile Include="Migrations\202110250701000_create.designer.cs">
-      <DependentUpon>202110250701000_create.cs</DependentUpon>
+    <Compile Include="Migrations\202111010224028_create.cs" />
+    <Compile Include="Migrations\202111010224028_create.designer.cs">
+      <DependentUpon>202111010224028_create.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110250715543_fixNguoiDung.cs" />
-    <Compile Include="Migrations\202110250715543_fixNguoiDung.designer.cs">
-      <DependentUpon>202110250715543_fixNguoiDung.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110282206156_fixBenhAn.cs" />
-    <Compile Include="Migrations\202110282206156_fixBenhAn.designer.cs">
-      <DependentUpon>202110282206156_fixBenhAn.cs</DependentUpon>
+    <Compile Include="Migrations\202111010319032_fix-benhan.cs" />
+    <Compile Include="Migrations\202111010319032_fix-benhan.designer.cs">
+      <DependentUpon>202111010319032_fix-benhan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\BenhAn.cs" />
     <Compile Include="models\BenhNhan.cs" />
     <Compile Include="models\BenhVien.cs" />
-    <Compile Include="models\DiaChi.cs" />
     <Compile Include="models\Huyen.cs" />
     <Compile Include="models\LoaiPhong.cs" />
     <Compile Include="models\NguoiDung.cs" />
@@ -91,14 +86,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110250701000_create.resx">
-      <DependentUpon>202110250701000_create.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111010224028_create.resx">
+      <DependentUpon>202111010224028_create.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110250715543_fixNguoiDung.resx">
-      <DependentUpon>202110250715543_fixNguoiDung.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110282206156_fixBenhAn.resx">
-      <DependentUpon>202110282206156_fixBenhAn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111010319032_fix-benhan.resx">
+      <DependentUpon>202111010319032_fix-benhan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

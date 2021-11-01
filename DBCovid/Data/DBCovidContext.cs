@@ -20,7 +20,6 @@ namespace DBCovid.Data
         public virtual DbSet<BenhAn> benhAn { get; set; }
         public virtual DbSet<BenhNhan> benhNhan { get; set; }
         public virtual DbSet<BenhVien> benhVien { get; set; }
-        public virtual DbSet<DiaChi> diaChi { get; set; }
         public virtual DbSet<Huyen> huyen { get; set; }
         public virtual DbSet<LoaiPhong> loaiPhong { get; set; }
         public virtual DbSet<NguoiDung> nguoiDung { get; set; }

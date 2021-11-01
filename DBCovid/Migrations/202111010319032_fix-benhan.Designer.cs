@@ -7,13 +7,13 @@ namespace DBCovid.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class fixNguoiDung : IMigrationMetadata
+    public sealed partial class fixbenhan : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixNguoiDung));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixbenhan));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110250715543_fixNguoiDung"; }
+            get { return "202111010319032_fix-benhan"; }
         }
         
         string IMigrationMetadata.Source

@@ -13,7 +13,7 @@ namespace DBCovid.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202110250701000_create"; }
+            get { return "202111010224028_create"; }
         }
         
         string IMigrationMetadata.Source

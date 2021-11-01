@@ -17,7 +17,7 @@ namespace DBCovid.models
         [Column(TypeName = "date")]
         public DateTime? ngayXuatVien { get; set; }
         [StringLength(255)]
-        public string chuanDoan { get; set; }
+        public string chanDoan { get; set; }
         [StringLength(255)]
         public string trieuChung { get; set; }
         [StringLength(255)]
