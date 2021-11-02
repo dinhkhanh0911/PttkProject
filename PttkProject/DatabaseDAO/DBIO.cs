@@ -73,6 +73,21 @@ namespace PttkProject.DatabaseDAO
 
             
         }
+        public bool isBenhAn(int? ID)
+        {
+            try
+            {
+                return (data.benhAn.Where(b => b.ID == ID).FirstOrDefault() != null);
+            }
+            catch(Exception e)
+            {
+                return true;
+            }
+        }
+        public BenhAn layBenhAn(int ID)
+        {
+            return data.benhAn.Where(b => b.ID == ID).FirstOrDefault();
+        }
         public int layBenhNhanID(int benhAnID)
         {
             try
@@ -106,6 +121,20 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
+        public List<ThongTinDieuTri> layDSThongTinDieuTri(int benhAnID)
+        {
+            List<ThongTinDieuTri> list;
+            try
+            {
+                list = data.thongtinDieuTri.Where(t => t.benhAnID == benhAnID).ToList();
+                return list;
+            }
+            catch(Exception e)
+            {
+                list = new List<ThongTinDieuTri>();
+                return list;
+            }
+        }
 
         /*Thông tin truy vết*/
         public bool themThongTinTruyVet(ThongTinTruyVet t)
@@ -119,6 +148,20 @@ namespace PttkProject.DatabaseDAO
             catch (Exception e)
             {
                 return false;
+            }
+        }
+        public List<ThongTinTruyVet> layDSThongTinTruyVet(int benhAnID)
+        {
+            List< ThongTinTruyVet >list;
+            try
+            {
+                list = data.thongTinTruyVet.Where(t => t.benhAnID == benhAnID).ToList();
+                return list;
+            }
+            catch (Exception e)
+            {
+                list = new List<ThongTinTruyVet>();
+                return list;
             }
         }
         /*Địa chỉ*/

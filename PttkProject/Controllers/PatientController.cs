@@ -97,9 +97,32 @@ namespace PttkProject.Controllers
             ViewBag.phongBenh = new SelectList(p, "ID", "tenPhong");
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
+        /*Cập nhật bệnh án*/
         public ActionResult UpdateMedicalRecord()
         {
-            return View();
+            int ID = 3;
+            bool ok = false;
+            ok = dBIO.isBenhAn(ID);
+            if (ok)
+            {
+                BenhAn b = dBIO.layBenhAn(ID);
+                return View(b);
+            }
+            return Redirect("ImportInformation");
+        }
+        public JsonResult layDSThongTin(int benhAnID)
+        {
+            try
+            {
+                List<ThongTinDieuTri> thongTinDieuTris = dBIO.layDSThongTinDieuTri(benhAnID);
+                List<ThongTinTruyVet> thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
+
+                return Json(new { code = 200, thongTinDieuTris = thongTinDieuTris, thongTinTruyVets = thongTinTruyVets }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new { code = 500 }, JsonRequestBehavior.AllowGet);
+            }
         }
         [HttpPost]
         public JsonResult getPatientList(string input)
@@ -121,9 +144,9 @@ namespace PttkProject.Controllers
         }
 
         /*Thông tin điều trị */
-        public ActionResult themThongTinDieuTri()
+        public ActionResult themThongTinDieuTri(int ID)
         {
-            int ID = 3;
+            
             int benhNhanID = dBIO.layBenhNhanID(ID);
             string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
             if(tenBenhNhan != null)
@@ -161,9 +184,8 @@ namespace PttkProject.Controllers
         }
 
         /*Thông tin truy vết*/
-        public ActionResult ThemThongTinTruyVet()
+        public ActionResult ThemThongTinTruyVet(int ID)
         {
-            int ID = 3;
             int benhNhanID = dBIO.layBenhNhanID(ID);
             string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
             if (tenBenhNhan != null)

@@ -491,6 +491,7 @@
     <Content Include="Assets\css\grid.css" />
     <Content Include="Assets\css\reponsive.css" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\js\capNhatBenhAn.js" />
     <Content Include="Assets\js\themBenhAn.js" />
     <Content Include="Assets\js\themThongTinDieuTri.js" />
     <Content Include="Assets\js\themThongTinTruyVet.js" />

@@ -1,4 +1,4 @@
-﻿
+﻿@model DBCovid.models.BenhAn
 @{
     ViewBag.Title = "UpdateMedicalRecord";
 }
@@ -13,6 +13,7 @@
         <div class="container__page-content">
             <div class="form">
                 <div class="row">
+                    @Html.HiddenFor(m => m.ID,new { @id = "benhAnID",})
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
@@ -169,7 +170,7 @@
                     <button class="btn btn-default btn__add btn-submit">
                         Xuất file excel
                     </button>
-                    <button class="btn btn-default btn-submit">
+                    <button onclick="themThongTinTruyVet()" class="btn btn-default btn-submit">
                         Thêm
                     </button>
                 </div>
@@ -179,74 +180,12 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Date Created</th>
-                                <th>Role</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>Ngày</th>
+                                <th>Địa chỉ</th>
+                                <th>Tùy chọn</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Michael Holz</td>
-                                <td>04/10/2013</td>
-                                <td>Admin</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td> Paula Wilson</td>
-                                <td>05/08/2014</td>
-                                <td>Publisher</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td> Antonio Moreno</td>
-                                <td>11/05/2015</td>
-                                <td>Publisher</td>
-                                <td><span class="status text-danger">&bull;</span> Suspended</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Mary Saveley</td>
-                                <td>06/09/2016</td>
-                                <td>Reviewer</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td> Martin Sommer</td>
-                                <td>12/08/2017</td>
-                                <td>Moderator</td>
-                                <td><span class="status text-warning">&bull;</span> Inactive</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
+                        <tbody id="tbodyThongTinTruyVet">
                         </tbody>
                     </table>
                 </div>
@@ -265,17 +204,17 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="container__form-fullWidth container__DataMedicalRecord">
         <div class="container__page-fullWidth">
             <div class="name__page">
-                <h4 class="name__page-tilte name__page-tilte-button">Thông tin truy vết</h4>
+                <h4 class="name__page-tilte name__page-tilte-button">Thông tin điều trị</h4>
                 <div class="btn-container btn-container-title">
                     <button class="btn btn-default btn__add btn-submit">
                         Xuất file excel
                     </button>
-                    <button class="btn btn-default btn-submit">
+                    <button onclick="themThongTinDieuTri()" class="btn btn-default btn-submit">
                         Thêm
                     </button>
                 </div>
@@ -285,78 +224,19 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Date Created</th>
-                                <th>Role</th>
-                                <th>Status</th>
+                                <th>Giờ phút</th>
+                                <th>Ngày tháng</th>
+                                <th>Tình trạng bệnh</th>
+                                <th>Y lệnh</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Michael Holz</td>
-                                <td>04/10/2013</td>
-                                <td>Admin</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td> Paula Wilson</td>
-                                <td>05/08/2014</td>
-                                <td>Publisher</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td> Antonio Moreno</td>
-                                <td>11/05/2015</td>
-                                <td>Publisher</td>
-                                <td><span class="status text-danger">&bull;</span> Suspended</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Mary Saveley</td>
-                                <td>06/09/2016</td>
-                                <td>Reviewer</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td> Martin Sommer</td>
-                                <td>12/08/2017</td>
-                                <td>Moderator</td>
-                                <td><span class="status text-warning">&bull;</span> Inactive</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
+                        <tbody id="tbodyThongTinDieuTri">
+                            
                         </tbody>
                     </table>
                 </div>
-                
+
                 <div class="clearfix">
                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                     <ul class="pagination">
@@ -373,6 +253,7 @@
         </div>
     </div>
 </div>
+<script src="~/Assets/js/capNhatBenhAn.js"></script>
 
 
 
