@@ -1,8 +1,42 @@
-﻿
+﻿@model DBCovid.models.BenhNhan
 @{
     ViewBag.Title = "UpdateInformation";
+
+
 }
 <div class="wrapper wrapper__custom-height wrapper-block">
+    <!-- The Modal -->
+    @{
+        <div>@ViewBag.message</div>
+        if (ViewBag.message != "" && ViewBag.message != null)
+        {
+            <script>
+                var mgs = @Html.Raw(Json.Encode(ViewBag.message));
+                $(document).ready(function () {
+                    $("#patient-modal").modal();
+                })
+            </script>
+            <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin bệnh nhân</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="patien-modal-body">
+                            Cập nhật thông tin thành công
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
     <div class="container__page-fullWidth">
         <div class="name__page">
             <h4 class="name__page-tilte">
@@ -10,7 +44,8 @@
             </h4>
         </div>
         <div class="container__page-content">
-            <div class="form">
+            @using (Html.BeginForm("Update", "Patient", FormMethod.Post))
+            {
                 <div class="btn-container">
                     <button onclick="redirectToImportMedicalRecord()" class="btn btn-primary btn__add btn-submit">
                         Thêm bệnh án
@@ -22,107 +57,77 @@
                 <div class="row">
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
+                            @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.ten, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Số CMND
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Giới tính
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Giới tính", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.gioiTinh, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Ngày sinh
-                            </span>
-                            <input class="form__import-select" type="date" />
+                            @Html.Label("Ngày sinh", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.ngaySinh, htmlAttributes: new { @class = "form__import-select", @type = "date", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Số điện thoại
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Số điện thoại bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.sdtBenhNhan, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                SĐT người thân
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Số điện thoại người thân", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.sdtNguoiThan, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Mã bảo hiểm y tế
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Mã bảo hiểm y tế", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.maBHYT, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
 
                     <div class="col l-8 m-6 c-12">
                         <div class="form__import-item">
-                            <span class="form__import-label">
-                                Địa chỉ
-                            </span>
-                            <select class="form__import-select">
-                                <option value="" selected>Tỉnh</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
-                            <select class="form__import-select" style="margin-left:15px;">
-                                <option value="" selected>Huyện</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
-                            <select class="form__import-select" style="margin-left:15px;">
-                                <option value="" selected>Xã</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
-                            <span class="form__import-label" style="margin-left:15px;">
-                                Số nhà/ thôn xóm
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                            @Html.Label("Địa chỉ", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
+                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            @Html.Label("Số nhà/thôn xóm", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Đối tượng cách ly", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.doiTuongCachLy, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
                     </div>
                 </div>
                 <div class="btn-container">
-                    <button class="btn btn-primary btn__save btn-submit">
+                    <button class="btn btn-primary btn__save btn-submit" type="submit">
                         Lưu thông tin
                     </button>
-                    <button class="btn btn__reset btn-submit btn-default">
-                        Đặt lại
-                    </button>
-                    <button class="btn btn__cancel btn-submit btn-default">
-                        Hủy
-                    </button>
+                    <a class="btn btn__reset btn-submit btn-default" onclick="location.reload()">Đặt lại</a>
+                    <a class="btn btn__reset btn-submit btn-default" href="./Index">hủy</a>
                 </div>
 
-            </div>
+            }
         </div>
     </div>
-    
+
 
 </div>
 <script>

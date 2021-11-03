@@ -13,6 +13,9 @@ namespace PttkProject.Controllers
     public class PatientController : Controller
     {
         private DBIO dBIO = new DBIO();
+        private DiaChiDAO diaChi = new DiaChiDAO();
+        private BenhNhanDAO benhNhan = new BenhNhanDAO();
+
         // GET: Patient
         public ActionResult Index()
         {
@@ -22,9 +25,35 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult UpdateInformation()
+        public ActionResult UpdateInformation(int id, string mgs)
         {
-            return View();
+            try
+            {
+                BenhNhan bn = benhNhan.layBenhNhan(id);
+                ViewBag.message = mgs;
+                setViewBagDiaChi();
+                return View(bn);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Index", "Patient");
+            }
+            
+        }
+        public ActionResult Update(BenhNhan bn)
+        {
+
+            try
+            {
+                benhNhan.capNhatTTBenhNhan(bn);
+                return RedirectToAction("UpdateInformation", "Patient", new {id = bn.ID, mgs = "Sửa thành công"});
+            }
+            catch (Exception e)
+            {
+                //lloi
+                return RedirectToAction("UpdateInformation", "Patient", new { id = bn.ID, mgs = "Sửa thất bại" });
+            }
+
         }
         /*Tìm kiếm bệnh nhân*/
         public ActionResult SearchPatient()
@@ -271,16 +300,16 @@ namespace PttkProject.Controllers
         }
         private void setViewBagDiaChi()
         {
-            List<Tinh> tinhs = dBIO.layDSTinh();
+            List<Tinh> tinhs = diaChi.layDSTinh();
             List<Huyen> huyens = new List<Huyen>();
             List<Xa> xas = new List<Xa>();
             if (tinhs.Count > 0)
             {
-                huyens = dBIO.layDSHuyen(tinhs[0].ID);
+                huyens = diaChi.layDSHuyen(tinhs[0].ID);
             }
             if(huyens.Count > 0)
             {
-                xas = dBIO.layDSXa(huyens[0].ID);
+                xas = diaChi.layDSXa(huyens[0].ID);
             }
 
             ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
