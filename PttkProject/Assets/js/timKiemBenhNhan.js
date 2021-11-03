@@ -51,7 +51,7 @@ function fillDataPatient(data) {
                 <td>${item.ten}</td>
                 <td>${date.toLocaleDateString()}</td>
                 <td>${item.CMND}</td>
-                <td>${item.diaChiID}</td>
+                <td>${item.gioiTinh}</td>
                 
                 <td id="${i}">
                     <a id="see-${i}" class="see" title="Settings" data-toggle="modal" data-target="#patient-modal">
@@ -144,10 +144,25 @@ function handerDeleteClick() {
 function confirmDelete() {
     if (confirm("Bạn có thực sự muốn xóa không?")) {
         var element = document.querySelector(`#${this.id}`)
-
-        
         var parent = element.parentElement.parentElement
         console.log(parent.id)
-        //parent.remove()
+        deletePatient(parent)
     }
+}
+function deletePatient(element) {
+    var ID = element.id
+    $.ajax({
+        url: './xoaBenhNhan',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            ID: ID
+        },
+        success: function (data) {
+            if (data.code == 200) {
+                element.remove()
+            }
+            alert(data.msg)
+        }
+    })
 }

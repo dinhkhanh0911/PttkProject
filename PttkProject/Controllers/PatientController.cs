@@ -26,11 +26,29 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        /*Tìm kiếm bệnh nhân*/
         public ActionResult SearchPatient()
         {
             return View();
         }
-        
+        [HttpPost]
+        public JsonResult xoaBenhNhan(int ID)
+        {
+            try
+            {
+                bool ok = false;
+                ok = dBIO.xoaBenhNhan(ID);
+                if (ok)
+                {
+                    return Json(new { code = 200, msg = "Xóa thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
+            }
+        }
         public ActionResult ImportMedicalRecord()
         {
             int ID = 1;
