@@ -13,7 +13,7 @@
         <div class="container__page-content">
             <div class="form">
                 <div class="row">
-                    @Html.HiddenFor(m => m.ID,new { @id = "benhAnID",})
+                    @Html.HiddenFor(m => m.ID, new { @id = "benhAnID", })
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
@@ -232,7 +232,6 @@
                             </tr>
                         </thead>
                         <tbody id="tbodyThongTinDieuTri">
-                            
                         </tbody>
                     </table>
                 </div>
@@ -249,6 +248,26 @@
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="infor-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin bệnh nhân</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="patien-modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
         </div>
     </div>

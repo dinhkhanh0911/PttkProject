@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using DBCovid.Data;
 using DBCovid.models;
+using PttkProject.models;
 
 namespace PttkProject.DatabaseDAO
 {
@@ -150,19 +151,36 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
-        public List<ThongTinTruyVet> layDSThongTinTruyVet(int benhAnID)
+        public Object layDSThongTinTruyVet(int benhAnID)
         {
-            List< ThongTinTruyVet >list;
-            try
-            {
-                list = data.thongTinTruyVet.Where(t => t.benhAnID == benhAnID).ToList();
+            //List< TTTruyVet >list;
+            
+              var  list = (from tt in data.thongTinTruyVet
+                        join x in data.xa
+                        on tt.xaID equals x.ID
+
+                        join h in data.huyen
+                        on x.huyenID equals h.ID
+                        join t in data.tinh
+                        on h.tinhID equals t.ID
+
+                        where tt.benhAnID == benhAnID
+                        select new
+                        {
+                            ID = tt.ID,
+                            thoiGian = tt.thoiGian,
+                            diaChiChiTiet = tt.diaChichiTiet,
+                            xa = x.tenXa,
+                            huyen = h.tenHuyen,
+                            tinh = t.tenTinh,
+                        }).ToList();
                 return list;
-            }
-            catch (Exception e)
-            {
-                list = new List<ThongTinTruyVet>();
-                return list;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    list = new List<TTTruyVet>();
+            //    return list;
+            //}
         }
         /*Địa chỉ*/
         public List<Tinh> layDSTinh()

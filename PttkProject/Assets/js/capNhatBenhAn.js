@@ -25,38 +25,43 @@ function load() {
         success: function (data) {
             
             if (data.code === 200) {
-                console.log(data)
+                
                 fillDataTTTV(data.thongTinTruyVets)
                 fillDataTTDT(data.thongTinDieuTris)
                 //saveData.setData(data.data)
-                //handerSeeClick()
+                handerSeeClick()
                 //handerDeleteClick()
             }
         }
     })
 }
 function fillDataTTTV(thongTinTruyVets) {
-    
+    thongTinTruyVets.sort(function (a, b) {
+        var date1 = new Date(Number(a.thoiGian.slice(6, a.thoiGian.length - 2)))
+        var date2 = new Date(Number(b.thoiGian.slice(6, b.thoiGian.length - 2)))
+        return date1 - date2;
+    })
+    console.log(thongTinTruyVets)
     var tbodyPatient = document.querySelector('#tbodyThongTinTruyVet')
     tbodyPatient.innerHTML = ''
     var i = 1;
     for (var item of thongTinTruyVets) {
-        console.log(item)
+        
         var dateString = item.thoiGian
         var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
         let row = `
             <tr id="${item.ID}">
                 <td>${date.toLocaleDateString()}</td>
-                <td>${(item.diaChichiTiet  || "")}${item.xaID}</td>
+                <td>${(item.diaChiChiTiet ? item.diaChiChiTiet + " - " : "")}${item.xa} - ${item.huyen} - ${item.tinh}</td>
                 
-                <td id="${i}">
-                    <a id="see-${i}" class="see" title="Settings" data-toggle="modal" data-target="#patient-modal">
+                <td data-value="${i}">
+                    <a id="see-tttv-${i}" class="see-tttv" title="Settings" data-toggle="modal" data-target="#infor-modal">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
-                    <a id="edit-${i}" class="edit" title="Settings">
+                    <a id="edit-tttv-${i}" class="edit-tttv" title="Settings">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
                     </a>
-                    <a id="delete-${i}" class="delete" title="Delete">
+                    <a id="delete-tttv-${i}" class="delete-tttv" title="Delete">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
                 
@@ -71,7 +76,7 @@ function fillDataTTDT(thongTinDieuTris) {
     tbodyPatient.innerHTML = ''
     var i = 1;
     for (var item of thongTinDieuTris) {
-        console.log(item)
+        
         var dateString = item.ngay
         var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
         let row = `
@@ -81,14 +86,14 @@ function fillDataTTDT(thongTinDieuTris) {
                 <td>${item.tinhTrangBenh || ""}</td>
                 <td>${item.yLenh || ""}</td>
                 
-                <td id="${i}">
-                    <a id="see-${i}" class="see" title="Settings" data-toggle="modal" data-target="#patient-modal">
+                <td data-value="${i}">
+                    <a id="see-ttdt-${i}" class="see-ttdt" title="Settings" data-toggle="modal" data-target="#patient-modal">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
-                    <a id="edit-${i}" class="edit" title="Settings">
+                    <a id="edit-ttdt-${i}" class="edit-ttdt" title="Settings">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
                     </a>
-                    <a id="delete-${i}" class="delete" title="Delete">
+                    <a id="delete-ttdt-${i}" class="delete-ttdt" title="Delete">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
                 
@@ -99,17 +104,22 @@ function fillDataTTDT(thongTinDieuTris) {
     }
 }
 function handerSeeClick() {
-    var seeElement = document.querySelectorAll('.see')
+    var seeElement = document.querySelectorAll('.see-tttv')
     for (var item of seeElement) {
-        item.addEventListener('click', showPatient)
+        item.addEventListener('click', show)
+    }
+    var seeElement = document.querySelectorAll('.see-ttdt')
+    for (var item of seeElement) {
+        item.addEventListener('click', show)
     }
 }
-function showPatient() {
+function show() {
     var element = document.querySelector(`#${this.id}`)
     var parent = element.parentElement
-    var id = parent.id
-    var data = saveData.getData(id)
-    showModal(data)
+    var dataValue = parent.id
+    var data = saveData.getData(dataValue)
+    console.log(parent.attributes["data-value"].value)
+    /*showModal(data)*/
 
 }
 function showModal(data) {

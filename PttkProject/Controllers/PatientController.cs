@@ -110,12 +110,13 @@ namespace PttkProject.Controllers
             }
             return Redirect("ImportInformation");
         }
+        [HttpPost]
         public JsonResult layDSThongTin(int benhAnID)
         {
             try
             {
                 List<ThongTinDieuTri> thongTinDieuTris = dBIO.layDSThongTinDieuTri(benhAnID);
-                List<ThongTinTruyVet> thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
+                var thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
 
                 return Json(new { code = 200, thongTinDieuTris = thongTinDieuTris, thongTinTruyVets = thongTinTruyVets }, JsonRequestBehavior.AllowGet);
             }
