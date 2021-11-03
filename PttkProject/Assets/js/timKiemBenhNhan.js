@@ -45,11 +45,15 @@ function fillDataPatient(data) {
     var i = 1;
     for (var item of data.data) {
         var dateString = item.ngaySinh
-        var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
+        var date;
+        if (dateString) {
+            date = new Date(Number(dateString.slice(6, dateString.length - 2)))
+        }
+        
         let row = `
             <tr id="${item.ID}">
                 <td>${item.ten}</td>
-                <td>${date.toLocaleDateString()}</td>
+                <td>${dateString != null ? date.toLocaleDateString() : "Không có"}</td>
                 <td>${item.CMND}</td>
                 <td>${item.gioiTinh}</td>
                 
