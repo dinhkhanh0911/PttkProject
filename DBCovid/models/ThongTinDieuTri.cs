@@ -17,7 +17,9 @@ namespace DBCovid.models
         public string gioPhut { get; set; }
         [Column(TypeName = "Date")]
         public DateTime ngay { get; set; }
+        [Required]
         public string tinhTrangBenh { get; set; }
+        [Required]
         public string yLenh { get; set; }
         public string moTa { get; set; }
         public int benhAnID { get; set; }

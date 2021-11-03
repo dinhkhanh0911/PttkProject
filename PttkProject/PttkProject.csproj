@@ -483,7 +483,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="models\MediaRecord.cs" />
+    <Compile Include="models\TTTruyVet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -491,7 +491,10 @@
     <Content Include="Assets\css\grid.css" />
     <Content Include="Assets\css\reponsive.css" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\js\capNhatBenhAn.js" />
     <Content Include="Assets\js\themBenhAn.js" />
+    <Content Include="Assets\js\themThongTinDieuTri.js" />
+    <Content Include="Assets\js\themThongTinTruyVet.js" />
     <Content Include="Assets\js\timKiemBenhNhan.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -727,6 +730,8 @@
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Patient\ImportMedicalRecord.cshtml" />
     <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
+    <Content Include="Views\Patient\themThongTinDieuTri.cshtml" />
+    <Content Include="Views\Patient\ThemThongTinTruyVet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

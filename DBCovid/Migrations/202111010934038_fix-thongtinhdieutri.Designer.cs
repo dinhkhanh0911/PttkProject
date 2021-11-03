@@ -7,13 +7,13 @@ namespace DBCovid.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class create : IMigrationMetadata
+    public sealed partial class fixthongtinhdieutri : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(create));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixthongtinhdieutri));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110250701000_create"; }
+            get { return "202111010934038_fix-thongtinhdieutri"; }
         }
         
         string IMigrationMetadata.Source

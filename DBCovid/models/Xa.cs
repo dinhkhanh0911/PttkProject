@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBCovid.Abstact;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +18,8 @@ namespace DBCovid.models
         public int huyenID { get; set; }
         [ForeignKey("huyenID")]
         public virtual Huyen huyen { get; set; }
-        public virtual IEnumerable<DiaChi> diaChi { get; set; }
+        public virtual IEnumerable<Nguoi> nguoi { get; set; }
+        public virtual IEnumerable<BenhVien> benhVien { get; set; }
+        public virtual IEnumerable<ThongTinTruyVet> thongTinTruyVet { get; set; }
     }
 }

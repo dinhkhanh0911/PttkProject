@@ -16,12 +16,16 @@ namespace DBCovid.models
         public int ID { get; set; }
         [Column(TypeName ="Date")]
         public DateTime thoiGian { get; set; }
+        public string diaChichiTiet { get; set; }
+        public int xaID { get; set; }
+        public int benhAnID { set; get; }
         public string moTa { get; set; }
-        public int benhAnID { get; set; }
+        
         [ForeignKey("benhAnID")]
         public virtual BenhAn benhAn { get; set; }
-        public int diaChiID { get; set; }
-        [ForeignKey("diaChiID")]
-        public virtual DiaChi diaChi { get; set; }
+        
+        [ForeignKey("xaID")]
+        public virtual Xa xa { get; set; }
+        
     }
 }

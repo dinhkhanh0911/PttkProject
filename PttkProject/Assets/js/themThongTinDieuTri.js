@@ -8,16 +8,16 @@ function handerchangeTypeRoom() {
 function fillDataRoom() {
     var val = $(this).find('option:selected').val()
     $.ajax({
-        url:'./getListRoom',
+        url: './getListRoom',
         type: 'post',
         datatype: 'json',
         data: {
-            loaiPhongID:val
+            loaiPhongID: val
         },
         success: function (data) {
             if (data.code === 200) {
                 fill(data.listRoom)
-                
+
             }
         }
     })
@@ -31,13 +31,13 @@ function fill(data) {
                 ${item.tenPhong}
             </option>
         `
-        $('#phongBenh').append(option) 
+        $('#phongBenh').append(option)
     }
 }
 (function () {
 
-    $('#importMedicalRecord').submit(function (even) {
-        
+    $('#themThongTinDieuTri').submit(function (even) {
+
 
         $.ajax({
             method: $(this).attr('method'),
@@ -51,11 +51,11 @@ function fill(data) {
                 console.log(thrownError);
             }
         }).done(function (response) {
-            
+
             if (response != null) {
                 alert(response.msg)
                 console.log(response.model)
-                
+
             }
         });
         even.preventDefault();

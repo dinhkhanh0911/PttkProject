@@ -1,19 +1,20 @@
-﻿@model DBCovid.models.BenhAn
-
+﻿@model DBCovid.models.ThongTinTruyVet
 @{
-    ViewBag.Title = "ImportMedicalRecord";
+    ViewBag.Title = "ThemThongTinTruyVet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="wrapper wrapper__custom-height wrapper-block">
     <div class="container__page-fullWidth">
         <div class="name__page">
             <h4 class="name__page-tilte">
-                Thêm bệnh án
+                Thêm thông tin truy vết
             </h4>
         </div>
         <div class="container__page-content">
-            <form action="/Patient/ImportMedicalRecord" class="form" method="post" id="importMedicalRecord">
+            <form action="/Patient/ThemThongTinTruyVet" class="form" method="post" id="themThongTinTruyVet">
                 <div class="row">
-                    @Html.HiddenFor(m => m.benhNhanID)
+                    @Html.HiddenFor(m => m.benhAnID)
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
@@ -25,67 +26,44 @@
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            <span for="@Model.ngayNhapVien" class="form__import-label">
-                                Ngày nhập viện
+                            <span class="form__import-label">
+                                Thời gian
                             </span>
-                            <input class="form__import-select" type="date" name="ngayNhapVien" />
+                            <input class="form__import-select" type="date" name="thoiGian" />
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Ngày xuất viện
+                                Địa chỉ chi tiết
                             </span>
-                            <input class="form__import-select" type="date" name="ngayXuatVien" />
+                            <input class="form__import-select" type="text" name="diaChiChiTiet" />
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Loại Phòng
+                                Tỉnh
                             </span>
-                            @Html.DropDownList("loaiPhongID", (IEnumerable<SelectListItem>)ViewBag.loaiPhong, new { @class = "form__import-select", @id = "loaiPhong" })
+                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, new { @class = "form__import-select", @id = "tinh" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Phòng Bệnh
+                                Huyện
                             </span>
-                            @Html.DropDownList("phongBenhID", (IEnumerable<SelectListItem>)ViewBag.phongBenh, new { @class = "form__import-select", @id = "phongBenh", @name = "phongBenhID" })
-                        </div>
-
-                        <span data-valmsg-for="phongBenhID"
-                              data-valmsg-replace="true"/>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Trạng thái
-                            </span>
-                            @Html.DropDownList("trangThaiID", (IEnumerable<SelectListItem>)ViewBag.trangThai, new { @class = "form__import-select", @id = "trangThai", @name = "trangThaiID" })
+                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, new { @class = "form__import-select", @id = "huyen" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             <span class="form__import-label">
-                                Chẩn đoán
+                                Xã
                             </span>
-                            <textarea class="form__import-select" placeholder="Nhập dữ liệu" name="chanDoan"></textarea>
-
+                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, new { @class = "form__import-select", @id = "xa" })
                         </div>
                     </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Triệu chứng
-                            </span>
-                            <textarea class="form__import-select" placeholder="Nhập dữ liệu" name="trieuChung"></textarea>
-                        </div>
-                    </div>
-
-
-
 
                 </div>
                 <div class="btn-container">
@@ -105,4 +83,5 @@
 
 
 </div>
-<script src="~/Assets/js/themBenhAn.js"></script>
+<script src="~/Assets/js/themThongTinTruyVet.js"></script>
+

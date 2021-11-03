@@ -16,10 +16,11 @@ namespace DBCovid.models
         public int ID { get; set; }
         [Required]
         public string tenBenhVien { get; set; }
+        public string diaChichiTiet { get; set; }
         public string moTa { get; set; }
-        public int? diaChiID { get; set; }
-        [ForeignKey("diaChiID")]
-        public virtual DiaChi diaChi { get; set; }
+        public int xaID { get; set; }
+        [ForeignKey("xaID")]
+        public virtual Xa xa { get; set; }
         public virtual IEnumerable<PhongBenh> PhongBenh { get; set; }
     }
 }

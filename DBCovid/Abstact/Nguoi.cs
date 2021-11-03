@@ -21,15 +21,17 @@ namespace DBCovid.Abstact
 
         [Required]
         public string CMND { get; set; }
+        public string diaChichiTiet { get; set; }
+        public int xaID { get; set; }
+        
         public string moTa { set; get; }
 
         [Required]
         public string gioiTinh { get; set; }
-        public int diaChiID { set; get; }
 
-        [ForeignKey("diaChiID")]
-        public virtual DiaChi diaChi { set; get;}
+        [ForeignKey("xaID")]
+        public virtual Xa xa { get; set; }
 
-        
+
     }
 }

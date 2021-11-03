@@ -42,22 +42,10 @@
                         ten = c.String(nullable: false),
                         ngaySinh = c.DateTime(storeType: "date"),
                         CMND = c.String(nullable: false),
+                        diaChichiTiet = c.String(),
+                        xaID = c.Int(nullable: false),
                         moTa = c.String(),
                         gioiTinh = c.String(nullable: false),
-                        diaChiID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_DiaChis", t => t.diaChiID, cascadeDelete: true)
-                .Index(t => t.diaChiID);
-            
-            CreateTable(
-                "dbo.tbl_DiaChis",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        chiTiet = c.String(),
-                        moTa = c.String(),
-                        xaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.tbl_Xa", t => t.xaID, cascadeDelete: true)
@@ -122,12 +110,13 @@
                     {
                         ID = c.Int(nullable: false, identity: true),
                         tenBenhVien = c.String(nullable: false),
+                        diaChichiTiet = c.String(),
                         moTa = c.String(),
-                        diaChiID = c.Int(),
+                        xaID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_DiaChis", t => t.diaChiID)
-                .Index(t => t.diaChiID);
+                .ForeignKey("dbo.tbl_Xa", t => t.xaID, cascadeDelete: false)
+                .Index(t => t.xaID);
             
             CreateTable(
                 "dbo.tbl_LoaiPhongs",
@@ -160,15 +149,16 @@
                         ten = c.String(nullable: false),
                         ngaySinh = c.DateTime(storeType: "date"),
                         CMND = c.String(nullable: false),
+                        diaChichiTiet = c.String(),
+                        xaID = c.Int(nullable: false),
                         moTa = c.String(),
                         gioiTinh = c.String(nullable: false),
-                        diaChiID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_DiaChis", t => t.diaChiID, cascadeDelete: true)
                 .ForeignKey("dbo.tbl_ViTriLamViecs", t => t.viTriLamViecID, cascadeDelete: true)
+                .ForeignKey("dbo.tbl_Xa", t => t.xaID, cascadeDelete: true)
                 .Index(t => t.viTriLamViecID)
-                .Index(t => t.diaChiID);
+                .Index(t => t.xaID);
             
             CreateTable(
                 "dbo.tbl_ViTriLamViecs",
@@ -192,15 +182,16 @@
                         ten = c.String(nullable: false),
                         ngaySinh = c.DateTime(storeType: "date"),
                         CMND = c.String(nullable: false),
+                        diaChichiTiet = c.String(),
+                        xaID = c.Int(nullable: false),
                         moTa = c.String(),
                         gioiTinh = c.String(nullable: false),
-                        diaChiID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.tbl_DiaChis", t => t.diaChiID, cascadeDelete: true)
                 .ForeignKey("dbo.tbl_ViTriLamViecs", t => t.viTriLamViecID, cascadeDelete: true)
+                .ForeignKey("dbo.tbl_Xa", t => t.xaID, cascadeDelete: true)
                 .Index(t => t.viTriLamViecID)
-                .Index(t => t.diaChiID);
+                .Index(t => t.xaID);
             
             CreateTable(
                 "dbo.tbl_ThongTinDieuTris",
@@ -227,53 +218,52 @@
                     {
                         ID = c.Int(nullable: false, identity: true),
                         thoiGian = c.DateTime(nullable: false, storeType: "date"),
-                        moTa = c.String(),
+                        diaChichiTiet = c.String(),
+                        xaID = c.Int(nullable: false),
                         benhAnID = c.Int(nullable: false),
-                        diaChiID = c.Int(nullable: false),
+                        moTa = c.String(),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.tbl_BenhAns", t => t.benhAnID, cascadeDelete: true)
-                .ForeignKey("dbo.tbl_DiaChis", t => t.diaChiID, cascadeDelete: false)
-                .Index(t => t.benhAnID)
-                .Index(t => t.diaChiID);
+                .ForeignKey("dbo.tbl_Xa", t => t.xaID, cascadeDelete: false)
+                .Index(t => t.xaID)
+                .Index(t => t.benhAnID);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.tbl_ThongTinTruyVets", "diaChiID", "dbo.tbl_DiaChis");
+            DropForeignKey("dbo.tbl_ThongTinTruyVets", "xaID", "dbo.tbl_Xa");
             DropForeignKey("dbo.tbl_ThongTinTruyVets", "benhAnID", "dbo.tbl_BenhAns");
             DropForeignKey("dbo.tbl_ThongTinDieuTris", "nhanVienYTeID", "dbo.Tbl_NhanVienYTes");
             DropForeignKey("dbo.tbl_ThongTinDieuTris", "benhAnID", "dbo.tbl_BenhAns");
+            DropForeignKey("dbo.Tbl_NhanVienYTes", "xaID", "dbo.tbl_Xa");
             DropForeignKey("dbo.Tbl_NhanVienYTes", "viTriLamViecID", "dbo.tbl_ViTriLamViecs");
-            DropForeignKey("dbo.Tbl_NhanVienYTes", "diaChiID", "dbo.tbl_DiaChis");
+            DropForeignKey("dbo.Tbl_NguoiDungs", "xaID", "dbo.tbl_Xa");
             DropForeignKey("dbo.Tbl_NguoiDungs", "viTriLamViecID", "dbo.tbl_ViTriLamViecs");
-            DropForeignKey("dbo.Tbl_NguoiDungs", "diaChiID", "dbo.tbl_DiaChis");
             DropForeignKey("dbo.tbl_BenhAns", "trangThaiID", "dbo.tbl_TrangThais");
             DropForeignKey("dbo.tbl_BenhAns", "phongBenhID", "dbo.tbl_PhongBenhs");
             DropForeignKey("dbo.tbl_PhongBenhs", "loaiPhongID", "dbo.tbl_LoaiPhongs");
             DropForeignKey("dbo.tbl_PhongBenhs", "benhVienID", "dbo.tbl_BenhViens");
-            DropForeignKey("dbo.tbl_BenhViens", "diaChiID", "dbo.tbl_DiaChis");
+            DropForeignKey("dbo.tbl_BenhViens", "xaID", "dbo.tbl_Xa");
             DropForeignKey("dbo.tbl_BenhAns", "benhNhanID", "dbo.tbl_BenhNhans");
-            DropForeignKey("dbo.tbl_BenhNhans", "diaChiID", "dbo.tbl_DiaChis");
-            DropForeignKey("dbo.tbl_DiaChis", "xaID", "dbo.tbl_Xa");
+            DropForeignKey("dbo.tbl_BenhNhans", "xaID", "dbo.tbl_Xa");
             DropForeignKey("dbo.tbl_Xa", "huyenID", "dbo.tbl_Huyen");
             DropForeignKey("dbo.tbl_Huyen", "tinhID", "dbo.tbl_Tinhs");
-            DropIndex("dbo.tbl_ThongTinTruyVets", new[] { "diaChiID" });
             DropIndex("dbo.tbl_ThongTinTruyVets", new[] { "benhAnID" });
+            DropIndex("dbo.tbl_ThongTinTruyVets", new[] { "xaID" });
             DropIndex("dbo.tbl_ThongTinDieuTris", new[] { "nhanVienYTeID" });
             DropIndex("dbo.tbl_ThongTinDieuTris", new[] { "benhAnID" });
-            DropIndex("dbo.Tbl_NhanVienYTes", new[] { "diaChiID" });
+            DropIndex("dbo.Tbl_NhanVienYTes", new[] { "xaID" });
             DropIndex("dbo.Tbl_NhanVienYTes", new[] { "viTriLamViecID" });
-            DropIndex("dbo.Tbl_NguoiDungs", new[] { "diaChiID" });
+            DropIndex("dbo.Tbl_NguoiDungs", new[] { "xaID" });
             DropIndex("dbo.Tbl_NguoiDungs", new[] { "viTriLamViecID" });
-            DropIndex("dbo.tbl_BenhViens", new[] { "diaChiID" });
+            DropIndex("dbo.tbl_BenhViens", new[] { "xaID" });
             DropIndex("dbo.tbl_PhongBenhs", new[] { "loaiPhongID" });
             DropIndex("dbo.tbl_PhongBenhs", new[] { "benhVienID" });
             DropIndex("dbo.tbl_Huyen", new[] { "tinhID" });
             DropIndex("dbo.tbl_Xa", new[] { "huyenID" });
-            DropIndex("dbo.tbl_DiaChis", new[] { "xaID" });
-            DropIndex("dbo.tbl_BenhNhans", new[] { "diaChiID" });
+            DropIndex("dbo.tbl_BenhNhans", new[] { "xaID" });
             DropIndex("dbo.tbl_BenhAns", new[] { "trangThaiID" });
             DropIndex("dbo.tbl_BenhAns", new[] { "phongBenhID" });
             DropIndex("dbo.tbl_BenhAns", new[] { "benhNhanID" });
@@ -289,7 +279,6 @@
             DropTable("dbo.tbl_Tinhs");
             DropTable("dbo.tbl_Huyen");
             DropTable("dbo.tbl_Xa");
-            DropTable("dbo.tbl_DiaChis");
             DropTable("dbo.tbl_BenhNhans");
             DropTable("dbo.tbl_BenhAns");
         }
