@@ -1,14 +1,25 @@
 ﻿$(document).ready(function () {
     load()
 })
-const saveData = (function () {
+const DSThongTinTruyVet = (function () {
     var data = [];
     return {
         getData(id) {
             return data[id - 1]
         },
-        setData(patientList) {
-            data = [...patientList]
+        setData(thongTinTruyVets) {
+            data = [...thongTinTruyVets]
+        }
+    }
+})()
+const DSThongTinDieuTri = (function () {
+    var data = [];
+    return {
+        getData(id) {
+            return data[id - 1]
+        },
+        setData(thongTinDieuTris) {
+            data = [...thongTinDieuTris]
         }
     }
 })()
@@ -28,9 +39,11 @@ function load() {
                 
                 fillDataTTTV(data.thongTinTruyVets)
                 fillDataTTDT(data.thongTinDieuTris)
-                //saveData.setData(data.data)
+                
+                DSThongTinTruyVet.setData(data.thongTinTruyVets)
+                DSThongTinDieuTri.setData(data.thongTinDieuTris)
                 handerSeeClick()
-                //handerDeleteClick()
+                handerDeleteClick()
             }
         }
     })
@@ -41,7 +54,6 @@ function fillDataTTTV(thongTinTruyVets) {
         var date2 = new Date(Number(b.thoiGian.slice(6, b.thoiGian.length - 2)))
         return date1 - date2;
     })
-    console.log(thongTinTruyVets)
     var tbodyPatient = document.querySelector('#tbodyThongTinTruyVet')
     tbodyPatient.innerHTML = ''
     var i = 1;
@@ -50,18 +62,15 @@ function fillDataTTTV(thongTinTruyVets) {
         var dateString = item.thoiGian
         var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
         let row = `
-            <tr id="${item.ID}">
+            <tr data-value="${item.ID}">
                 <td>${date.toLocaleDateString()}</td>
                 <td>${(item.diaChiChiTiet ? item.diaChiChiTiet + " - " : "")}${item.xa} - ${item.huyen} - ${item.tinh}</td>
                 
-                <td data-value="${i}">
-                    <a id="see-tttv-${i}" class="see-tttv" title="Settings" data-toggle="modal" data-target="#infor-modal">
+                <td data-value="${i}" class="tttv">
+                    <a id="see-tttv-${i}" class="see-tttv" title="Xem" data-toggle="modal" data-target="#infor-modal">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
-                    <a id="edit-tttv-${i}" class="edit-tttv" title="Settings">
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                    </a>
-                    <a id="delete-tttv-${i}" class="delete-tttv" title="Delete">
+                    <a id="delete-tttv-${i}" class="delete-tttv" title="Xóa">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
                 
@@ -72,6 +81,11 @@ function fillDataTTTV(thongTinTruyVets) {
     }
 }
 function fillDataTTDT(thongTinDieuTris) {
+    thongTinDieuTris.sort(function (a, b) {
+        var date1 = new Date(Number(a.ngay.slice(6, a.ngay.length - 2)))
+        var date2 = new Date(Number(b.ngay.slice(6, b.ngay.length - 2)))
+        return date1 - date2;
+    })
     var tbodyPatient = document.querySelector('#tbodyThongTinDieuTri')
     tbodyPatient.innerHTML = ''
     var i = 1;
@@ -80,20 +94,18 @@ function fillDataTTDT(thongTinDieuTris) {
         var dateString = item.ngay
         var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
         let row = `
-            <tr id="${item.ID}">
+            <tr data-value="${item.ID}">
                 <td>${item.gioPhut || ""}</td>
                 <td>${date.toLocaleDateString()}</td>
                 <td>${item.tinhTrangBenh || ""}</td>
                 <td>${item.yLenh || ""}</td>
                 
-                <td data-value="${i}">
-                    <a id="see-ttdt-${i}" class="see-ttdt" title="Settings" data-toggle="modal" data-target="#patient-modal">
+                <td data-value="${i}" class="ttdt">
+                    <a id="see-ttdt-${i}" class="see-ttdt" title="Xem" data-toggle="modal" data-target="#infor-modal">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
-                    <a id="edit-ttdt-${i}" class="edit-ttdt" title="Settings">
-                        <i class="fa fa-wrench" aria-hidden="true"></i>
-                    </a>
-                    <a id="delete-ttdt-${i}" class="delete-ttdt" title="Delete">
+                    
+                    <a id="delete-ttdt-${i}" class="delete-ttdt" title="Xóa">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
                 
@@ -116,77 +128,134 @@ function handerSeeClick() {
 function show() {
     var element = document.querySelector(`#${this.id}`)
     var parent = element.parentElement
-    var dataValue = parent.id
-    var data = saveData.getData(dataValue)
-    console.log(parent.attributes["data-value"].value)
-    /*showModal(data)*/
+    var dataValue = parent.attributes["data-value"].value
+    var data;
+    if (parent.className === "ttdt") {
+        data = DSThongTinDieuTri.getData(dataValue)
+        
+        showModalTTDT(data)
+    }
+    else {
+        data = DSThongTinTruyVet.getData(dataValue)
+        
+        showModalTTTV(data)
+    }
+    
+    
 
 }
-function showModal(data) {
-    var modal = document.querySelector('#patien-modal-body')
-    var dateString = data.ngaySinh
+function showModalTTDT(data) {
+    var modalTitle = document.querySelector('#infor-modal-tittle')
+    modalTitle.textContent= "Thông tin điều trị"
+    var modal = document.querySelector('#infor-modal-body')
+    var dateString = data.ngay
     var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
     modal.innerHTML = `
         <div class="modal-group">
-            <label class="modal-lable ">Họ và tên:</label>
-            <label class="modal-value">${data.ten || "Không có"}</label>
+            <label class="modal-lable ">Giờ phút:</label>
+            <label class="modal-value">${data.gioPhut || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Ngày sinh:</label>
+            <label class="modal-lable">Ngày:</label>
             <label class="modal-value">${date.toLocaleDateString() || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Giới tính:</label>
-            <label class="modal-value">${data.gioiTinh || "Không có"}</label>
+            <label class="modal-lable">Tình trạng bệnh:</label>
+            <label class="modal-value">${data.tinhTrangBenh || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Số CCCD:</label>
-            <label class="modal-value">${data.CMND || "Không có"}</label>
+            <label class="modal-lable">Y lệnh:</label>
+            <label class="modal-value">${data.yLenh || "Không có"}</label>
+        </div>
+    `
+
+}
+function showModalTTTV(data) {
+    var modalTitle = document.querySelector('#infor-modal-tittle')
+    modalTitle.textContent = "Thông tin truy vết"
+    var modal = document.querySelector('#infor-modal-body')
+    var dateString = data.thoiGian
+    var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
+    modal.innerHTML = `
+        <div class="modal-group">
+            <label class="modal-lable ">Thời gian:</label>
+            <label class="modal-value">${date.toLocaleDateString() || "Không có"}</label>
         </div>
         <div class="modal-group">
             <label class="modal-lable">Địa chỉ:</label>
-            <label class="modal-value">${data.diaChiID || "Không có"}</label>
+            <label class="modal-value">${data.diaChiChiTiet || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Số điện thoại:</label>
-            <label class="modal-value">${data.sdtBenhNhan || "Không có"}</label>
+            <label class="modal-lable">Xã:</label>
+            <label class="modal-value">${data.xa || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Mã BHYT:</label>
-            <label class="modal-value">${data.maBHYT || "Không có"}</label>
+            <label class="modal-lable">Huyện:</label>
+            <label class="modal-value">${data.huyen || "Không có"}</label>
         </div>
         <div class="modal-group">
-            <label class="modal-lable">Đối tượng cách ly:</label>
-            <label class="modal-value">${data.doiTuongCachLy || "Không có"}</label>
-        </div>
-        <div class="modal-group">
-            <label class="modal-lable">Người thân:</label>
-            <label class="modal-value">${data.tenNguoiThan || "Không có"}</label>
-        </div>
-        <div class="modal-group">
-            <label class="modal-lable">Số điện thoại người thân:</label>
-            <label class="modal-value">${data.sdtNguoiThan || "Không có"}</label>
+            <label class="modal-lable">Tỉnh:</label>
+            <label class="modal-value">${data.tinh || "Không có"}</label>
         </div>
     `
 
 }
 
 function handerDeleteClick() {
-    var deleteElement = document.querySelectorAll('.delete')
-    console.log(deleteElement)
-    for (var item of deleteElement) {
+    var seeElement = document.querySelectorAll('.delete-tttv')
+    for (var item of seeElement) {
+        item.addEventListener('click', confirmDelete)
+    }
+    var seeElement = document.querySelectorAll('.delete-ttdt')
+    for (var item of seeElement) {
         item.addEventListener('click', confirmDelete)
     }
 }
 function confirmDelete() {
     if (confirm("Bạn có thực sự muốn xóa không?")) {
         var element = document.querySelector(`#${this.id}`)
-
-
         var parent = element.parentElement.parentElement
-        console.log(parent.id)
-        //parent.remove()
+        if (element.className === "delete-tttv") {
+            deleteTTTV(parent)
+        }
+        else {
+            deleteTTDT(parent)
+        }
     }
+}
+function deleteTTTV(element) {
+    var ID = element.attributes["data-value"].value
+    $.ajax({
+        url: './xoaThongTinTruyVet',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            ID: ID
+        },
+        success: function (data) {
+            if (data.code == 200) {
+                element.remove()
+            }
+            alert(data.msg)
+        }
+    })
+}
+function deleteTTDT(element) {
+    var ID = element.attributes["data-value"].value
+    $.ajax({
+        url: './xoaThongTinDieuTri',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            ID: ID
+        },
+        success: function (data) {
+            if (data.code == 200) {
+                element.remove()
+            }
+            alert(data.msg)
+        }
+    })
 }
 function themThongTinTruyVet() {
     var benhAnID = document.querySelector('#benhAnID').value;

@@ -136,7 +136,20 @@ namespace PttkProject.DatabaseDAO
                 return list;
             }
         }
-
+        public bool xoaThongTinDieuTri(int ID)
+        {
+            try
+            {
+                ThongTinDieuTri t = data.thongtinDieuTri.Where(x => x.ID == ID).FirstOrDefault();
+                data.thongtinDieuTri.Remove(t);
+                data.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
         /*Thông tin truy vết*/
         public bool themThongTinTruyVet(ThongTinTruyVet t)
         {
@@ -181,6 +194,20 @@ namespace PttkProject.DatabaseDAO
             //    list = new List<TTTruyVet>();
             //    return list;
             //}
+        }
+        public bool xoaThongTinTruyVet(int ID)
+        {
+            try
+            {
+                ThongTinTruyVet t = data.thongTinTruyVet.Where(x => x.ID == ID).FirstOrDefault();
+                data.thongTinTruyVet.Remove(t);
+                data.SaveChanges();
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
         /*Địa chỉ*/
         public List<Tinh> layDSTinh()

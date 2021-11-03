@@ -176,6 +176,24 @@ namespace PttkProject.Controllers
             }
             return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult xoaThongTinDieuTri(int ID)
+        {
+            try
+            {
+                bool ok = false;
+                ok = dBIO.xoaThongTinDieuTri(ID);
+                if (ok)
+                {
+                    return Json(new { code = 200, msg = "Xóa thành công" }, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500, msg = "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 500, msg = "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
+            }
+        }
         private void setViewbagNVYT()
         {
             List<NhanVienYTe> list = dBIO.layDSNhanVienYTe();
@@ -214,6 +232,24 @@ namespace PttkProject.Controllers
 
             }
             return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult xoaThongTinTruyVet(int ID)
+        {
+            try
+            {
+                bool ok = false;
+                ok = dBIO.xoaThongTinTruyVet(ID);
+                if (ok)
+                {
+                    return Json(new { code = 200, msg = "Xóa thành công"}, JsonRequestBehavior.AllowGet);
+                }
+                return Json(new { code = 500,msg = "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new { code = 500,msg= "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
+            }
         }
         private void setViewBagDiaChi()
         {
