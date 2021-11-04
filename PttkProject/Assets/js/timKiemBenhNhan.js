@@ -88,12 +88,15 @@ function showPatient() {
     var id = parent.id
     var data = saveData.getData(id)
     showModal(data)
-
 }
 function showModal(data) {
     var modal = document.querySelector('#patien-modal-body')
+    console.log(data.ngaySinh)
     var dateString = data.ngaySinh
-    var date = new Date(Number(dateString.slice(6, dateString.length - 2)))
+    var date;
+    if (dateString != null) {
+        date = new Date(Number(dateString.slice(6, dateString.length - 2)))
+    }
     modal.innerHTML = `
         <div class="modal-group">
             <label class="modal-lable ">Họ và tên:</label>
@@ -101,7 +104,7 @@ function showModal(data) {
         </div>
         <div class="modal-group">
             <label class="modal-lable">Ngày sinh:</label>
-            <label class="modal-value">${date.toLocaleDateString() || "Không có"}</label>
+            <label class="modal-value">${date != null ? date.toLocaleDateString() : "Không có"}</label>
         </div>
         <div class="modal-group">
             <label class="modal-lable">Giới tính:</label>
