@@ -13,7 +13,9 @@
             <script>
                 var mgs = @Html.Raw(Json.Encode(ViewBag.message));
                 $(document).ready(function () {
-                    $("#patient-modal").modal();
+                    $("#patien-modal-body").text(mgs);
+                    if (mgs != null && mgs != "") $("#patient-modal").modal();
+                    mgs = null;
                 })
             </script>
             <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -26,7 +28,7 @@
                             </button>
                         </div>
                         <div class="modal-body" id="patien-modal-body">
-                            Cập nhật thông tin thành công
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
@@ -46,14 +48,6 @@
         <div class="container__page-content">
             @using (Html.BeginForm("Update", "Patient", FormMethod.Post))
             {
-                <div class="btn-container">
-                    <button onclick="redirectToImportMedicalRecord()" class="btn btn-primary btn__add btn-submit">
-                        Thêm bệnh án
-                    </button>
-                    <button onclick="redirectToUpdateMedicalRecord()" class="btn btn-primary btn-submit">
-                        Cập nhật bệnh án
-                    </button>
-                </div>
                 <div class="row">
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
@@ -77,7 +71,8 @@
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             @Html.Label("Ngày sinh", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextBoxFor(model => model.ngaySinh, htmlAttributes: new { @class = "form__import-select", @type = "date", @placeholder = "Nhập dữ liệu" })
+                            @Html.TextBoxFor(model => model.ngaySinh, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
+
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
@@ -105,16 +100,25 @@
                             @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
                             @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
                             @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
-                            @Html.Label("Số nhà/thôn xóm", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })
+
                         </div>
                     </div>
+
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             @Html.Label("Đối tượng cách ly", htmlAttributes: new { @class = "form__import-label" })
                             @Html.TextBoxFor(model => model.doiTuongCachLy, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+
                         </div>
                     </div>
+                    <div class="col l-8 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số nhà/thôn xóm", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })
+
+                        </div>
+                    </div>
+
                 </div>
                 <div class="btn-container">
                     <button class="btn btn-primary btn__save btn-submit" type="submit">
@@ -125,16 +129,16 @@
                 </div>
 
             }
+            <div class="btn-container">
+                <a href="@Url.Action("ImportMedicalRecord", "Patient")" class="btn btn-primary btn__add btn-submit">
+                    Thêm bệnh án
+                </a>
+                <a href="@Url.Action("UpdateMedicalRecord", "Patient", Model.ID)" class="btn btn-primary btn-submit">
+                    Cập nhật bệnh án
+                </a>
+            </div>
         </div>
     </div>
 
 
 </div>
-<script>
-    function redirectToImportMedicalRecord() {
-        window.location.href = "./ImportMedicalRecord";
-    }
-    function redirectToUpdateMedicalRecord() {
-        window.location.href = "./UpdateMedicalRecord";
-    }
-</script>
