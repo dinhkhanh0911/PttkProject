@@ -35,6 +35,7 @@ function search() {
                 saveData.setData(data.data)
                 handerSeeClick()
                 handerDeleteClick()
+                handerEditClick()
             }
         }
     })
@@ -58,13 +59,13 @@ function fillDataPatient(data) {
                 <td>${item.gioiTinh}</td>
                 
                 <td id="${i}">
-                    <a id="see-${i}" class="see" title="Settings" data-toggle="modal" data-target="#patient-modal">
+                    <a id="see-${i}" class="see" title="Xem" data-toggle="modal" data-target="#patient-modal">
                         <i class="fa fa-eye" aria-hidden="true"></i>
                     </a>
-                    <a id="edit-${i}" class="edit" title="Settings">
+                    <a id="edit-${i}" class="edit" title="Sửa">
                         <i class="fa fa-wrench" aria-hidden="true"></i>
                     </a>
-                    <a id="delete-${i}" class="delete" title="Delete">
+                    <a id="delete-${i}" class="delete" title="Xóa">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
                 
@@ -169,4 +170,17 @@ function deletePatient(element) {
             alert(data.msg)
         }
     })
+}
+function handerEditClick() {
+    var editElement = document.querySelectorAll('.edit')
+    console.log(editElement)
+    for (var item of editElement) {
+        item.addEventListener('click', editPatient)
+    }
+}
+function editPatient() {
+    var element = document.querySelector(`#${this.id}`)
+    var parent = element.parentElement.parentElement
+    console.log(parent.id)
+    window.location.href = `./UpdateInformation/${parent.id}`
 }
