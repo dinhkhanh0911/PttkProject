@@ -21,10 +21,46 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        /*View thêm bệnh nhân*/
         public ActionResult ImportInformation()
         {
+            try
+            {
+                setViewBagDiaChi();
+                setViewBagDoiTuongCachLy();                
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Index", "Patient");
+            }
             return View();
         }
+        /*Thêm bệnh nhân*/
+        [HttpPost]
+        public ActionResult Add(BenhNhan bn)
+        {
+            
+            try
+            {
+                    var ok = benhNhan.themBenhNhan(bn);
+                    return RedirectToAction("Index", "Patient", new {  msg = "Thêm thành công"});
+
+            }
+            catch (Exception e)
+            {
+                //lloi
+                return RedirectToAction("Index", "Patient");
+            }
+
+        }
+        private void setViewBagDoiTuongCachLy()
+        {
+            List<string> doituongcachly = new List<string>();
+            doituongcachly.Add("F0");
+            doituongcachly.Add("F1");
+            ViewBag.doituongcachly = new SelectList(doituongcachly);
+        }
+
         public ActionResult UpdateInformation(int id, string mgs)
         {
             try
@@ -41,6 +77,7 @@ namespace PttkProject.Controllers
             }
             
         }
+
         public ActionResult Update(BenhNhan bn)
         {
 

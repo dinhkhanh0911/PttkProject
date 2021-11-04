@@ -1,4 +1,4 @@
-﻿
+﻿@model DBCovid.models.BenhNhan
 @{
     ViewBag.Title = "ImportInformation";
 }
@@ -12,146 +12,107 @@
             </h4>
         </div>
         <div class="container__page-content">
-            <div class="form">
-                <div class="row">
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tên bệnh nhân
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+            @using (Html.BeginForm("Add", "Patient", FormMethod.Post))
+            {
+                <div class="form">
+                    <div class="row">
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
+                                @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.ten, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Số CMND
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                <div class="form__import-item">
+                                    @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
+                                    @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Giới tính
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Giới tính", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.gioiTinh, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Ngày sinh
-                            </span>
-                            <input class="form__import-select" type="date" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Ngày sinh", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.ngaySinh, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Số điện thoại
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Số điện thoại bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.sdtBenhNhan, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Mã bảo hiểm y tế
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Mã bảo hiểm y tế", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.maBHYT, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Người thân
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Tên người thân", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.tenNguoiThan, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                SĐT người thân
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Số điện thoại người thân", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.sdtNguoiThan, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Đối tượng cách ly
-                            </span>
-                            <select class="form__import-select">
-                                <option value="F0" selected>F0</option>
-                                <option value="F1">F1</option>
-                            </select>
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Đối tượng cách ly", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.doiTuongCachLy, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Tỉnh
-                            </span>
-                            <select class="form__import-select">
-                                <option value="" selected>Tỉnh</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Tỉnh", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
+                            </div>
+                        </div>
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Huyện", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            </div>
+                        </div>
+                        <div class="col l-4 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Xã", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            </div>
+                        </div>
+                        <div class="col l-12 m-6 c-12">
+                            <div class="form__import-item">
+                                @Html.Label("Địa chỉ chi tiết", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })
+                            </div>
                         </div>
                     </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Huyện
-                            </span>
-                            <select class="form__import-select">
-                                <option value="" selected>Huyện</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Xã
-                            </span>
-                            <select class="form__import-select">
-                                <option value="" selected>Xã</option>
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="vw">VW</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col l-12 m-6 c-12">
-                        <div class="form__import-item">
-                            <span class="form__import-label">
-                                Địa chỉ chi tiết
-                            </span>
-                            <input class="form__import-select" placeholder="Nhập dữ liệu" />
-                        </div>
+                    <div class="btn-container">
+                        <button class="btn btn-primary btn__save btn-submit" type="submit">
+                            Lưu thông tin
+                        </button>
+                        <button class="btn btn__reset btn-submit btn-default">
+                            Đặt lại
+                        </button>
+                        <button class="btn btn__cancel btn-submit btn-default">
+                            Hủy
+                        </button>
                     </div>
                 </div>
-                <div class="btn-container">
-                    <button class="btn btn-primary btn__save btn-submit">
-                        Lưu thông tin
-                    </button>
-                    <button class="btn btn__reset btn-submit btn-default">
-                        Đặt lại
-                    </button>
-                    <button class="btn btn__cancel btn-submit btn-default">
-                        Hủy
-                    </button>
-                </div>
-                
-            </div>
+            }
         </div>
     </div>
 
