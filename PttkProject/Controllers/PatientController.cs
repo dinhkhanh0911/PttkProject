@@ -32,6 +32,7 @@ namespace PttkProject.Controllers
                 BenhNhan bn = benhNhan.layBenhNhan(id);
                 ViewBag.message = mgs;
                 setViewBagDiaChi();
+                if(bn==null)return RedirectToAction("Index", "Patient");
                 return View(bn);
             }
             catch(Exception e)
@@ -147,7 +148,7 @@ namespace PttkProject.Controllers
         /*Cập nhật bệnh án*/
         public ActionResult UpdateMedicalRecord()
         {
-            int ID = 3;
+            int ID = 2;
             bool ok = false;
             ok = dBIO.isBenhAn(ID);
             if (ok)
