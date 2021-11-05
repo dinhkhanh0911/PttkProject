@@ -43,7 +43,7 @@ namespace PttkProject.Controllers
             try
             {
                     var ok = benhNhan.themBenhNhan(bn);
-                    return RedirectToAction("Index", "Patient", new {  msg = "Thêm thành công"});
+                    return RedirectToAction("ImportMedicalRecord", "Patient", new { ID = bn.ID,  msg = "Thêm thành công"});
 
             }
             catch (Exception e)
@@ -116,16 +116,16 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult ImportMedicalRecord()
+        public ActionResult ImportMedicalRecord(int id)
         {
-            int ID = 1;
-            string tenBenhNhan = dBIO.layTenBenhNhan(ID);
+            
+            string tenBenhNhan = dBIO.layTenBenhNhan(id);
             if(tenBenhNhan != "")
             {
                 setViewBagTenBenhNhan(tenBenhNhan);
                 setViewBagImportMedicalRecord();
                 BenhAn model = new BenhAn();
-                model.benhNhanID = ID;
+                model.benhNhanID = id;
                 return View(model);
             }
             return Redirect("ImportInformation");
