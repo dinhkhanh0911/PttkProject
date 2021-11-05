@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class MedicalStaffController : Controller
+    public class NhanVienYTeController : Controller
     {
         // GET: MedicalStaff
         public ActionResult Index()

@@ -475,10 +475,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MedicalStaffController.cs" />
-    <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\RoomController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\NhanVienYTeController.cs" />
+    <Compile Include="Controllers\BenhNhanController.cs" />
+    <Compile Include="Controllers\PhongBenhController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="DatabaseDAO\BenhNhanDAO.cs" />
     <Compile Include="DatabaseDAO\DBIO.cs" />
     <Compile Include="DatabaseDAO\DiaChiDAO.cs" />

@@ -8,16 +8,17 @@ using System.Web;
 
 namespace PttkProject.DatabaseDAO
 {
-    public class BenhNhanDAO
+    public class BenhNhanDAO:DBCovidContext
     {
         private DBCovidContext data = new DBCovidContext();
         public BenhNhan layBenhNhan(int id)
         {
-            BenhNhan benhNhan = new BenhNhan();
+            BenhNhan a = new BenhNhan();
             try
             {
-                benhNhan = data.benhNhan.Find(id);
-                return benhNhan;
+                var s = benhNhan.Find(id);
+                //a = data.benhNhan.Find(id);
+                return s;
             }
             catch(Exception e)
             {

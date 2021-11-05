@@ -6,26 +6,22 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class RoomController : Controller
+    public class NguoiDungController : Controller
     {
-        // GET: Room
+        // GET: Uesr
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult addRoom()
+        public ActionResult Login()
         {
             return View();
         }
-        public ActionResult updateRoom()
+        public ActionResult ForgotPassword()
         {
             return View();
         }
-        public ActionResult deleteRoom()
-        {
-            return View();
-        }
-        public ActionResult searchRoom()
+        public ActionResult ChangePassword()
         {
             return View();
         }
