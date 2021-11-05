@@ -729,8 +729,6 @@
     <Content Include="Views\Patient\ImportInformation.cshtml" />
     <Content Include="Views\Patient\UpdateInformation.cshtml" />
     <Content Include="Views\Patient\SearchPatient.cshtml" />
-    <Content Include="Views\Room\Index.cshtml" />
-    <Content Include="Views\MedicalStaff\Index.cshtml" />
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
@@ -739,6 +737,18 @@
     <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
     <Content Include="Views\Patient\themThongTinDieuTri.cshtml" />
     <Content Include="Views\Patient\ThemThongTinTruyVet.cshtml" />
+    <Content Include="Views\NguoiDung\themnguoidung.cshtml" />
+    <Content Include="Views\NguoiDung\suanguoidung.cshtml" />
+    <Content Include="Views\NguoiDung\timkiemnguoidung.cshtml" />
+    <Content Include="Views\NguoiDung\Index.cshtml" />
+    <Content Include="Views\NhanVienYTe\Index.cshtml" />
+    <Content Include="Views\NhanVienYTe\themnhanvienyte.cshtml" />
+    <Content Include="Views\NhanVienYTe\capnhatttnhanvienyte.cshtml" />
+    <Content Include="Views\NhanVienYTe\timkiemnhanvienyte.cshtml" />
+    <Content Include="Views\PhongBenh\timkiemphong.cshtml" />
+    <Content Include="Views\PhongBenh\suaphong.cshtml" />
+    <Content Include="Views\PhongBenh\themphong.cshtml" />
+    <Content Include="Views\PhongBenh\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

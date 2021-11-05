@@ -13,5 +13,18 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        public ActionResult themnhanvienyte()
+        {
+            return View();
+        }
+        public ActionResult capnhatttnhanvienyte()
+        {
+            return View();
+        }
+        public ActionResult timkiemnhanvienyte()
+        {
+            return View();
+        }
+
     }
 }

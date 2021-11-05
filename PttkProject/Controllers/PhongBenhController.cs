@@ -13,11 +13,11 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult addRoom()
+        public ActionResult themphong()
         {
             return View();
         }
-        public ActionResult updateRoom()
+        public ActionResult suaphong()
         {
             return View();
         }
@@ -25,7 +25,7 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult searchRoom()
+        public ActionResult timkiemphong()
         {
             return View();
         }
