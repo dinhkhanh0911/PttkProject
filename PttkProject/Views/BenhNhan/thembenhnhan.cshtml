@@ -1,6 +1,6 @@
 ﻿@model DBCovid.models.BenhNhan
 @{
-    ViewBag.Title = "ImportInformation";
+    ViewBag.Title = "ThemBenhNhan";
 }
 
 
@@ -12,7 +12,7 @@
             </h4>
         </div>
         <div class="container__page-content">
-            @using (Html.BeginForm("Add", "Patient", FormMethod.Post))
+            @using (Html.BeginForm("themBenhNhan", "BenhNhan", FormMethod.Post))
             {
                 <div class="form">
                     <div class="row">

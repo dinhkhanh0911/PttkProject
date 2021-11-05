@@ -479,6 +479,7 @@
     <Compile Include="Controllers\BenhNhanController.cs" />
     <Compile Include="Controllers\PhongBenhController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="DatabaseDAO\BenhAnDAO.cs" />
     <Compile Include="DatabaseDAO\BenhNhanDAO.cs" />
     <Compile Include="DatabaseDAO\DBIO.cs" />
     <Compile Include="DatabaseDAO\DiaChiDAO.cs" />
@@ -726,19 +727,19 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Patient\ImportInformation.cshtml" />
-    <Content Include="Views\Patient\UpdateInformation.cshtml" />
-    <Content Include="Views\Patient\SearchPatient.cshtml" />
+    <Content Include="Views\BenhNhan\thembenhnhan.cshtml" />
+    <Content Include="Views\BenhNhan\UpdateInformation.cshtml" />
+    <Content Include="Views\BenhNhan\SearchPatient.cshtml" />
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\MedicalStaff\Index.cshtml" />
-    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\BenhNhan\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ForgotPassword.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
-    <Content Include="Views\Patient\ImportMedicalRecord.cshtml" />
-    <Content Include="Views\Patient\UpdateMedicalRecord.cshtml" />
-    <Content Include="Views\Patient\themThongTinDieuTri.cshtml" />
-    <Content Include="Views\Patient\ThemThongTinTruyVet.cshtml" />
+    <Content Include="Views\BenhNhan\ImportMedicalRecord.cshtml" />
+    <Content Include="Views\BenhNhan\UpdateMedicalRecord.cshtml" />
+    <Content Include="Views\BenhNhan\themThongTinDieuTri.cshtml" />
+    <Content Include="Views\BenhNhan\ThemThongTinTruyVet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

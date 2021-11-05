@@ -22,7 +22,7 @@ namespace PttkProject.Controllers
             return View();
         }
         /*View thêm bệnh nhân*/
-        public ActionResult ImportInformation()
+        public ActionResult themBenhNhan()
         {
             try
             {
@@ -31,25 +31,25 @@ namespace PttkProject.Controllers
             }
             catch(Exception e)
             {
-                return RedirectToAction("Index", "Patient");
+                return RedirectToAction("Index", "BenhNhan");
             }
             return View();
         }
         /*Thêm bệnh nhân*/
         [HttpPost]
-        public ActionResult Add(BenhNhan bn)
+        public ActionResult themBenhNhan(BenhNhan bn)
         {
             
             try
             {
                     var ok = benhNhan.themBenhNhan(bn);
-                    return RedirectToAction("ImportMedicalRecord", "Patient", new { ID = bn.ID,  msg = "Thêm thành công"});
+                    return RedirectToAction("ImportMedicalRecord", "BenhNhan", new { ID = bn.ID,  msg = "Thêm thành công"});
 
             }
             catch (Exception e)
             {
                 //lloi
-                return RedirectToAction("Index", "Patient");
+                return RedirectToAction("Index", "BenhNhan");
             }
 
         }
@@ -68,12 +68,12 @@ namespace PttkProject.Controllers
                 BenhNhan bn = benhNhan.layBenhNhan(id);
                 ViewBag.message = mgs;
                 setViewBagDiaChi();
-                if(bn==null)return RedirectToAction("Index", "Patient");
+                if(bn==null)return RedirectToAction("Index", "BenhNhan");
                 return View(bn);
             }
             catch(Exception e)
             {
-                return RedirectToAction("Index", "Patient");
+                return RedirectToAction("Index", "BenhNhan");
             }
             
         }
@@ -84,17 +84,17 @@ namespace PttkProject.Controllers
             try
             {
                 benhNhan.capNhatTTBenhNhan(bn);
-                return RedirectToAction("UpdateInformation", "Patient", new {id = bn.ID, mgs = "Sửa thành công"});
+                return RedirectToAction("UpdateInformation", "BenhNhan", new {id = bn.ID, mgs = "Sửa thành công"});
             }
             catch (Exception e)
             {
                 //lloi
-                return RedirectToAction("UpdateInformation", "Patient", new { id = bn.ID, mgs = "Sửa thất bại" });
+                return RedirectToAction("UpdateInformation", "BenhNhan", new { id = bn.ID, mgs = "Sửa thất bại" });
             }
 
         }
         /*Tìm kiếm bệnh nhân*/
-        public ActionResult SearchPatient()
+        public ActionResult SearchBenhNhan()
         {
             return View();
         }
@@ -128,7 +128,7 @@ namespace PttkProject.Controllers
                 model.benhNhanID = id;
                 return View(model);
             }
-            return Redirect("ImportInformation");
+            return Redirect("Index");
         }
         
         [HttpPost]
