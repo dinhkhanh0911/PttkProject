@@ -21,10 +21,46 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        /*View thêm bệnh nhân*/
         public ActionResult ImportInformation()
         {
+            try
+            {
+                setViewBagDiaChi();
+                setViewBagDoiTuongCachLy();                
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Index", "Patient");
+            }
             return View();
         }
+        /*Thêm bệnh nhân*/
+        [HttpPost]
+        public ActionResult Add(BenhNhan bn)
+        {
+            
+            try
+            {
+                    var ok = benhNhan.themBenhNhan(bn);
+                    return RedirectToAction("ImportMedicalRecord", "Patient", new { ID = bn.ID,  msg = "Thêm thành công"});
+
+            }
+            catch (Exception e)
+            {
+                //lloi
+                return RedirectToAction("Index", "Patient");
+            }
+
+        }
+        private void setViewBagDoiTuongCachLy()
+        {
+            List<string> doituongcachly = new List<string>();
+            doituongcachly.Add("F0");
+            doituongcachly.Add("F1");
+            ViewBag.doituongcachly = new SelectList(doituongcachly);
+        }
+
         public ActionResult UpdateInformation(int id, string mgs)
         {
             try
@@ -41,6 +77,7 @@ namespace PttkProject.Controllers
             }
             
         }
+
         public ActionResult Update(BenhNhan bn)
         {
 
@@ -79,16 +116,16 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult ImportMedicalRecord()
+        public ActionResult ImportMedicalRecord(int id)
         {
-            int ID = 1;
-            string tenBenhNhan = dBIO.layTenBenhNhan(ID);
+            
+            string tenBenhNhan = dBIO.layTenBenhNhan(id);
             if(tenBenhNhan != "")
             {
                 setViewBagTenBenhNhan(tenBenhNhan);
                 setViewBagImportMedicalRecord();
                 BenhAn model = new BenhAn();
-                model.benhNhanID = ID;
+                model.benhNhanID = id;
                 return View(model);
             }
             return Redirect("ImportInformation");
