@@ -731,7 +731,6 @@
     <Content Include="Views\BenhNhan\thembenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\capnhatTTbenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\timkiembenhnhan.cshtml" />
-    <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\MedicalStaff\Index.cshtml" />
     <Content Include="Views\BenhNhan\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />

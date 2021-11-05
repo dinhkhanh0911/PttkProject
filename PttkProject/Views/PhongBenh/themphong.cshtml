@@ -1,7 +1,61 @@
-﻿
+﻿@model DBCovid.models.PhongBenh
 @{
-    ViewBag.Title = "themphong";
+    ViewBag.Title = "addRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>themphong</h2>
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Thêm phòng bệnh
+            </h4>
+        </div>
+        <div class="container__page-content">
+            @using (Html.BeginForm("themPhong", "PhongBenh", FormMethod.Post))
+            {
+            <div class="form">
+                <div class="row">
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Tên Phòng", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.tenPhong, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
 
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số Giường Tối Đa", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.soGiuongToiDa, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Loại Phòng", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.DropDownList("loaiPhongID", (IEnumerable<SelectListItem>)ViewBag.loaiPhong, new { @class = "form__import-select", @id = "loaiPhong" })
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="btn-container">
+                    <button class="btn btn-primary btn__save btn-submit" type="submit">
+                        Lưu thông tin
+                    </button>
+                    <button class="btn btn__reset btn-submit btn-default">
+                        Đặt lại
+                    </button>
+                    <button class="btn btn__cancel btn-submit btn-default">
+                        Hủy
+                    </button>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+
+
+</div>
