@@ -13,6 +13,19 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+        public ActionResult themnguoidung()
+        {
+            return View();
+        }
+        public ActionResult suanguoidung()
+        {
+            return View();
+        }
+        public ActionResult timkiemnguoidung()
+        {
+            return View();
+        }
+
         public ActionResult Login()
         {
             return View();

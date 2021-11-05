@@ -7,15 +7,14 @@ using System.Web;
 
 namespace PttkProject.DatabaseDAO
 {
-    public class DiaChiDAO
+    public class DiaChiDAO:DBCovidContext
     {
-        DBCovidContext data = new DBCovidContext();
         public List<Tinh> layDSTinh()
         {
             List<Tinh> list;
             try
             {
-                list = data.tinh.ToList();
+                list = tinh.ToList();
             }
             catch (Exception e)
             {
@@ -28,7 +27,7 @@ namespace PttkProject.DatabaseDAO
             List<Huyen> list;
             try
             {
-                list = data.huyen.Where(h => h.tinhID == tinhID).ToList();
+                list = huyen.Where(h => h.tinhID == tinhID).ToList();
             }
             catch (Exception e)
             {
@@ -41,7 +40,7 @@ namespace PttkProject.DatabaseDAO
             List<Xa> list;
             try
             {
-                list = data.xa.Where(x => x.huyenID == huyenID).ToList();
+                list = xa.Where(x => x.huyenID == huyenID).ToList();
             }
             catch (Exception e)
             {
@@ -51,15 +50,15 @@ namespace PttkProject.DatabaseDAO
         }
         public Tinh layTinh(int id)
         {
-            return data.tinh.Find(id);
+            return tinh.Find(id);
         }
         public Huyen layHuyen(int id)
         {
-            return data.huyen.Find(id);
+            return huyen.Find(id);
         }
         public Xa layXa(int id)
         {
-            return data.xa.Find(id);
+            return xa.Find(id);
         }
     }
 }

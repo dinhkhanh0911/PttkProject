@@ -6,22 +6,22 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class NhanVienYTeController : Controller
+    public class DangNhapController : Controller
     {
-        // GET: MedicalStaff
+        // GET: DangNhap
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult themnhanvienyte()
+        public ActionResult dangnhap()
         {
             return View();
         }
-        public ActionResult capnhatttnhanvienyte()
+        public ActionResult quyenmatkhau()
         {
             return View();
         }
-        public ActionResult timkiemnhanvienyte()
+        public ActionResult doimatkhau()
         {
             return View();
         }
