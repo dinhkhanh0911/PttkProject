@@ -474,6 +474,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NhanVienYTeController.cs" />
     <Compile Include="Controllers\BenhNhanController.cs" />
@@ -749,6 +750,9 @@
     <Content Include="Views\PhongBenh\suaphong.cshtml" />
     <Content Include="Views\PhongBenh\themphong.cshtml" />
     <Content Include="Views\PhongBenh\Index.cshtml" />
+    <Content Include="Views\DangNhap\doimatkhau.cshtml" />
+    <Content Include="Views\DangNhap\quyenmatkhau.cshtml" />
+    <Content Include="Views\DangNhap\dangnhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
