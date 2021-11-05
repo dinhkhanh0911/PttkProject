@@ -94,7 +94,7 @@ namespace PttkProject.Controllers
 
         }
         /*Tìm kiếm bệnh nhân*/
-        public ActionResult SearchBenhNhan()
+        public ActionResult timKiemBenhNhan()
         {
             return View();
         }
