@@ -44,5 +44,25 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
+        public List<BenhNhan> layDSBenhNhan(string input)
+        {
+            List<BenhNhan> b = data.benhNhan.Where(x => x.CMND == input || x.ten == input).ToList();
+            
+            return b;
+        }
+        public bool xoaBenhNhan(int ID)
+        {
+            try
+            {
+                BenhNhan b = data.benhNhan.Where(x => x.ID == ID).FirstOrDefault();
+                data.benhNhan.Remove(b);
+                data.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

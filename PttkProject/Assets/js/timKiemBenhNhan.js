@@ -5,7 +5,7 @@ $(document).ready(function () {
 })
 function handerSearchClick() {
     var searchBtn = document.querySelector('#searchBtn')
-    searchBtn.addEventListener('click', search)
+    searchBtn.addEventListener('click', timKiem)
 }
 const saveData = (function () {
     var data = [];
@@ -18,12 +18,12 @@ const saveData = (function () {
         }
     }
 })()
-function search() {
+function timKiem() {
     var searchInput = document.querySelector('#searchInput')
     var input = searchInput.value
     $.ajax({
         type: 'post',
-        url: './getPatientList',
+        url: './layDSBenhNhan',
         datatype: 'json',
         data: {
             input:input,
@@ -31,7 +31,7 @@ function search() {
         success: function (data) {
             console.log(data)
             if (data.code === 200) {
-                fillDataPatient(data)
+                dienDanhSachBenhNhan(data)
                 saveData.setData(data.data)
                 handerSeeClick()
                 handerDeleteClick()
@@ -40,7 +40,7 @@ function search() {
         }
     })
 }
-function fillDataPatient(data) {
+function dienDanhSachBenhNhan(data) {
     var tbodyPatient = document.querySelector('#tbodyPatient')
     tbodyPatient.innerHTML=''
     var i = 1;
@@ -79,17 +79,17 @@ function fillDataPatient(data) {
 function handerSeeClick() {
     var seeElement = document.querySelectorAll('.see')
     for (var item of seeElement) {
-        item.addEventListener('click', showPatient)
+        item.addEventListener('click', hienThiBenhNhan)
     }
 }
-function showPatient() {
+function hienThiBenhNhan() {
     var element = document.querySelector(`#${this.id}`)
     var parent = element.parentElement
     var id = parent.id
     var data = saveData.getData(id)
-    showModal(data)
+    hienThiModal(data)
 }
-function showModal(data) {
+function hienThiModal(data) {
     var modal = document.querySelector('#patien-modal-body')
     console.log(data.ngaySinh)
     var dateString = data.ngaySinh
@@ -154,10 +154,10 @@ function confirmDelete() {
         var element = document.querySelector(`#${this.id}`)
         var parent = element.parentElement.parentElement
         console.log(parent.id)
-        deletePatient(parent)
+        xoaBenhNhan(parent)
     }
 }
-function deletePatient(element) {
+function xoaBenhNhan(element) {
     var ID = element.id
     $.ajax({
         url: './xoaBenhNhan',
