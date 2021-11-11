@@ -23,7 +23,6 @@ namespace PttkProject.DatabaseDAO
             try
             {
                 var s = benhNhan.Find(id);
-                //a = data.benhNhan.Find(id);
                 return s;
             }
             catch(Exception e)

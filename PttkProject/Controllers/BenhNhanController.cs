@@ -203,13 +203,13 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult capnhatbenhan(int ID)
+        public ActionResult capnhatbenhan(int id, string mgs)
         {
             BenhAn BA = benhAn.layBenhAnMoiNhat(ID);
             if (BA != null)
             {
-                setViewBagInfo(BA.ID, BA.benhNhanID);
-                setViewBagDiaChi();
+                ViewBag.message = mgs;
+                setViewBagInfo(BA.ID, id);
                 return View(BA);
             }
             return Redirect("/benh-nhan/cap-nhat-thong-tin-benh-nhan/" + ID.ToString());
@@ -228,8 +228,11 @@ namespace PttkProject.Controllers
         public ActionResult UpdateBenhAn(BenhAn bn)
         {
             int id = bn.benhNhanID;
-            benhAn.capNhatTTBenhAn(bn);
-            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id });
+            bool check = benhAn.capNhatTTBenhAn(bn);
+            string mgs;
+            if (check) mgs = "chỉnh sửa thành công";
+            else mgs = "chỉnh sửa thất bại";
+            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id , mgs = mgs});
         }
         
         public JsonResult layDSThongTin(int benhAnID)
@@ -238,7 +241,6 @@ namespace PttkProject.Controllers
             {
                 List<ThongTinDieuTri> thongTinDieuTris = dBIO.layDSThongTinDieuTri(benhAnID);
                 var thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
-
                 return Json(new { code = 200, thongTinDieuTris = thongTinDieuTris, thongTinTruyVets = thongTinTruyVets }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
@@ -322,6 +324,16 @@ namespace PttkProject.Controllers
             return Redirect("ImportInformation");
         }
         [HttpPost]
+        public ActionResult XuatThongTinBenhAn(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                BenhAn ba = benhAn.layBenhAn(id);
+                var file = xuatBenhAn(ba);
+                return File(file, "xlsx/xls", "Phổ điểm.xlsx");
+            }
+            return RedirectToAction("timkiembenhnhan", "BenhNhan");
+        }
         public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
         {
             if (ModelState.IsValid)
@@ -337,6 +349,7 @@ namespace PttkProject.Controllers
             }
             return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public JsonResult xoaThongTinTruyVet(int ID)
         {
@@ -373,6 +386,23 @@ namespace PttkProject.Controllers
             ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
             ViewBag.xas = new SelectList(xas, "ID", "tenXa");
 
+        }
+        private byte[] xuatBenhAn(BenhAn ba)
+        {
+            //using (var excelPackage = new ExcelPackage(new FileInfo("C:\\Users\\toank\\toan2k.xlsx")))
+            //{
+            //    // Tạo author cho file Excel
+            //    // Tạo title cho file Excel
+            //    excelPackage.Workbook.Properties.Title = "Phổ điểm TLU";
+            //    int count_ws = 0;
+            //    excelPackage.Workbook.Worksheets.Add((count_ws + 1) + "-" + item.short_code);
+            //    ExcelWorksheet workSheet = excelPackage.Workbook.Worksheets[count_ws];
+
+            //    var file = excelPackage.GetAsByteArray();
+            //    excelPackage.Dispose();
+            //    return file;
+            //}
+            return null;
         }
     }
 }

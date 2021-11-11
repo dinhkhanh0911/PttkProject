@@ -40,9 +40,31 @@ namespace PttkProject.Controllers
         }
 
 
-        public ActionResult suaphong()
+        public ActionResult suaphong(int id, string mgs)
         {
-            return View();
+            var pb = phongbenhDAO.layPhongBenh(id);
+
+            if (pb != null)
+            {
+                ViewBag.message = mgs;
+                setViewBagLoaiPhong();
+                return View(pb);
+            }
+            else return RedirectToAction("timkiemphong", "PhongBenh");
+        }
+        [HttpPost]
+        public ActionResult UpdateRoom(PhongBenh pb)
+        {
+            try
+            {
+                phongbenhDAO.capNhatPhongBenh(pb);
+                return RedirectToAction("suaphong", "PhongBenh", new { id = pb.ID, mgs = "Sửa phòng thành công" });
+            }
+            catch
+            {
+                return RedirectToAction("suaphong", "PhongBenh", new { id = pb.ID, mgs = "Sửa phong thất bại" });
+            }
+            
         }
         public ActionResult xoaPhong()
         {

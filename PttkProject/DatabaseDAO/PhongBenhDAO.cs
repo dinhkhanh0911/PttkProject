@@ -2,6 +2,7 @@
 using DBCovid.models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,6 @@ namespace PttkProject.DatabaseDAO
 {
     public class PhongBenhDAO: DBCovidContext
     {
-        private DBCovidContext data = new DBCovidContext();
         public List<PhongBenh> layDSPhongBenh()
         {
             List<PhongBenh> p = phongBenh.ToList();
@@ -26,12 +26,37 @@ namespace PttkProject.DatabaseDAO
             return l;
         }
 
+        public PhongBenh layPhongBenh(int id)
+        {
+            try
+            {
+                var pb = phongBenh.Where(s => s.ID == id).FirstOrDefault();
+                return pb;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public bool capNhatPhongBenh(PhongBenh pb)
+        {
+            try
+            {
+                Entry(pb).State = EntityState.Modified;
+                SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public bool themPhongBenh(PhongBenh pb)
         {
             try
             {         
-                data.phongBenh.Add(pb);
-                data.SaveChanges();
+                phongBenh.Add(pb);
+                SaveChanges();
                 return true;
             }catch(Exception e)
             {
