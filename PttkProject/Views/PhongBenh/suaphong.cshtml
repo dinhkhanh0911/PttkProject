@@ -1,7 +1,89 @@
-﻿
+﻿@model DBCovid.models.PhongBenh
 @{
-    ViewBag.Title = "suaphong";
+    ViewBag.Title = "Sửa thông tin phòng bệnh";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>suaphong</h2>
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Sửa thông tin phòng bệnh
+            </h4>
+        </div>
+        <div class="container__page-content">
+            @using (Html.BeginForm("UpdateRoom", "PhongBenh", FormMethod.Post))
+            {
+                <input value="@Model.ID" name="ID" hidden/>
+                <input value="@Model.benhVienID", name="benhVienID" hidden/>
 
+                <div class="row">
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Tên Phòng", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.tenPhong, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số Giường Tối Đa", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.soGiuongToiDa, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Loại Phòng", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.DropDownListFor(model => model.loaiPhongID, (IEnumerable<SelectListItem>)ViewBag.loaiPhong, new { @class = "form__import-select" })
+                        </div>
+                    </div>
+                </div>
+                    <div class="btn-container">
+                        <button class="btn btn-primary btn__save btn-submit" type="submit">
+                            Lưu thông tin
+                        </button>
+                        <button class="btn btn__reset btn-submit btn-default" type="reset">
+                            Đặt lại
+                        </button>
+                        <a class="btn btn__cancel btn-submit btn-default" href="/timkiemphong">
+                            Hủy
+                        </a>
+                    </div>
+
+            }
+        </div>
+    </div>
+    @{
+        if (ViewBag.message != "" && ViewBag.message != null)
+        {
+            <script>
+                var mgs = @Html.Raw(Json.Encode(ViewBag.message));
+                $(document).ready(function () {
+                    $("#patien-modal-body").text(mgs);
+                    if (mgs != null && mgs != "") $("#patient-modal").modal();
+                    mgs = null;
+                })
+            </script>
+            <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin phòng bệnh</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="patien-modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+
+</div>
