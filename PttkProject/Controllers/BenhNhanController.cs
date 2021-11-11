@@ -15,7 +15,8 @@ namespace PttkProject.Controllers
         private DBIO dBIO = new DBIO();
         private DiaChiDAO diaChi = new DiaChiDAO();
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
-
+        private BenhAnDAO benhAn = new BenhAnDAO();
+        private PhongBenhDAO phong = new PhongBenhDAO();
         // GET: Patient
         public ActionResult Index()
         {
@@ -78,18 +79,19 @@ namespace PttkProject.Controllers
             
         }
         /*cập nhật bệnh nhân*/
+        [HttpPost]
         public ActionResult Update(BenhNhan bn)
         {
 
             try
             {
                 benhNhan.capNhatTTBenhNhan(bn);
-                return RedirectToAction("UpdateInformation", "BenhNhan", new {id = bn.ID, mgs = "Sửa thành công"});
+                return RedirectToAction("capnhatTTbenhnhan", "BenhNhan", new {id = bn.ID, mgs = "Sửa thành công"});
             }
             catch (Exception e)
             {
                 //lloi
-                return RedirectToAction("UpdateInformation", "BenhNhan", new { id = bn.ID, mgs = "Sửa thất bại" });
+                return RedirectToAction("capnhatTTbenhnhan", "BenhNhan", new { id = bn.ID, mgs = "Sửa thất bại" });
             }
 
         }
@@ -201,19 +203,34 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult UpdateMedicalRecord()
+        public ActionResult capnhatbenhan(int id)
         {
-            
-            bool ok = false;
-            ok = dBIO.isBenhAn(ID);
-            if (ok)
+            BenhAn BA = benhAn.layBenhAnMoiNhat(id);
+            if (BA != null)
             {
-                BenhAn b = dBIO.layBenhAn(ID);
-                return View(b);
+                setViewBagInfo(BA.ID, id);
+                return View(BA);
             }
             return Redirect("ImportInformation");
         }
+        public void setViewBagInfo(int id, int idBN)
+        {
+            ViewBag.BenhNhan = benhNhan.layBenhNhan(idBN);
+            List<PhongBenh> p = phong.layDSPhongBenh();
+            ViewBag.phong = new SelectList(p, "ID", "tenPhong");
+            ViewBag.dsTTDieuTri = benhAn.layDSTTDieuTri(id);
+            ViewBag.dsTTTruyVet = benhAn.layDSTTTruyVet(id);
+            ViewBag.trangThai = new SelectList(benhAn.layDSTrangThai(), "ID", "tinhTrang");
+            setViewBagDiaChi();
+        }
         [HttpPost]
+        public ActionResult UpdateBenhAn(BenhAn bn)
+        {
+            int id = bn.benhNhanID;
+            benhAn.capNhatTTBenhAn(bn);
+            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id });
+        }
+        
         public JsonResult layDSThongTin(int benhAnID)
         {
             try

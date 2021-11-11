@@ -755,6 +755,7 @@
     <Content Include="Views\BenhNhan\themThongTinDieuTri.cshtml" />
     <Content Include="Views\BenhNhan\ThemThongTinTruyVet.cshtml" />
     <Content Include="Views\BenhNhan\UpdateMedicalRecord.cshtml" />
+    <Content Include="Views\BenhNhan\capnhatbenhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
