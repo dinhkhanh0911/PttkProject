@@ -24,11 +24,11 @@ const DSThongTinDieuTri = (function () {
     }
 })()
 function load() {
-    var benhAnID = document.querySelector('#benhAnID').value
+    var benhAnID = document.querySelector('#ID').value;
     console.log(benhAnID);
     $.ajax({
         type: 'post',
-        url: './layDSThongTin',
+        url: '/benh-nhan/lay-danh-sach-thong-tin',
         datatype: 'json',
         data: {
             benhAnID: benhAnID
@@ -226,7 +226,7 @@ function confirmDelete() {
 function deleteTTTV(element) {
     var ID = element.attributes["data-value"].value
     $.ajax({
-        url: './xoaThongTinTruyVet',
+        url: '/benh-nhan/xoa-thong-tin-truy-vet',
         type: 'post',
         dataType: 'json',
         data: {
@@ -243,7 +243,7 @@ function deleteTTTV(element) {
 function deleteTTDT(element) {
     var ID = element.attributes["data-value"].value
     $.ajax({
-        url: './xoaThongTinDieuTri',
+        url: '/benh-nhan/xoa-thong-tin-dieu-tri',
         type: 'post',
         dataType: 'json',
         data: {
@@ -258,10 +258,11 @@ function deleteTTDT(element) {
     })
 }
 function themThongTinTruyVet() {
-    var benhAnID = document.querySelector('#benhAnID').value;
-    window.location.href = `./ThemThongTinTruyVet/${benhAnID}`
+    var benhAnID = document.querySelector('#ID').value;
+    
+    window.location.href = `/benh-nhan/them-thong-tin-truy-vet/${benhAnID}`
 }
 function themThongTinDieuTri() {
-    var benhAnID = document.querySelector('#benhAnID').value;
-    window.location.href = `./themThongTinDieuTri/${benhAnID}`
+    var benhAnID = document.querySelector('#ID').value;
+    window.location.href = `/benh-nhan/them-thong-tin-dieu-tri/${benhAnID}`
 }

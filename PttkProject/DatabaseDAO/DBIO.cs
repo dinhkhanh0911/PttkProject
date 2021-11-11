@@ -13,12 +13,7 @@ namespace PttkProject.DatabaseDAO
     {
         private DBCovidContext data = new DBCovidContext();
 
-        /*Bênh nhân */
-        public List<BenhNhan> layDSBenhNhan()
-        {
-            List<BenhNhan> b = data.benhNhan.ToList();
-            return b;
-        }
+        
         
         public string layTenBenhNhan(int ID)
         {

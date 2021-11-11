@@ -14,6 +14,103 @@ namespace PttkProject
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Home",
+                url: "trang-chu/index",
+                defaults: new { controller = "Home", action = "Index"}
+            );
+            routes.MapRoute(
+                name: "QuanLyBenhNhan",
+                url: "benh-nhan/index",
+                defaults: new { controller = "BenhNhan", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "ThemBenhNhan",
+                url: "benh-nhan/them-benh-nhan",
+                defaults: new { controller = "BenhNhan", action = "thembenhnhan" }
+            );
+            routes.MapRoute(
+                name: "TimKiemBenhNhan",
+                url: "benh-nhan/tim-kiem-benh-nhan",
+                defaults: new { controller = "BenhNhan", action = "timkiembenhnhan" }
+            );
+            routes.MapRoute(
+                name: "LayDSBenhNhan",
+                url: "benh-nhan/lay-danh-sach-benh-nhan",
+                defaults: new { controller = "BenhNhan", action = "layDSBenhNhan" }
+            );
+            routes.MapRoute(
+                name: "SuaThongTinBenhNhan",
+                url: "benh-nhan/cap-nhat-thong-tin-benh-nhan/{ID}",
+                defaults: new { controller = "BenhNhan", action = "capnhatTTbenhnhan"}
+            );
+            routes.MapRoute(
+                name: "XoaBenhNhan",
+                url: "benh-nhan/xoa-benh-nhan",
+                defaults: new { controller = "BenhNhan", action = "xoaBenhNhan" }
+            );
+            routes.MapRoute(
+                name: "ThemBenhAn",
+                url: "benh-nhan/them-benh-an/{id}",
+                defaults: new { controller = "BenhNhan", action = "thembenhan" }
+            );
+            routes.MapRoute(
+                name: "ThemBenhAnPost",
+                url: "benh-nhan/them-benh-an",
+                defaults: new { controller = "BenhNhan", action = "thembenhan" }
+            );
+            routes.MapRoute(
+                name: "CapNhatBenhAn",
+                url: "benh-nhan/cap-nhat-benh-an/{id}",
+                defaults: new { controller = "BenhNhan", action = "capnhatbenhan" }
+            );
+            routes.MapRoute(
+                name: "LayDanhSachThongtin",
+                url: "benh-nhan/lay-danh-sach-thong-tin",
+                defaults: new { controller = "BenhNhan", action = "layDSThongTin" }
+            );
+
+            routes.MapRoute(
+                name: "ThemThongTinTruyVet",
+                url: "benh-nhan/them-thong-tin-truy-vet/{id}",
+                defaults: new { controller = "BenhNhan", action = "ThemThongTinTruyVet" }
+            );
+            routes.MapRoute(
+                name: "ThemThongTinTruyVetPost",
+                url: "benh-nhan/them-thong-tin-truy-vet",
+                defaults: new { controller = "BenhNhan", action = "ThemThongTinTruyVet" }
+            );
+            routes.MapRoute(
+                name: "XoaThongTinTruyVet",
+                url: "benh-nhan/xoa-thong-tin-truy-vet",
+                defaults: new { controller = "BenhNhan", action = "xoaThongTinTruyVet" }
+            );
+            routes.MapRoute(
+                name: "ThemThongTinDieuTri",
+                url: "benh-nhan/them-thong-tin-dieu-tri/{id}",
+                defaults: new { controller = "BenhNhan", action = "themThongTinDieuTri" }
+            );
+            routes.MapRoute(
+                name: "ThemThongTinDieuTriPost",
+                url: "benh-nhan/them-thong-tin-dieu-tri",
+                defaults: new { controller = "BenhNhan", action = "themThongTinDieuTri" }
+            );
+            routes.MapRoute(
+                name: "XoaThongTinDieuTri",
+                url: "benh-nhan/xoa-thong-tin-dieu-tri",
+                defaults: new { controller = "BenhNhan", action = "xoaThongTinDieuTri" }
+            );
+            /*Phòng bệnh*/
+            routes.MapRoute(
+                name: "QuanLyPhongBenh",
+                url: "phong-benh/index",
+                defaults: new { controller = "PhongBenh", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "QuanLyNhanVienYTe",
+                url: "nhan-vien-y-te/index",
+                defaults: new { controller = "NhanVienYTe", action = "Index" }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

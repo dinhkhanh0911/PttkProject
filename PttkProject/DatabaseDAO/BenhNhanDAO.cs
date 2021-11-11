@@ -11,6 +11,12 @@ namespace PttkProject.DatabaseDAO
     public class BenhNhanDAO:DBCovidContext
     {
         private DBCovidContext data = new DBCovidContext();
+        /*Bênh nhân */
+        public List<BenhNhan> layDSBenhNhan()
+        {
+            List<BenhNhan> b = data.benhNhan.ToList();
+            return b;
+        }
         public BenhNhan layBenhNhan(int id)
         {
             BenhNhan a = new BenhNhan();

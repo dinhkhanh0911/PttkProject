@@ -49,6 +49,7 @@
             @using (Html.BeginForm("Update", "Patient", FormMethod.Post))
             {
                 <div class="row">
+                    <input id="ID" type="hidden" value="@Model.ID"/>
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
@@ -130,15 +131,20 @@
 
             }
             <div class="btn-container">
-                <a href="@Url.Action("ImportMedicalRecord", "Patient")" class="btn btn-primary btn__add btn-submit">
+                <a href="/benh-nhan/them-benh-an/@Model.ID" class="btn btn-primary btn__add btn-submit">
                     Thêm bệnh án
                 </a>
-                <a href="@Url.Action("UpdateMedicalRecord", "Patient", Model.ID)" class="btn btn-primary btn-submit">
+                <a href="/benh-nhan/cap-nhat-benh-an/@Model.ID" class="btn btn-primary btn-submit">
                     Cập nhật bệnh án
                 </a>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready({
 
+        });
+        function hander
+    </script>
 
 </div>

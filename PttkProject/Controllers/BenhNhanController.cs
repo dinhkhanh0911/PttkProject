@@ -109,7 +109,7 @@ namespace PttkProject.Controllers
                 {
                     return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
                 }
-                List<BenhNhan> data = benhNhan.layDSBenhNhan(input);
+                List<BenhNhan> data = benhNhan.layDSBenhNhan();
                 return Json(new { code = 200, data = data }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -203,15 +203,16 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult capnhatbenhan(int id)
+        public ActionResult capnhatbenhan(int ID)
         {
-            BenhAn BA = benhAn.layBenhAnMoiNhat(id);
+            BenhAn BA = benhAn.layBenhAnMoiNhat(ID);
             if (BA != null)
             {
-                setViewBagInfo(BA.ID, id);
+                setViewBagInfo(BA.ID, BA.benhNhanID);
+                setViewBagDiaChi();
                 return View(BA);
             }
-            return Redirect("ImportInformation");
+            return Redirect("/benh-nhan/cap-nhat-thong-tin-benh-nhan/" + ID.ToString());
         }
         public void setViewBagInfo(int id, int idBN)
         {
@@ -221,7 +222,7 @@ namespace PttkProject.Controllers
             ViewBag.dsTTDieuTri = benhAn.layDSTTDieuTri(id);
             ViewBag.dsTTTruyVet = benhAn.layDSTTTruyVet(id);
             ViewBag.trangThai = new SelectList(benhAn.layDSTrangThai(), "ID", "tinhTrang");
-            setViewBagDiaChi();
+            
         }
         [HttpPost]
         public ActionResult UpdateBenhAn(BenhAn bn)

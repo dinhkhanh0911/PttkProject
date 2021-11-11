@@ -13,74 +13,79 @@
         <div class="container__page-content">
             @using (Html.BeginForm("UpdateBenhAn", "BenhNhan", FormMethod.Post))
             {
-                <div class="row">
-                    @Html.HiddenFor(model => model.ID)
-                    @Html.HiddenFor(model => model.benhNhanID)
+            <div class="row">
+                @Html.HiddenFor(model => model.ID)
 
-
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
-                            <input class="form__import-select" value="@ViewBag.BenhNhan.ten" readonly />
-                        </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                        <input class="form__import-select" value="@Model.ID" readonly />
                     </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
-                            <input class="form__import-select" value="@ViewBag.BenhNhan.CMND" readonly />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Giới tính", htmlAttributes: new { @class = "form__import-label" })
-                            <input class="form__import-select" value="@ViewBag.BenhNhan.gioiTinh" readonly />
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Ngày nhập viện", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextBoxFor(model => model.ngayNhapVien, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
-
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Ngày xuất viện", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextBoxFor(model => model.ngayXuatVien, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
-
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Phòng bệnh", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.DropDownListFor(model => model.phongBenhID, (IEnumerable<SelectListItem>)ViewBag.phong, htmlAttributes: new { @class = "form__import-select" })
-
-                        </div>
-                    </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Trạng thái", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.DropDownListFor(model => model.trangThaiID, (IEnumerable<SelectListItem>)ViewBag.trangThai, htmlAttributes: new { @class = "form__import-select" })
-
-                        </div>
-                    </div>
-                    <div class="col l-12 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Chẩn đoán", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextAreaFor(model => model.chanDoan, htmlAttributes: new { @class = "form-control" })
-
-                        </div>
-                    </div>
-                    <div class="col l-12 m-6 c-12">
-                        <div class="form__import-item">
-                            @Html.Label("Triệu chứng", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.TextAreaFor(model => model.trieuChung, htmlAttributes: new { @class = "form-control" })
-
-
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                        <input class="form__import-select" value="@ViewBag.BenhNhan.ten" readonly />
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
+                        <input class="form__import-select" value="@ViewBag.BenhNhan.CMND" readonly />
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Giới tính", htmlAttributes: new { @class = "form__import-label" })
+                        <input class="form__import-select" value="@ViewBag.BenhNhan.gioiTinh" readonly />
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Ngày nhập viện", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.TextBoxFor(model => model.ngayNhapVien, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
+
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Ngày xuất viện", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.TextBoxFor(model => model.ngayXuatVien, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
+
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Phòng bệnh", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.DropDownListFor(model => model.phongBenhID, (IEnumerable<SelectListItem>)ViewBag.phong, htmlAttributes: new { @class = "form__import-select" })
+
+                    </div>
+                </div>
+                <div class="col l-4 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Trạng thái", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.DropDownListFor(model => model.trangThaiID, (IEnumerable<SelectListItem>)ViewBag.trangThai, htmlAttributes: new { @class = "form__import-select" })
+
+                    </div>
+                </div>
+                <div class="col l-12 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Chẩn đoán", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.TextAreaFor(model => model.chanDoan, htmlAttributes: new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col l-12 m-6 c-12">
+                    <div class="form__import-item">
+                        @Html.Label("Triệu chứng", htmlAttributes: new { @class = "form__import-label" })
+                        @Html.TextAreaFor(model => model.trieuChung, htmlAttributes: new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+
+            </div>
                 <div class="btn-container">
                     <button class="btn btn-primary btn__save" type="submit">
                         Lưu thông tin

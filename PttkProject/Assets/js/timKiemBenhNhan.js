@@ -23,7 +23,7 @@ function timKiem() {
     var input = searchInput.value
     $.ajax({
         type: 'post',
-        url: './layDSBenhNhan',
+        url: '/benh-nhan/lay-danh-sach-benh-nhan',
         datatype: 'json',
         data: {
             input:input,
@@ -160,7 +160,7 @@ function confirmDelete() {
 function xoaBenhNhan(element) {
     var ID = element.id
     $.ajax({
-        url: './xoaBenhNhan',
+        url: '/benh-nhan/xoa-benh-nhan',
         type: 'post',
         dataType: 'json',
         data: {
@@ -185,5 +185,5 @@ function editPatient() {
     var element = document.querySelector(`#${this.id}`)
     var parent = element.parentElement.parentElement
     console.log(parent.id)
-    window.location.href = `./UpdateInformation/${parent.id}`
+    window.location.href = `/benh-nhan/cap-nhat-thong-tin-benh-nhan/${parent.id}`
 }
