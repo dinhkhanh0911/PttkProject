@@ -134,7 +134,7 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult ImportMedicalRecord(int id)
+        public ActionResult thembenhan(int id)
         {
             
             string tenBenhNhan = dBIO.layTenBenhNhan(id);
@@ -150,7 +150,7 @@ namespace PttkProject.Controllers
         }
         
         [HttpPost]
-        public JsonResult ImportMedicalRecord(BenhAn model)
+        public JsonResult thembenhan(BenhAn model)
         {
             if (ModelState.IsValid)
             {

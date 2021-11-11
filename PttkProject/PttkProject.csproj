@@ -755,6 +755,10 @@
     <Content Include="Views\DangNhap\doimatkhau.cshtml" />
     <Content Include="Views\DangNhap\quyenmatkhau.cshtml" />
     <Content Include="Views\DangNhap\dangnhap.cshtml" />
+    <Content Include="Views\BenhNhan\thembenhan.cshtml" />
+    <Content Include="Views\BenhNhan\themThongTinDieuTri.cshtml" />
+    <Content Include="Views\BenhNhan\ThemThongTinTruyVet.cshtml" />
+    <Content Include="Views\BenhNhan\UpdateMedicalRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
