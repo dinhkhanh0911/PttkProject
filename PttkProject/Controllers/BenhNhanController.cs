@@ -60,8 +60,8 @@ namespace PttkProject.Controllers
             doituongcachly.Add("F1");
             ViewBag.doituongcachly = new SelectList(doituongcachly);
         }
-
-        public ActionResult UpdateInformation(int id, string mgs)
+        /*GD cập nhật bệnh nhân*/
+        public ActionResult capnhatTTbenhnhan(int id, string mgs)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace PttkProject.Controllers
             }
             
         }
-
+        /*cập nhật bệnh nhân*/
         public ActionResult Update(BenhNhan bn)
         {
 
@@ -201,7 +201,7 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult UpdateMedicalRecord(int ID)
+        public ActionResult UpdateMedicalRecord()
         {
             
             bool ok = false;
