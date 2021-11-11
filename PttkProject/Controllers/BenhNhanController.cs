@@ -205,14 +205,14 @@ namespace PttkProject.Controllers
         /*Cập nhật bệnh án*/
         public ActionResult capnhatbenhan(int id, string mgs)
         {
-            BenhAn BA = benhAn.layBenhAnMoiNhat(ID);
+            BenhAn BA = benhAn.layBenhAnMoiNhat(id);
             if (BA != null)
             {
                 ViewBag.message = mgs;
                 setViewBagInfo(BA.ID, id);
                 return View(BA);
             }
-            return Redirect("/benh-nhan/cap-nhat-thong-tin-benh-nhan/" + ID.ToString());
+            return Redirect("/benh-nhan/cap-nhat-thong-tin-benh-nhan/" + id.ToString());
         }
         public void setViewBagInfo(int id, int idBN)
         {

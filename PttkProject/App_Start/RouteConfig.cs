@@ -106,6 +106,17 @@ namespace PttkProject
                 defaults: new { controller = "PhongBenh", action = "Index" }
             );
             routes.MapRoute(
+                name: "ThemPhongBenh",
+                url: "phong-benh/them-phong-benh",
+                defaults: new { controller = "PhongBenh", action = "themphong" }
+            );
+            routes.MapRoute(
+                name: "TimKiemPhongBenh",
+                url: "phong-benh/tim-kiem-phong-benh",
+                defaults: new { controller = "PhongBenh", action = "timkiemphong" }
+            );
+            /*Nhân viên y tế*/
+            routes.MapRoute(
                 name: "QuanLyNhanVienYTe",
                 url: "nhan-vien-y-te/index",
                 defaults: new { controller = "NhanVienYTe", action = "Index" }

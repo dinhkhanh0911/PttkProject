@@ -12,12 +12,12 @@
             </h4>
         </div>
         <div class="container__page-content">
-            @using (Html.BeginForm("themPhong", "PhongBenh", FormMethod.Post))
-            {
-            <div class="form">
+           
+            <form action="/phong-benh/them-phong-benh" method="post" class="form">
                 <div class="row">
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
+                            
                             @Html.Label("Tên Phòng", htmlAttributes: new { @class = "form__import-label" })
                             @Html.TextBoxFor(model => model.tenPhong, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
@@ -41,7 +41,7 @@
 
 
                 <div class="btn-container">
-                    <button class="btn btn-primary btn__save btn-submit" type="submit">
+                    <button class="btn btn-primary btn__save btn-submit">
                         Lưu thông tin
                     </button>
                     <button class="btn btn__reset btn-submit btn-default">
@@ -52,8 +52,8 @@
                     </button>
                 </div>
 
-            </div>
-            }
+            </form>
+            
         </div>
     </div>
 

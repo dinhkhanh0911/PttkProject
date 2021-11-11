@@ -28,7 +28,8 @@ namespace PttkProject.Controllers
         {
             try
             {
-                phongbenhDAO.themPhongBenh(pb);
+                var ok = phongbenhDAO.themPhongBenh(pb);
+                
                 return RedirectToAction("Index", "PhongBenh");
 
             }
