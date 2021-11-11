@@ -99,12 +99,30 @@ namespace PttkProject.Controllers
             return View();
         }
         [HttpPost]
+        public JsonResult layDSBenhNhan(string input)
+        {
+            try
+            {
+                if (input.Length == 0)
+                {
+                    return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
+                }
+                List<BenhNhan> data = benhNhan.layDSBenhNhan(input);
+                return Json(new { code = 200, data = data }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        [HttpPost]
         public JsonResult xoaBenhNhan(int ID)
         {
             try
             {
                 bool ok = false;
-                ok = dBIO.xoaBenhNhan(ID);
+                ok = benhNhan.xoaBenhNhan(ID);
                 if (ok)
                 {
                     return Json(new { code = 200, msg = "Xóa thành công" }, JsonRequestBehavior.AllowGet);
@@ -116,7 +134,7 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult ImportMedicalRecord(int id)
+        public ActionResult thembenhan(int id)
         {
             
             string tenBenhNhan = dBIO.layTenBenhNhan(id);
@@ -132,7 +150,7 @@ namespace PttkProject.Controllers
         }
         
         [HttpPost]
-        public JsonResult ImportMedicalRecord(BenhAn model)
+        public JsonResult thembenhan(BenhAn model)
         {
             if (ModelState.IsValid)
             {
@@ -210,24 +228,7 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500 }, JsonRequestBehavior.AllowGet);
             }
         }
-        [HttpPost]
-        public JsonResult getPatientList(string input)
-        {
-            try
-            {
-                if(input.Length == 0)
-                {
-                    return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
-                }
-                List<BenhNhan> data = dBIO.layDSBenhNhan();
-                return Json(new {code= 200,data=data},JsonRequestBehavior.AllowGet);
-            }
-            catch(Exception e)
-            {
-                return Json(new { code = 404}, JsonRequestBehavior.AllowGet);
-            }
-
-        }
+        
 
         /*Thông tin điều trị */
         public ActionResult themThongTinDieuTri(int ID)

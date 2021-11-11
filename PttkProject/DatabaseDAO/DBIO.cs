@@ -33,11 +33,7 @@ namespace PttkProject.DatabaseDAO
                 return "";
             }
         }
-        public List<BenhNhan> layDSBenhNhan(string input)
-        {
-            List<BenhNhan> b = data.benhNhan.Where(x => x.CMND == input || x.ten == input).ToList();
-            return b;
-        }
+        
         public List<PhongBenh> layDSPhongBenh()
         {
             List<PhongBenh> p = data.phongBenh.ToList();
@@ -58,20 +54,7 @@ namespace PttkProject.DatabaseDAO
             List<TrangThai> t = data.trangThai.ToList();
             return t;
         }
-        public bool xoaBenhNhan(int ID)
-        {
-            try
-            {
-                BenhNhan b = data.benhNhan.Where(x => x.ID == ID).FirstOrDefault();
-                data.benhNhan.Remove(b);
-                data.SaveChanges();
-                return true;
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
-        }
+        
         /*Bệnh Án*/
         public bool themBenhAn(BenhAn model)
         {
