@@ -203,7 +203,7 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult capnhatbenhan(int id)
+        public ActionResult capnhatbenhan(int id, string mgs)
         {
             BenhAn BA = benhAn.layBenhAnMoiNhat(id);
             if (BA != null)
@@ -227,8 +227,11 @@ namespace PttkProject.Controllers
         public ActionResult UpdateBenhAn(BenhAn bn)
         {
             int id = bn.benhNhanID;
-            benhAn.capNhatTTBenhAn(bn);
-            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id });
+            bool check = benhAn.capNhatTTBenhAn(bn);
+            string mgs;
+            if (check) mgs = "chỉnh sửa thành công";
+            else mgs = "chỉnh sửa thất bại";
+            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id , mgs = mgs});
         }
         
         public JsonResult layDSThongTin(int benhAnID)
@@ -237,7 +240,6 @@ namespace PttkProject.Controllers
             {
                 List<ThongTinDieuTri> thongTinDieuTris = dBIO.layDSThongTinDieuTri(benhAnID);
                 var thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
-
                 return Json(new { code = 200, thongTinDieuTris = thongTinDieuTris, thongTinTruyVets = thongTinTruyVets }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)

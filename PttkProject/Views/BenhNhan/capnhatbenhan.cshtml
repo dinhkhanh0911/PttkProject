@@ -14,8 +14,8 @@
             @using (Html.BeginForm("UpdateBenhAn", "BenhNhan", FormMethod.Post))
             {
                 <div class="row">
-                    @Html.HiddenFor(model => model.ID)
-                    @Html.HiddenFor(model => model.benhNhanID)
+                    <input value="@Model.ID" hidden name="ID"/>
+                    <input value="@Model.benhNhanID" hidden name="benhNhanID"/>
 
 
                     <div class="col l-4 m-6 c-12">

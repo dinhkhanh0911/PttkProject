@@ -10,7 +10,6 @@ namespace PttkProject.DatabaseDAO
 {
     public class BenhAnDAO : DBCovidContext
     {
-        DBCovidContext dc = new DBCovidContext();
         public BenhAn layBenhAnMoiNhat(int idBenhNhan)
         {
             try
@@ -27,16 +26,17 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
-        public void capNhatTTBenhAn(BenhAn ba)
+        public bool capNhatTTBenhAn(BenhAn ba)
         {
             try
             {
-                dc.Entry(ba).State = EntityState.Modified;
-                dc.SaveChanges();
+                Entry(ba).State = EntityState.Modified;
+                SaveChanges();
+                return true;
             }
             catch(Exception e)
             {
-                Console.WriteLine(e);
+                return false;
             }
         }
         public List<ThongTinDieuTri> layDSTTDieuTri(int idBenhAn)
