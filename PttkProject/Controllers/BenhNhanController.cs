@@ -201,9 +201,9 @@ namespace PttkProject.Controllers
             ViewBag.trangThai = new SelectList(t, "ID", "tinhTrang");
         }
         /*Cập nhật bệnh án*/
-        public ActionResult UpdateMedicalRecord()
+        public ActionResult UpdateMedicalRecord(int ID)
         {
-            int ID = 2;
+            
             bool ok = false;
             ok = dBIO.isBenhAn(ID);
             if (ok)
