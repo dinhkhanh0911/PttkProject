@@ -14,8 +14,8 @@
             @using (Html.BeginForm("UpdateBenhAn", "BenhNhan", FormMethod.Post))
             {
                 <div class="row">
-                    <input value="@Model.ID" hidden name="ID"/>
-                    <input value="@Model.benhNhanID" hidden name="benhNhanID"/>
+                    <input value="@Model.ID" hidden name="ID" />
+                    <input value="@Model.benhNhanID" hidden name="benhNhanID" />
 
 
                     <div class="col l-4 m-6 c-12">
@@ -95,6 +95,38 @@
             }
         </div>
     </div>
+    @{
+        if (ViewBag.message != "" && ViewBag.message != null)
+        {
+            <script>
+                var mgs = @Html.Raw(Json.Encode(ViewBag.message));
+                $(document).ready(function () {
+                    $("#patien-modal-body").text(mgs);
+                    if (mgs != null && mgs != "") $("#patient-modal").modal();
+                    mgs = null;
+                })
+            </script>
+            <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin bệnh án</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="patien-modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
     <div class="container__form-fullWidth container__DataMedicalRecord">
         <div class="container__page-fullWidth">
             <div class="name__page">

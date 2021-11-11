@@ -208,6 +208,7 @@ namespace PttkProject.Controllers
             BenhAn BA = benhAn.layBenhAnMoiNhat(id);
             if (BA != null)
             {
+                ViewBag.message = mgs;
                 setViewBagInfo(BA.ID, id);
                 return View(BA);
             }
@@ -323,6 +324,16 @@ namespace PttkProject.Controllers
             return Redirect("ImportInformation");
         }
         [HttpPost]
+        public ActionResult XuatThongTinBenhAn(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                BenhAn ba = benhAn.layBenhAn(id);
+                var file = xuatBenhAn(ba);
+                return File(file, "xlsx/xls", "Phổ điểm.xlsx");
+            }
+            return RedirectToAction("timkiembenhnhan", "BenhNhan");
+        }
         public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
         {
             if (ModelState.IsValid)
@@ -338,6 +349,7 @@ namespace PttkProject.Controllers
             }
             return Json(new { code = 500, msg = "Thông tin nhập chưa chính xác", model = model }, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public JsonResult xoaThongTinTruyVet(int ID)
         {
@@ -374,6 +386,23 @@ namespace PttkProject.Controllers
             ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
             ViewBag.xas = new SelectList(xas, "ID", "tenXa");
 
+        }
+        private byte[] xuatBenhAn(BenhAn ba)
+        {
+            //using (var excelPackage = new ExcelPackage(new FileInfo("C:\\Users\\toank\\toan2k.xlsx")))
+            //{
+            //    // Tạo author cho file Excel
+            //    // Tạo title cho file Excel
+            //    excelPackage.Workbook.Properties.Title = "Phổ điểm TLU";
+            //    int count_ws = 0;
+            //    excelPackage.Workbook.Worksheets.Add((count_ws + 1) + "-" + item.short_code);
+            //    ExcelWorksheet workSheet = excelPackage.Workbook.Worksheets[count_ws];
+
+            //    var file = excelPackage.GetAsByteArray();
+            //    excelPackage.Dispose();
+            //    return file;
+            //}
+            return null;
         }
     }
 }

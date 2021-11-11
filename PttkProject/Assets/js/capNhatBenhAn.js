@@ -265,3 +265,7 @@ function themThongTinDieuTri() {
     var benhAnID = document.querySelector('#benhAnID').value;
     window.location.href = `./themThongTinDieuTri/${benhAnID}`
 }
+function xuatThongTinTruyVet() {
+    var benhAnID = document.querySelector('#benhAnID').value;
+    window.location.href = `./XuatThongTinTruyVet/${benhAnID}`
+}
