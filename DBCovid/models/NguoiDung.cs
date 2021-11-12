@@ -12,8 +12,8 @@ namespace DBCovid.models
 
         public string taiKhoan { get; set; }
         [Required]
-
         public string matKhau { get; set; }
+        public string sdt { get; set; }
         public int viTriLamViecID { set; get; }
         [ForeignKey("viTriLamViecID")]
         public virtual ViTriLamViec viTriLamViec { get; set; }

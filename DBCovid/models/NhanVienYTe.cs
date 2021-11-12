@@ -14,7 +14,7 @@ namespace DBCovid.models
         public string chuyenKhoa { get; set; }
 
         public string bangCap { get; set; }
-
+        public string sdt { get; set; }
         public int namKinhNghiem { get; set; }
         public int viTriLamViecID { set; get; }
         [ForeignKey("viTriLamViecID")]

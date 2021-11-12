@@ -17,9 +17,10 @@ namespace PttkProject.Controllers
             return View();
         }
         /*view thêm phòng bệnh*/
-        public ActionResult themphong()
+        public ActionResult themphong(string mgs)
         {
             setViewBagLoaiPhong();
+            ViewBag.message = mgs;
             return View();
         }
         /*thêm phòng bệnh*/
@@ -27,16 +28,15 @@ namespace PttkProject.Controllers
         public ActionResult themPhong(PhongBenh pb)
         {
             try
-            {
-                var ok = phongbenhDAO.themPhongBenh(pb);
+            {               
+                var ok = phongbenhDAO.themPhongBenh(pb);                
+                return RedirectToAction("themphong", "PhongBenh", new { mgs = "Thêm thành công" });
                 
-                return RedirectToAction("Index", "PhongBenh");
-
             }
             catch (Exception e)
             {
                 //lloi
-                return RedirectToAction("Index", "PhongBenh");
+                return RedirectToAction("themphong", "PhongBenh", new { mgs = "Thêm thất bại" });
             }
         }
 

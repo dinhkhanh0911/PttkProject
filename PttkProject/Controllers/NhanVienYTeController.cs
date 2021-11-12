@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PttkProject.DatabaseDAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,9 @@ namespace PttkProject.Controllers
     public class NhanVienYTeController : Controller
     {
         // GET: MedicalStaff
+        private DBIO dBIO = new DBIO();
+        private NhanVienYTeDAO nvYTe = new NhanVienYTeDAO();
+
         public ActionResult Index()
         {
             return View();
@@ -17,6 +21,7 @@ namespace PttkProject.Controllers
         {
             return View();
         }
+
         public ActionResult capnhatttnhanvienyte()
         {
             return View();

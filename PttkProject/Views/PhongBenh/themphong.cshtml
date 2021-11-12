@@ -12,12 +12,13 @@
             </h4>
         </div>
         <div class="container__page-content">
-           
-            <form action="/phong-benh/them-phong-benh" method="post" class="form">
+
+            @using (Html.BeginForm("themPhong", "PhongBenh", FormMethod.Post))
+            {
                 <div class="row">
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
-                            
+
                             @Html.Label("Tên Phòng", htmlAttributes: new { @class = "form__import-label" })
                             @Html.TextBoxFor(model => model.tenPhong, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                         </div>
@@ -41,21 +42,59 @@
 
 
                 <div class="btn-container">
-                    <button class="btn btn-primary btn__save btn-submit">
+                    <button class="btn btn-primary btn__save btn-submit" type="submit">
                         Lưu thông tin
                     </button>
-                    <button class="btn btn__reset btn-submit btn-default">
+                    <button class="btn btn__reset btn-submit btn-default" type="reset">
                         Đặt lại
                     </button>
-                    <button class="btn btn__cancel btn-submit btn-default">
+                    <a href="/phong-benh/index" class="btn btn__cancel btn-submit btn-default">
                         Hủy
-                    </button>
+                    </a>
                 </div>
+            }
 
-            </form>
-            
         </div>
     </div>
+    @{
+        if (ViewBag.message != "" && ViewBag.message != null)
+        {
+            <script>
+                var mgs = @Html.Raw(Json.Encode(ViewBag.message));
+                $(document).ready(function () {
+                    $("#patien-modal-body").text(mgs);
+                    if (mgs != null && mgs != "") {
+                        $("#patient-modal").modal()
+                    };
 
+                    
+                    mgs = null;
+
+                })
+                function quaylai(){
+                    window.location.href = "/phong-benh/index"                   
+                }
+            </script>
+            <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin phòng bệnh</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="patien-modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="quaylai()" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
 
 </div>
