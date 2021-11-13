@@ -54,7 +54,9 @@ namespace PttkProject.DatabaseDAO
         public bool themPhongBenh(PhongBenh pb)
         {
             try
-            {         
+            {
+                pb.benhVienID = 1;
+                pb.soGiuongHienTai = 0;
                 phongBenh.Add(pb);
                 SaveChanges();
                 return true;

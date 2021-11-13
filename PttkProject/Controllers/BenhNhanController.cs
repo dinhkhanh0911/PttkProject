@@ -17,6 +17,7 @@ namespace PttkProject.Controllers
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
         private BenhAnDAO benhAn = new BenhAnDAO();
         private PhongBenhDAO phong = new PhongBenhDAO();
+        private NhanVienYTeDAO nvyTe = new NhanVienYTeDAO();
         // GET: Patient
         public ActionResult Index()
         {
@@ -302,7 +303,7 @@ namespace PttkProject.Controllers
         }
         private void setViewbagNVYT()
         {
-            List<NhanVienYTe> list = dBIO.layDSNhanVienYTe();
+            List<NhanVienYTe> list = nvyTe.layDSNhanVienYTe();
 
             SelectList s = new SelectList(list, "ID", "ten");
             ViewBag.nhanVienYTe = s;

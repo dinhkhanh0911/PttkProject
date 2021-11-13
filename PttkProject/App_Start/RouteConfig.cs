@@ -122,6 +122,21 @@ namespace PttkProject
                 defaults: new { controller = "NhanVienYTe", action = "Index" }
             );
             routes.MapRoute(
+                name: "ThemNhanVienYTe",
+                url: "nhan-vien-y-te/them-nhan-vien-y-te",
+                defaults: new { controller = "NhanVienYTe", action = "themnhanvienyte" }
+            );
+            routes.MapRoute(
+                name: "TimKiemNhanVienYTe",
+                url: "nhan-vien-y-te/tim-kiem-nhan-vien-y-te",
+                defaults: new { controller = "NhanVienYTe", action = "timkiemnhanvienyte" }
+            );
+            routes.MapRoute(
+               name: "CapNhatTTNhanVienYTe",
+               url: "nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te",
+               defaults: new { controller = "NhanVienYTe", action = "capnhatttnhanvienyte" }
+           );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

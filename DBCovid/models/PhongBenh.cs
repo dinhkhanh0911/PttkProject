@@ -17,6 +17,7 @@ namespace DBCovid.models
         [Required]
         public string tenPhong { get; set; }
         public int soGiuongToiDa { get; set; }
+      
         public int soGiuongHienTai { get; set; }
         public int benhVienID { get; set; }
         public int? loaiPhongID { get; set; }
