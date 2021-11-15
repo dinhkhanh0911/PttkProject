@@ -22,9 +22,9 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult suanguoidung()
+        public ActionResult suanguoidung(int id, string mgs)
         {
-            int id = 9;
+            ViewBag.message = mgs;
             NguoiDung nd = nguoiDung.layNguoiDung(id);
             setViewBagDiaChi();
             ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
