@@ -15,6 +15,7 @@ namespace DBCovid.models
         public int ID { get; set; }
         public string tenXa { get; set; }
         public string moTa { get; set; }
+        public int code { get; set; }
         public int huyenID { get; set; }
         [ForeignKey("huyenID")]
         public virtual Huyen huyen { get; set; }

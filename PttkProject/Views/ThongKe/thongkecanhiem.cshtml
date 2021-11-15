@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "thongkecanhiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable({
+            "language": {
+                "search": "Tìm kiếm",
+                "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
+                "zeroRecords": "Không tìm thấy dữ liệu",
+                "info": "Hiển thị _PAGE_ trên _PAGES_",
+                "infoEmpty": "Không có dữ liệu tương ứng",
+                "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
+                "paginate": {
+                    "first": "Đầu",
+                    "last": "Cuối",
+                    "next": "Sau",
+                    "previous": "Trước"
+                },
+            }
+        });
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "/ThongKe/thongKeCaNhiem",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+            });
+        });
+        function OnSuccess(response) {
+            $("#datatable").DataTable(
+                {
+                    bLengthChange: true,
+                    lengthMenu: [[5, 10, -1], [5, 10, "All"]],
+                    bFilter: true,
+                    bSort: true,
+                    bPaginate: true,
+                    data: response,
+                    columns: [{ 'data': 'CustomerID' },
+                    { 'data': 'ContactName' },
+                    { 'data': 'City' },
+                    { 'data': 'Country' }]
+                });
+        };
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        const labels = [
+            'Tháng 1',
+            'Tháng 2',
+            'Tháng 3',
+            'Tháng 4',
+            'Tháng 5',
+            'Tháng 6',
+        ];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: '#17a2b8',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [29128, 15812, 4939, 30905, 16612, 52459, 37734],
+            }]
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {},
+
+        };
+        const myChart = new Chart(
+            document.getElementById('myChart2'),
+            config
+        );
+    });
+
+</script>
+
+<!--Chart-->
+<div class="container-content">
+    <h1>
+        THỐNG KÊ CA NHIỄM
+    </h1>
+
+    <div class="container-fluid">
+        <div class="card">
+            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
+            {
+            <div class="form">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <canvas id="myChart2" width="100%"></canvas>
+                    </div>
+                    <div class="col-sm-4">
+                        <h4>Chọn khoảng thời gian</h4>
+                        <label for="startdate">Ngày bắt đầu:</label>
+                        <input type="date" id="startdate" name="startdate">
+                        <br />
+                        <label for="startdate">Ngày kết thúc:</label>
+                        <input type="date" id="enddate" name="enddate">
+                        <br />
+                        <button id="hienthi" class="btn btn-outline-success" type="submit">Hiển thị</button>
+                    </div>
+                </div>
+            </div>
+            }
+            </div>
+    </div>
+    <!-- /.chat-->
+    <!--Datatable-->
+    <div class="container-fluid">
+        <table id="datatable">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>

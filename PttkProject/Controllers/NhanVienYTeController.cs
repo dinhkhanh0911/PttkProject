@@ -19,9 +19,54 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult themnhanvienyte()
+        public ActionResult themnhanvienyte(string mgs)
         {
+            ViewBag.message = mgs;
+            setViewBagDiaChi();
+            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
             return View();
+        }
+        [HttpPost]
+        public ActionResult themNhanVienYTe(NhanVienYTe nv)
+        {
+            try
+            {
+                var ok = nvYTe.themNhanVienYTe(nv);
+                return RedirectToAction("themnhanvienyte", "NhanVienYTe", new { mgs = "Thêm thành công" });
+
+            }
+            catch (Exception e)
+            {
+                //lloi
+                return RedirectToAction("Index", "NhanVienYTe", new { mgs = "Thêm thất bại" });
+            }
+        }
+
+        [HttpPost]
+        public JsonResult timKiem(string search)
+        {
+            try
+            {
+                var data = nvYTe.timKiemNvYTe(search);
+                return Json(new { code = 200, data = data }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 404, mgs = "Tìm kiếm có lỗi" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpPost]
+        public JsonResult xoaNguoiDung(int ID)
+        {
+            try
+            {
+                nvYTe.xoaNvYTe(ID);
+                return Json(new { code = 200, mgs = "Xóa thành công" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 404, mgs = "Xóa thất bại" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public ActionResult capnhatttnhanvienyte(int id, string mgs)

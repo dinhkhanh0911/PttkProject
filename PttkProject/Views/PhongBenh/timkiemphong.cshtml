@@ -3,9 +3,6 @@
     ViewBag.Title = "timkiemphong";
 }
 
-<h2>timkiemphong</h2>
-
-
 <div class="wrapper wrapper__custom-height wrapper-block">
     <div class="container__page-fullWidth">
         <div class="name__page">
@@ -14,100 +11,49 @@
             </h4>
         </div>
         <div class="container__page-content">
-            <div class="form">
+            @using (Html.BeginForm("timKiem", "PhongBenh", FormMethod.Post))
+            {
                 <div class="search__container">
-                    <input class="search__input" placeholder="Nhập mã phòng" />
+                    <input class="search__input" name="search" placeholder="Nhập mã phòng" />
                     <button class="btn btn-primary btn__save btn-submit">
                         Tìm kiếm
                     </button>
-                    <button onclick="redirectToRoomIndex()" class="btn btn__cancel btn-submit btn-default">
-                        Quay lại
+                </div>
+            }
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tên</th>
+                        <th>Số giường tối đa </th>
+                        <th>Số giường hiện tại</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody id="tbPhong">
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thông tin người dùng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Date Created</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Michael Holz</td>
-                            <td>04/10/2013</td>
-                            <td>Admin</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip">
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                </a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td> Paula Wilson</td>
-                            <td>05/08/2014</td>
-                            <td>Publisher</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td> Antonio Moreno</td>
-                            <td>11/05/2015</td>
-                            <td>Publisher</td>
-                            <td><span class="status text-danger">&bull;</span> Suspended</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Mary Saveley</td>
-                            <td>06/09/2016</td>
-                            <td>Reviewer</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td> Martin Sommer</td>
-                            <td>12/08/2017</td>
-                            <td>Moderator</td>
-                            <td><span class="status text-warning">&bull;</span> Inactive</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="modal-body" id="patient-modal-body">
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    function redirectToUpdateRoom() {
-        window.location.href = "./updateRoom";
-    }
-    function redirectToRoomIndex() {
-        window.location.href = "./Index";
-    }
-</script>
-
+<script src="~/Assets/js/timKiemPhongBenh.js"></script>
