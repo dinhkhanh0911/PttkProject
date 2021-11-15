@@ -19,9 +19,27 @@ namespace PttkProject.Controllers
         {
             return View();
         }
-        public ActionResult themnhanvienyte()
+        public ActionResult themnhanvienyte(string mgs)
         {
+            ViewBag.message = mgs;
+            setViewBagDiaChi();
+            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
             return View();
+        }
+        [HttpPost]
+        public ActionResult themNhanVienYTe(NhanVienYTe nv)
+        {
+            try
+            {
+                var ok = nvYTe.themNhanVienYTe(nv);
+                return RedirectToAction("themnhanvienyte", "NhanVienYTe", new { mgs = "Thêm thành công" });
+
+            }
+            catch (Exception e)
+            {
+                //lloi
+                return RedirectToAction("Index", "NhanVienYTe", new { mgs = "Thêm thất bại" });
+            }
         }
 
         public ActionResult capnhatttnhanvienyte(int id, string mgs)
