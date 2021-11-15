@@ -16,7 +16,6 @@ namespace PttkProject.Controllers
         private DBCovidContext data = new DBCovidContext();
         public ActionResult Index()
         {
-            getdataAsync();
             return View();
         }
 
