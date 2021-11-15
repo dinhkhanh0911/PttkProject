@@ -145,12 +145,12 @@ namespace PttkProject
             routes.MapRoute(
                 name: "QuanLyNguoiDung",
                 url: "nguoi-dung/index",
-                defaults: new { controller = "NguoiDung", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "NguoiDung", action = "Index" }
             );
             routes.MapRoute(
                 name: "ThemNguoiDung",
                 url: "nguoi-dung/them-nguoi-dung",
-                defaults: new { controller = "NguoiDung", action = "themnguoidung", id = UrlParameter.Optional }
+                defaults: new { controller = "NguoiDung", action = "themnguoidung" }
             );
             routes.MapRoute(
                 name: "CapNhatTTNguoiDung",
@@ -160,7 +160,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "TimKiemNguoiDung",
                 url: "nguoi-dung/tim-kiem-nguoi-dung",
-                defaults: new { controller = "NguoiDung", action = "timkiemnguoidung", id = UrlParameter.Optional }
+                defaults: new { controller = "NguoiDung", action = "timkiemnguoidung" }
             );
         }
     }
