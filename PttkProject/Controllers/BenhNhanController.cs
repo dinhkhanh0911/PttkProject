@@ -45,7 +45,7 @@ namespace PttkProject.Controllers
             try
             {
                     var ok = benhNhan.themBenhNhan(bn);
-                    return RedirectToAction("ImportMedicalRecord", "BenhNhan", new { ID = bn.ID,  msg = "Thêm thành công"});
+                    return RedirectToAction("thembenhan", "BenhNhan", new { ID = bn.ID,  msg = "Thêm thành công"});
 
             }
             catch (Exception e)

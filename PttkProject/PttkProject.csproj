@@ -480,6 +480,7 @@
     <Compile Include="Controllers\BenhNhanController.cs" />
     <Compile Include="Controllers\PhongBenhController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="DatabaseDAO\BenhAnDAO.cs" />
     <Compile Include="DatabaseDAO\BenhNhanDAO.cs" />
     <Compile Include="DatabaseDAO\DBIO.cs" />
@@ -756,6 +757,11 @@
     <Content Include="Views\BenhNhan\ThemThongTinTruyVet.cshtml" />
     <Content Include="Views\BenhNhan\UpdateMedicalRecord.cshtml" />
     <Content Include="Views\BenhNhan\capnhatbenhan.cshtml" />
+    <Content Include="Views\ThongKe\thongkecanhiem.cshtml" />
+    <Content Include="Views\ThongKe\thongkecakhoibenh.cshtml" />
+    <Content Include="Views\ThongKe\thongkecatuvong.cshtml" />
+    <Content Include="Views\ThongKe\thongkecaduongtinhtrolai.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

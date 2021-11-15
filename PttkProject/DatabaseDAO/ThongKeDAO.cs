@@ -8,5 +8,6 @@ namespace PttkProject.DatabaseDAO
 {
     public class ThongKeDAO: DBCovidContext
     {
+        public void layDS
     }
 }

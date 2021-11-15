@@ -162,6 +162,32 @@ namespace PttkProject
                 url: "nguoi-dung/tim-kiem-nguoi-dung",
                 defaults: new { controller = "NguoiDung", action = "timkiemnguoidung" }
             );
+            /*Thống kê*/
+            routes.MapRoute(
+                name: "ThongKe",
+                url: "thong-ke/index",
+                defaults: new { controller = "ThongKe", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaNhiem",
+                url: "thong-ke/thong-ke-ca-nhiem",
+                defaults: new { controller = "ThongKe", action = "thongkecanhiem" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaKhoiBenh",
+                url: "thong-ke/thong-ke-ca-khoi-benh",
+                defaults: new { controller = "ThongKe", action = "thongkecakhoibenh" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaTuVong",
+                url: "thong-ke/thong-ke-ca-tu-vong",
+                defaults: new { controller = "ThongKe", action = "thongkecatuvong" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaDuongTinhTroLai",
+                url: "thong-ke/thong-ke-ca-duong-tinh-tro-lai",
+                defaults: new { controller = "ThongKe", action = "thongkecaduongtinhtrolai" }
+            );
         }
     }
 }
