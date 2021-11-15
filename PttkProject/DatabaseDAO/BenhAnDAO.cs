@@ -38,6 +38,18 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
+        public List<BenhAn> layDSBenhAn()
+        {
+            try
+            {
+                var list = benhAn.ToList();
+                return list;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         
         public bool capNhatTTBenhAn(BenhAn ba)
         {
