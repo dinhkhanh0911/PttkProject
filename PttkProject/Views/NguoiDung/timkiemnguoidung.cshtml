@@ -57,7 +57,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="patien-modal-body">
+                <div class="modal-body" id="patient-modal-body">
 
                 </div>
                 <div class="modal-footer">
@@ -67,42 +67,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    $('form').submit(function (event) {
-        $.ajax({
-            method: $(this).attr('method'),
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            type: 'POST',
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr);
-                console.log(ajaxOptions);
-                console.log(thrownError);
-            }
-        }).done(function (response) {
-            $('#tbodyUser').empty();
-            for (let item of response) {
-                $('#tbodyUser').append(`
-                    <tr id="${item.ID}">
-                        <td>${item.ten}</td>
-                        <td>${dateString != null ? date.toLocaleDateString() : "Không có"}</td>
-                        <td>${item.CMND}</td>
-                        <td>${item.gioiTinh}</td>
-                
-                        <td id="${i}">
-                            <a onclick="xem(${item})" class="see" title="Xem" data-toggle="modal" data-target="#patient-modal">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <a href="" class="edit" title="Sửa">
-                                <i class="fa fa-wrench" aria-hidden="true"></i>
-                            </a>
-                            <a onclick="xoa(${id})" class="delete" title="Xóa">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
-
-                        </td>
-                    </tr>`);
-            }
-        }
-</script>
+<script src="~/Assets/js/timKiemNguoiDung.js"></script>

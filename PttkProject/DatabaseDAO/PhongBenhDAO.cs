@@ -25,7 +25,19 @@ namespace PttkProject.DatabaseDAO
             List<LoaiPhong> l = loaiPhong.ToList();
             return l;
         }
-
+        public List<PhongBenh> timKiemPhong(string ten)
+        {
+            List<PhongBenh> l = (from s in phongBenh
+                                 where s.tenPhong.Contains(ten)
+                                 select s).ToList();
+            return l;
+        }
+        public void xoaPhong(int id)
+        {
+            var p = phongBenh.Where(s => s.ID == id).FirstOrDefault();
+            Entry(p).State = EntityState.Deleted;
+            SaveChanges();
+        }
         public PhongBenh layPhongBenh(int id)
         {
             try
