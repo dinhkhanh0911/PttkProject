@@ -7,11 +7,7 @@ namespace DBCovid.models
     [Table("Tbl_NguoiDungs")]
     public partial class NguoiDung:Nguoi
     {
-
-        [Required]
-
         public string taiKhoan { get; set; }
-        [Required]
         public string matKhau { get; set; }
         public string sdt { get; set; }
         public int viTriLamViecID { set; get; }

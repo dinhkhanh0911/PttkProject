@@ -13,8 +13,6 @@ namespace PttkProject.DatabaseDAO
     {
         private DBCovidContext data = new DBCovidContext();
 
-        
-        
         public string layTenBenhNhan(int ID)
         {
 
@@ -49,7 +47,10 @@ namespace PttkProject.DatabaseDAO
             List<TrangThai> t = data.trangThai.ToList();
             return t;
         }
-        
+        public List<ViTriLamViec> layDSViTriLamViec()
+        {
+            return data.viTriLamViec.ToList();
+        }
         /*Bệnh Án*/
         public bool themBenhAn(BenhAn model)
         {

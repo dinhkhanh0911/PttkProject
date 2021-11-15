@@ -1,7 +1,128 @@
-﻿
+﻿@model DBCovid.models.NhanVienYTe
 @{
     ViewBag.Title = "capnhatttnhanvienyte";
 }
 
-<h2>capnhatttnhanvienyte</h2>
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <!-- The Modal -->
+    @{
+        if (ViewBag.message != "" && ViewBag.message != null)
+        {
+            <script>
+                var mgs = @Html.Raw(Json.Encode(ViewBag.message));
+                $(document).ready(function () {
+                    $("#patien-modal-body").text(mgs);
+                    if (mgs != null && mgs != "") $("#patient-modal").modal();
+                    mgs = null;
+                })
+            </script>
+            <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin bệnh nhân</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="patien-modal-body">
 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Cập nhật thông tin nhân viên Y Tế
+            </h4>
+        </div>
+        <div class="container__page-content">
+            @using (Html.BeginForm("capNhatNhanVienYte", "NhanVienYTe", FormMethod.Post))
+            {
+                <div class="row">
+                    <input id="ID" type="hidden" value="@Model.ID" />
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
+                            @Html.Label("Tên nhân viên", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.ten, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Giới tính", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.gioiTinh, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Ngày sinh", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.ngaySinh, "{0:yyyy-MM-dd}", new { @class = "form__import-select", @type = "date" })
+
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số điện thoại bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.sdt, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số năm kinh nghiệm", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.namKinhNghiem, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
+                        </div>
+                    </div>
+
+                    <div class="col l-8 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Địa chỉ", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
+                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
+
+                        </div>
+                    </div>
+
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Vị trí làm việc", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.DropDownListFor(model=>model.viTriLamViecID, (IEnumerable<SelectListItem>)ViewBag.viTriLamViec, "Vị trí làm việc", new { @class = "form__import-select" })
+
+                        </div>
+                    </div>
+                    <div class="col l-8 m-6 c-12">
+                        <div class="form__import-item">
+                            @Html.Label("Số nhà/thôn xóm", htmlAttributes: new { @class = "form__import-label" })
+                            @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-primary btn__save btn-submit" type="submit">
+                        Lưu thông tin
+                    </button>
+                    <button class="btn btn__reset btn-submit btn-default" type="reset">Đặt lại</button>
+                    <a class="btn btn__reset btn-submit btn-default" href="nhan-vien-y-te/tim-kiem-nhan-vien-y-te">hủy</a>
+                </div>
+
+            }
+        </div>
+    </div>
+
+</div>
