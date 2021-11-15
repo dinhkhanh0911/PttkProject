@@ -19,6 +19,10 @@ namespace PttkProject.DatabaseDAO
             try
             {
                 var list = nguoiDung.ToList();
+                foreach (var it in list)
+                {
+                    it.viTriLamViec = viTriLamViec.Find(it.viTriLamViecID);
+                }
                 return list;
             }
             catch(Exception e)

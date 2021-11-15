@@ -76,6 +76,10 @@
     <Compile Include="Migrations\202111150442345_capnhat.designer.cs">
       <DependentUpon>202111150442345_capnhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111151212127_themcode.cs" />
+    <Compile Include="Migrations\202111151212127_themcode.designer.cs">
+      <DependentUpon>202111151212127_themcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="models\BenhAn.cs" />
     <Compile Include="models\BenhNhan.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111150442345_capnhat.resx">
       <DependentUpon>202111150442345_capnhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111151212127_themcode.resx">
+      <DependentUpon>202111151212127_themcode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

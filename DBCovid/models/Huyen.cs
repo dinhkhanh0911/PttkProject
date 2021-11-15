@@ -17,6 +17,7 @@ namespace DBCovid.models
         [Required]
         public string tenHuyen { get; set; }
         public string moTa { get; set; }
+        public int code { get; set; }
         public int tinhID { get; set; }
         [ForeignKey("tinhID")]
         public virtual Tinh tinh { get; set; }

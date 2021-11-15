@@ -74,8 +74,13 @@ function xem(id) {
             </div>
             <div class="modal-group">
             <label class="modal-lable">Địa chỉ:</label>
-            <label class="modal-value"></label>
+            <label class="modal-value">${data.diaChiChiTiet+data.xa.tenXa+data.xa.huyen.tenHuyen+data.xa.huyen.tinh.tenTinh}label>
             </div>
+            <div class="modal-group">
+            <label class="modal-lable">Vị trí làm việc:</label>
+            <label class="modal-value">${data.viTriLamViec.tenViTri}</label>
+            </div>
+            
             <div class="modal-group">
             <label class="modal-lable">Số điện thoại:</label>
             <label class="modal-value">${data.sdt || "Không có"}</label>
