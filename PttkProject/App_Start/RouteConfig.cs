@@ -141,6 +141,27 @@ namespace PttkProject
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            /*Người dùng*/
+            routes.MapRoute(
+                name: "QuanLyNguoiDung",
+                url: "nguoi-dung/index",
+                defaults: new { controller = "NguoiDung", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "ThemNguoiDung",
+                url: "nguoi-dung/them-nguoi-dung",
+                defaults: new { controller = "NguoiDung", action = "themnguoidung", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "CapNhatTTNguoiDung",
+                url: "nguoi-dung/cap-nhat-tt-nguoi-dung",
+                defaults: new { controller = "NguoiDung", action = "suanguoidung", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "TimKiemNguoiDung",
+                url: "nguoi-dung/tim-kiem-nguoi-dung",
+                defaults: new { controller = "NguoiDung", action = "timkiemnguoidung", id = UrlParameter.Optional }
+            );
         }
     }
 }

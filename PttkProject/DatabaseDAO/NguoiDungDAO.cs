@@ -14,6 +14,11 @@ namespace PttkProject.DatabaseDAO
         {
             return nguoiDung.Where(s=>s.ID==id).FirstOrDefault();
         }
+        public void themNguoiDung(NguoiDung nd)
+        {
+            nguoiDung.Add(nd);
+            SaveChanges();
+        }
         public void capNhatNguoiDung(NguoiDung nd)
         {
             Entry(nd).State = EntityState.Modified;

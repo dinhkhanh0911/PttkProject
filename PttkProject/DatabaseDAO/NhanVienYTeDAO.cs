@@ -19,6 +19,17 @@ namespace PttkProject.DatabaseDAO
         {
             return nhanVienYTe.Where(s=>s.ID==id).FirstOrDefault();
         }
+        public bool themNhanVienYTe(NhanVienYTe nv)
+        {
+            try
+            {
+                nhanVienYTe.Add(nv);
+                SaveChanges();
+                return true;
+            }
+            catch(Exception e) { return false; }
+            
+        }
         public void capNhatTTNhanVien(NhanVienYTe nv)
         {
             Entry(nv).State = EntityState.Modified;
