@@ -481,6 +481,7 @@
     <Compile Include="Controllers\PhongBenhController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\XuatDuLieuController.cs" />
     <Compile Include="DatabaseDAO\BenhAnDAO.cs" />
     <Compile Include="DatabaseDAO\BenhNhanDAO.cs" />
     <Compile Include="DatabaseDAO\DBIO.cs" />
@@ -502,10 +503,13 @@
     <Content Include="Assets\css\reponsive.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\js\capNhatBenhAn.js" />
+    <Content Include="Assets\js\timKiemNguoiDung.js" />
     <Content Include="Assets\js\themBenhAn.js" />
     <Content Include="Assets\js\themThongTinDieuTri.js" />
     <Content Include="Assets\js\themThongTinTruyVet.js" />
     <Content Include="Assets\js\timKiemBenhNhan.js" />
+    <Content Include="Assets\js\timKiemNvYTe.js" />
+    <Content Include="Assets\js\timKiemPhongBenh.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -762,6 +766,9 @@
     <Content Include="Views\ThongKe\thongkecatuvong.cshtml" />
     <Content Include="Views\ThongKe\thongkecaduongtinhtrolai.cshtml" />
     <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\XuatDuLieu\baocaocanhiem.cshtml" />
+    <Content Include="Views\XuatDuLieu\baocaocatuvong.cshtml" />
+    <Content Include="Views\XuatDuLieu\baocaocakhoibenh.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

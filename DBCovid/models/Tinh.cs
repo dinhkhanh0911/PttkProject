@@ -16,6 +16,7 @@ namespace DBCovid.models
         public int ID { get; set; }
         [Required]
         public string tenTinh { get; set; }
+        public int code { get; set; }
         public string moTa { get; set; }
         public virtual IEnumerable<Huyen> Huyen { get; set; }
     }

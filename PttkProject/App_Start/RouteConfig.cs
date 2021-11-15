@@ -115,6 +115,11 @@ namespace PttkProject
                 url: "phong-benh/tim-kiem-phong-benh",
                 defaults: new { controller = "PhongBenh", action = "timkiemphong" }
             );
+            routes.MapRoute(
+                name: "CapNhatPhongBenh",
+                url: "phong-benh/cap-nhat-phong-benh/{id}",
+                defaults: new { controller = "PhongBenh", action = "suaphong", id = UrlParameter.Optional }
+            );
             /*Nhân viên y tế*/
             routes.MapRoute(
                 name: "QuanLyNhanVienYTe",
@@ -154,7 +159,7 @@ namespace PttkProject
             );
             routes.MapRoute(
                 name: "CapNhatTTNguoiDung",
-                url: "nguoi-dung/cap-nhat-tt-nguoi-dung",
+                url: "nguoi-dung/cap-nhat-tt-nguoi-dung/{id}",
                 defaults: new { controller = "NguoiDung", action = "suanguoidung", id = UrlParameter.Optional }
             );
             routes.MapRoute(

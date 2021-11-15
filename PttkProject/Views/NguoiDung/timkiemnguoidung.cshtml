@@ -3,5 +3,68 @@
     ViewBag.Title = "timkiemnguoidung";
 }
 
-<h2>timkiemnguoidung</h2>
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__form-fullWidth">
+        <div class="container__page-fullWidth">
+            <div class="name__page">
+                <h4 class="name__page-tilte">Tìm kiếm bệnh nhân</h4>
+            </div>
 
+            <div class="container__page-content">
+                @using (Html.BeginForm("timKiem", "NguoiDung", FormMethod.Post))
+                {
+                    <div class="search__container">
+                        <input class="search__input" id="searchInput" name="search" placeholder="Tìm kiếm" />
+                        <button class="btn btn-primary btn-search btn-submit" id="searchBtn">Tìm kiếm</button>
+                    </div>
+                }
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Số cccd</th>
+                            <th>Giới tính</th>
+                            <th>Nơi ở</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyUser">
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a href="#">Previous</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">4</a></li>
+                        <li class="page-item"><a href="#" class="page-link">5</a></li>
+                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thông tin người dùng</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="patient-modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Assets/js/timKiemNguoiDung.js"></script>

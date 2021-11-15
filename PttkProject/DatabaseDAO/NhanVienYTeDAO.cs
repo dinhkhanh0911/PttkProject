@@ -30,6 +30,30 @@ namespace PttkProject.DatabaseDAO
             catch(Exception e) { return false; }
             
         }
+        public List<NhanVienYTe> timKiemNvYTe(string name)
+        {
+            try
+            {
+                var list = (from s in nhanVienYTe
+                            where s.ten.Contains(name)
+                            select s).ToList();
+                foreach(var it in list)
+                {
+                    it.viTriLamViec = viTriLamViec.Find(it.viTriLamViecID);
+                }
+                return list;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public void xoaNvYTe(int id)
+        {
+            var nv = nhanVienYTe.Where(s => s.ID == id).FirstOrDefault();
+            Entry(nv).State = EntityState.Deleted;
+            SaveChanges();
+        }
         public void capNhatTTNhanVien(NhanVienYTe nv)
         {
             Entry(nv).State = EntityState.Modified;
