@@ -17,6 +17,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
+
+    <!--thư viện Chart.JS vẽ Đồ thị-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
+    <!--import JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Custom styles for this template-->
     <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/Assets/css/base.css" rel="stylesheet">
@@ -41,7 +46,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        
+
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -88,7 +93,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-item__link">
+                            <a href="../ThongKe/Index" class="nav-item__link">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                                 <span>Thống kê</span>
                             </a>
@@ -182,71 +187,71 @@
                             <label for="navbar-checkbox" class="overlay"></label>
 
                             @*pc navbar*@
-                        <ul class="navbar-nav sidebar-2 body-navbar" id="accordionSidebar">
-                            <li class="nav-item">
-                                <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
-                                    <h6>Trang chủ</h6>
-                                </a>
-                            </li>
-                            @*Divider*@
-                            <div class="border-bottom body-navbar__border-bottom"></div>
-                            <li class="nav-item">
-                                <a href="/benh-nhan/index" class="nav-item__link">
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                    <span>Quản lý bệnh nhân</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/phong-benh/index" class="nav-item__link">
-                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                                    <span>Quản lý phòng bệnh</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/nhan-vien-y-te/index" class="nav-item__link">
-                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    <span>Quản lý nhân viên y tế</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item__link">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    <span>Thống kê</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-item__link">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    <span>Xuất dữ liệu</span>
-                                </a>
-                            </li>
-                            <div class="border-bottom body-navbar__border-bottom"></div>
-                            <li class="nav-item">
-                                <a href="../User/Login" class="nav-item__link">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    <span>Đăng xuất</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../User/ChangePassword" class="nav-item__link">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                    <span>Đổi mật khẩu</span>
-                                </a>
-                            </li>
-                        </ul>
+                            <ul class="navbar-nav sidebar-2 body-navbar" id="accordionSidebar">
+                                <li class="nav-item">
+                                    <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
+                                        <h6>Trang chủ</h6>
+                                    </a>
+                                </li>
+                                @*Divider*@
+                                <div class="border-bottom body-navbar__border-bottom"></div>
+                                <li class="nav-item">
+                                    <a href="/benh-nhan/index" class="nav-item__link">
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        <span>Quản lý bệnh nhân</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/phong-benh/index" class="nav-item__link">
+                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                        <span>Quản lý phòng bệnh</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/nhan-vien-y-te/index" class="nav-item__link">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        <span>Quản lý nhân viên y tế</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/thong-ke/index" class="nav-item__link">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        <span>Thống kê</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-item__link">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        <span>Xuất dữ liệu</span>
+                                    </a>
+                                </li>
+                                <div class="border-bottom body-navbar__border-bottom"></div>
+                                <li class="nav-item">
+                                    <a href="../User/Login" class="nav-item__link">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="../User/ChangePassword" class="nav-item__link">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        <span>Đổi mật khẩu</span>
+                                    </a>
+                                </li>
+                            </ul>
                             <div class="border-left"></div>
 
                             @RenderBody()
                         </div>
                     </div>
-                    
+
 
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-            
+
         </div>
         <!-- End of Content Wrapper -->
 
@@ -280,6 +285,11 @@
     <!-- Bootstrap core JavaScript-->
     <script src="~/Content/vendor/jquery/jquery.min.js"></script>
     <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--DataTable-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <!--/.DataTable-->
 
     <!-- Core plugin JavaScript-->
     <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -16,7 +16,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "Home",
                 url: "trang-chu/index",
-                defaults: new { controller = "Home", action = "Index"}
+                defaults: new { controller = "Home", action = "Index" }
             );
             routes.MapRoute(
                 name: "QuanLyBenhNhan",
@@ -41,7 +41,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "SuaThongTinBenhNhan",
                 url: "benh-nhan/cap-nhat-thong-tin-benh-nhan/{ID}",
-                defaults: new { controller = "BenhNhan", action = "capnhatTTbenhnhan"}
+                defaults: new { controller = "BenhNhan", action = "capnhatTTbenhnhan" }
             );
             routes.MapRoute(
                 name: "XoaBenhNhan",
@@ -141,11 +141,6 @@ namespace PttkProject
                url: "nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te",
                defaults: new { controller = "NhanVienYTe", action = "capnhatttnhanvienyte" }
            );
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
             /*Người dùng*/
             routes.MapRoute(
                 name: "QuanLyNguoiDung",
@@ -166,6 +161,37 @@ namespace PttkProject
                 name: "TimKiemNguoiDung",
                 url: "nguoi-dung/tim-kiem-nguoi-dung",
                 defaults: new { controller = "NguoiDung", action = "timkiemnguoidung" }
+            );
+            /*Thống kê*/
+            routes.MapRoute(
+                name: "ThongKe",
+                url: "thong-ke/index",
+                defaults: new { controller = "ThongKe", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaNhiem",
+                url: "thong-ke/thong-ke-ca-nhiem",
+                defaults: new { controller = "ThongKe", action = "thongkecanhiem" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaKhoiBenh",
+                url: "thong-ke/thong-ke-ca-khoi-benh",
+                defaults: new { controller = "ThongKe", action = "thongkecakhoibenh" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaTuVong",
+                url: "thong-ke/thong-ke-ca-tu-vong",
+                defaults: new { controller = "ThongKe", action = "thongkecatuvong" }
+            );
+            routes.MapRoute(
+                name: "ThongKeCaDuongTinhTroLai",
+                url: "thong-ke/thong-ke-ca-duong-tinh-tro-lai",
+                defaults: new { controller = "ThongKe", action = "thongkecaduongtinhtrolai" }
+            );
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
