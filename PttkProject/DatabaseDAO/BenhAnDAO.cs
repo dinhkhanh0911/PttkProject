@@ -30,7 +30,7 @@ namespace PttkProject.DatabaseDAO
         {
             try
             {
-                BenhAn BA = benhAn.Where(s => s.ID == id).FirstOrDefault();
+                BenhAn BA = benhAn.Find(id);
                 return BA;
             }
             catch(Exception e)
@@ -43,6 +43,18 @@ namespace PttkProject.DatabaseDAO
             try
             {
                 var list = benhAn.ToList();
+                return list;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public List<BenhAn> layDSBenhAn(int idBenhNhan)
+        {
+            try
+            {
+                var list = benhAn.Where(s=>s.benhNhanID==idBenhNhan).ToList();
                 return list;
             }
             catch (Exception e)
