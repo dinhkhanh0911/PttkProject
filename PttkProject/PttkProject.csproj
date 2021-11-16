@@ -511,7 +511,7 @@
     <Content Include="Assets\css\reponsive.css" />
     <Content Include="Assets\css\style.css" />
     <Content Include="Assets\js\capNhatBenhAn.js" />
-    <Content Include="Assets\js\thongKeCaNhiem.js" />
+    <Content Include="Assets\js\thongKe.js" />
     <Content Include="Assets\js\timKiemNguoiDung.js" />
     <Content Include="Assets\js\themBenhAn.js" />
     <Content Include="Assets\js\themThongTinDieuTri.js" />
