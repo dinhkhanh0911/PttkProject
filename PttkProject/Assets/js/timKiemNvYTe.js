@@ -33,7 +33,7 @@ $('form').submit(function (event) {
                                     <a onclick="xem(${item.ID})" class="see" title="Xem" >
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
-                                    <a href="nguoi-dung/cap-nhat-tt-nguoi-dung/${item.ID}" class="edit" title="Sửa">
+                                    <a href="/nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te/${item.ID}" class="edit" title="Sửa">
                                         <i class="fa fa-wrench" aria-hidden="true"></i>
                                     </a>
                                     <a onclick="xoa(${item.ID})" class="delete" title="Xóa">

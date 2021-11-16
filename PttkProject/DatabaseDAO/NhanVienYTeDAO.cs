@@ -35,7 +35,7 @@ namespace PttkProject.DatabaseDAO
             try
             {
                 var list = (from s in nhanVienYTe
-                            where s.ten.Contains(name)
+                            where s.ten.Contains(name) || s.CMND.Contains(name)
                             select s).ToList();
                 foreach(var it in list)
                 {
