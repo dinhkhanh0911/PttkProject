@@ -111,15 +111,11 @@
         }).done(function (response) {
             if (response.code == 200) {
                 console.log(response.data);
-                //let data1 = response.data.map(Object.values);
-                var data1 = response.data.map(function (obj) {
-                    return Object.keys(obj).sort().map(function (key) {
-                        return obj[key];
-                    });
-                });
+                let data1 = response.data.map(obj => Object.values(obj));
                 $("#datatable").DataTable().clear();
                 $("#datatable").DataTable().rows.add(data1);
                 $("#datatable").DataTable().draw();
+
             }
             else {
             }

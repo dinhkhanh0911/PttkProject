@@ -54,7 +54,7 @@ namespace PttkProject.Controllers
                                 phongBenh = _phongBenh.tenPhong,
                                 trangThai = _trangThai.tinhTrang,
                                 
-                            }).GroupBy(x=>x.ID).ToList();     
+                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();     
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
