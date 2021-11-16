@@ -231,6 +231,7 @@ namespace PttkProject.Controllers
         {
             int id = bn.benhNhanID;
             bool check = benhAn.capNhatTTBenhAn(bn);
+            phong.capNhatSoGiuong();
             string mgs;
             if (check) mgs = "chỉnh sửa thành công";
             else mgs = "chỉnh sửa thất bại";

@@ -81,7 +81,8 @@ namespace PttkProject.DatabaseDAO
                             soDienThoai = _benhNhan.sdtBenhNhan,
                             ngayNhiemBenh = _benhAn.ngayNhapVien,
                             phongBenh = _phongBenh.tenPhong,
-                            trangThai = _benhAn.trangThai
+                            trangThai = _benhAn.trangThai.tinhTrang,
+                            thoiGian = startdate + " - " + enddate
                         }).ToList();
             return list;
         }
@@ -104,7 +105,8 @@ namespace PttkProject.DatabaseDAO
                             soDienThoai = _benhNhan.sdtBenhNhan,
                             ngayNhiemBenh = _benhAn.ngayNhapVien,
                             phongBenh = _phongBenh.tenPhong,
-                            trangThai = _benhAn.trangThai
+                            trangThai = _benhAn.trangThai.tinhTrang,
+                            thoiGian = startdate + " - " + enddate
                         }).ToList();
             return list;
         }

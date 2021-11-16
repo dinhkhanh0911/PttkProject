@@ -50,6 +50,19 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
+        public void capNhatSoGiuong()
+        {
+            foreach(var s in phongBenh)
+            {
+                s.soGiuongHienTai = (from ba in benhAn 
+                                     join tt in trangThai
+                                     on ba.trangThaiID equals tt.ID
+                                     where tt.ID==1
+                                     select ba).ToList().Count;
+                Entry(s).State = EntityState.Modified;
+                SaveChanges();
+            }
+        }
         public bool capNhatPhongBenh(PhongBenh pb)
         {
             try
