@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container-fluid">
+    <div class="card">
+
+        <div class="row"  style="padding:10%">
+            <div class="col-sm-4">
+                @using (Html.BeginForm("xuatBaoCao", "XuatDuLieu", FormMethod.Post))
+                {
+                    <h4>Chọn khoảng thời gian</h4>
+                    <label for="startdate">Ngày bắt đầu:</label>
+                    <input type="date" id="startdate" name="startdate">
+                    <br />
+                    <label for="enddate">Ngày kết thúc:</label>
+                    <input type="date" id="enddate" name="enddate">
+                    <br />
+                    <button class="btn btn-outline-success" type="submit">Hiển thị</button>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

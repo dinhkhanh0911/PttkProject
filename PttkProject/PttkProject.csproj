@@ -778,6 +778,7 @@
     <Content Include="Views\XuatDuLieu\baocaocanhiem.cshtml" />
     <Content Include="Views\XuatDuLieu\baocaocatuvong.cshtml" />
     <Content Include="Views\XuatDuLieu\baocaocakhoibenh.cshtml" />
+    <Content Include="Views\XuatDuLieu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
