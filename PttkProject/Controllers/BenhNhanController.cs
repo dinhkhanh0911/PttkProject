@@ -3,6 +3,7 @@ using PttkProject.DatabaseDAO;
 using PttkProject.models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -213,7 +214,7 @@ namespace PttkProject.Controllers
                 setViewBagInfo(BA.ID, id);
                 return View(BA);
             }
-            return Redirect("/benh-nhan/cap-nhat-thong-tin-benh-nhan/" + id.ToString());
+            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id, mgs = "Không có bệnh án" });
         }
         public void setViewBagInfo(int id, int idBN)
         {
@@ -324,17 +325,7 @@ namespace PttkProject.Controllers
             }
             return Redirect("ImportInformation");
         }
-        [HttpPost]
-        public ActionResult XuatThongTinBenhAn(int id)
-        {
-            if (ModelState.IsValid)
-            {
-                BenhAn ba = benhAn.layBenhAn(id);
-                var file = xuatBenhAn(ba);
-                return File(file, "xlsx/xls", "Phổ điểm.xlsx");
-            }
-            return RedirectToAction("timkiembenhnhan", "BenhNhan");
-        }
+        
         public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
         {
             if (ModelState.IsValid)
@@ -388,22 +379,6 @@ namespace PttkProject.Controllers
             ViewBag.xas = new SelectList(xas, "ID", "tenXa");
 
         }
-        private byte[] xuatBenhAn(BenhAn ba)
-        {
-            //using (var excelPackage = new ExcelPackage(new FileInfo("C:\\Users\\toank\\toan2k.xlsx")))
-            //{
-            //    // Tạo author cho file Excel
-            //    // Tạo title cho file Excel
-            //    excelPackage.Workbook.Properties.Title = "Phổ điểm TLU";
-            //    int count_ws = 0;
-            //    excelPackage.Workbook.Worksheets.Add((count_ws + 1) + "-" + item.short_code);
-            //    ExcelWorksheet workSheet = excelPackage.Workbook.Worksheets[count_ws];
-
-            //    var file = excelPackage.GetAsByteArray();
-            //    excelPackage.Dispose();
-            //    return file;
-            //}
-            return null;
-        }
+        
     }
 }

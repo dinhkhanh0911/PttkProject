@@ -266,3 +266,10 @@ function themThongTinDieuTri() {
     var benhAnID = document.querySelector('#ID').value;
     window.location.href = `/benh-nhan/them-thong-tin-dieu-tri/${benhAnID}`
 }
+function xuatTTTruyVet(id) {
+
+    window.location = "/XuatDuLieu/xuatTTTruyVet/" + id;
+}
+function xuatTTDieuTri(id) {
+    window.location = "/XuatDuLieu/XuatTTTDieuTri/" + id;
+}

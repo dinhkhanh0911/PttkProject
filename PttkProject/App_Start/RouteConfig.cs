@@ -16,7 +16,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "Home",
                 url: "trang-chu/index",
-                defaults: new { controller = "Home", action = "Index"}
+                defaults: new { controller = "Home", action = "Index" }
             );
             routes.MapRoute(
                 name: "QuanLyBenhNhan",
@@ -41,7 +41,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "SuaThongTinBenhNhan",
                 url: "benh-nhan/cap-nhat-thong-tin-benh-nhan/{ID}",
-                defaults: new { controller = "BenhNhan", action = "capnhatTTbenhnhan"}
+                defaults: new { controller = "BenhNhan", action = "capnhatTTbenhnhan" }
             );
             routes.MapRoute(
                 name: "XoaBenhNhan",
@@ -193,7 +193,6 @@ namespace PttkProject
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-            
         }
     }
 }

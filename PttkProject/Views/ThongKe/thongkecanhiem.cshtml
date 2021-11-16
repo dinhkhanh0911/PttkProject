@@ -5,56 +5,27 @@
 }
 <script>
     $(document).ready(function () {
-        $('#datatable').DataTable({
-            "language": {
-                "search": "Tìm kiếm",
-                "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
-                "zeroRecords": "Không tìm thấy dữ liệu",
-                "info": "Hiển thị _PAGE_ trên _PAGES_",
-                "infoEmpty": "Không có dữ liệu tương ứng",
-                "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
-                "paginate": {
-                    "first": "Đầu",
-                    "last": "Cuối",
-                    "next": "Sau",
-                    "previous": "Trước"
-                },
-            }
-        });
-        $(function () {
-            $.ajax({
-                type: "POST",
-                url: "/ThongKe/thongKeCaNhiem",
-                data: '{}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: OnSuccess,
-                failure: function (response) {
-                    alert(response.d);
-                },
-                error: function (response) {
-                    alert(response.d);
-                }
-            });
-        });
-        function OnSuccess(response) {
-            $("#datatable").DataTable(
-                {
-                    bLengthChange: true,
-                    lengthMenu: [[5, 10, -1], [5, 10, "All"]],
-                    bFilter: true,
-                    bSort: true,
-                    bPaginate: true,
-                    data: response,
-                    columns: [{ 'data': 'CustomerID' },
-                    { 'data': 'ContactName' },
-                    { 'data': 'City' },
-                    { 'data': 'Country' }]
-                });
-        };
+        //$('#datatable').DataTable({
+        //    "language": {
+        //        "search": "Tìm kiếm",
+        //        "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
+        //        "zeroRecords": "Không tìm thấy dữ liệu",
+        //        "info": "Hiển thị _PAGE_ trên _PAGES_",
+        //        "infoEmpty": "Không có dữ liệu tương ứng",
+        //        "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
+        //        "paginate": {
+        //            "first": "Đầu",
+        //            "last": "Cuối",
+        //            "next": "Sau",
+        //            "previous": "Trước"
+        //        },
+        //    }
+        //});
+        
     });
 </script>
 <script>
+    //đồ thị
     $(document).ready(function () {
         const labels = [
             'Tháng 1',
@@ -95,27 +66,27 @@
 
     <div class="container-fluid">
         <div class="card">
-            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
-            {
-            <div class="form">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <canvas id="myChart2" width="100%"></canvas>
+            
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <canvas id="myChart2" width="100%"></canvas>
+                        </div>
+                        <div class="col-sm-4">
+                            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
+                            {
+                                <h4>Chọn khoảng thời gian</h4>
+                                <label for="startdate">Ngày bắt đầu:</label>
+                                <input type="date" id="startdate" name="startdate">
+                                <br />
+                                <label for="enddate">Ngày kết thúc:</label>
+                                <input type="date" id="enddate" name="enddate">
+                                <br />
+                                <button class="btn btn-outline-success" type="submit">Hiển thị</button>
+                            }
+                            </div>
                     </div>
-                    <div class="col-sm-4">
-                        <h4>Chọn khoảng thời gian</h4>
-                        <label for="startdate">Ngày bắt đầu:</label>
-                        <input type="date" id="startdate" name="startdate">
-                        <br />
-                        <label for="startdate">Ngày kết thúc:</label>
-                        <input type="date" id="enddate" name="enddate">
-                        <br />
-                        <button id="hienthi" class="btn btn-outline-success" type="submit">Hiển thị</button>
-                    </div>
-                </div>
-            </div>
-            }
-            </div>
+            
+        </div>
     </div>
     <!-- /.chat-->
     <!--Datatable-->
@@ -123,15 +94,19 @@
         <table id="datatable">
             <thead>
                 <tr>
-                    <th>STT</th>
                     <th>Họ tên</th>
                     <th>Ngày sinh</th>
-                    <th>Địa chỉ</th>
-                    <th>Chức năng</th>
+                    <th>Số CMND</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày nhiễm bệnh</th>
+                    <th>Phòng bệnh</th>
+                    <th>Trạng thái</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody_thongke">
                 <tr>
+                    <td>STT</td>
+                    <td>STT</td>
                     <td>STT</td>
                     <td>STT</td>
                     <td>STT</td>
