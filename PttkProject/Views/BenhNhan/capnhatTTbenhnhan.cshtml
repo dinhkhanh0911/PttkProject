@@ -48,7 +48,7 @@
             @using (Html.BeginForm("Update", "BenhNhan", FormMethod.Post))
             {
                 <div class="row">
-                    <input id="ID" type="hidden" value="@Model.ID"/>
+                    <input id="ID" type="hidden" value="@Model.ID" />
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
@@ -130,14 +130,23 @@
 
             }
             <div class="btn-container">
-                <a href="/benh-nhan/them-benh-an/@Model.ID" class="btn btn-primary btn__add btn-submit">
-                    Thêm bệnh án
-                </a>
-                <a href="/benh-nhan/cap-nhat-benh-an/@Model.ID" class="btn btn-primary btn-submit">
-                    Cập nhật bệnh án
-                </a>
+                <div  style="padding-right:25px">
+                    <a href="/benh-nhan/them-benh-an/@Model.ID" class="btn btn-primary btn__add btn-submit">
+                        Thêm bệnh án
+                    </a>
+                </div>
+                <div>
+                    @Html.DropDownList("selectBenhAn", (IEnumerable<SelectListItem>)ViewBag.ba, "Sửa bệnh án", htmlAttributes: new { @class = "form__import-select col-md-8", @onchange = "update(this)", @id = "selectBenhAn" })
+                </div>
+
             </div>
+            
         </div>
     </div>
 
 </div>
+<script>
+    function update(res) {
+        if(res.value!=null)window.location ="/benh-nhan/cap-nhat-benh-an/"+ res.value;
+    }
+</script>
