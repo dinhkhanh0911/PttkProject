@@ -40,32 +40,22 @@ namespace PttkProject.Controllers
                 var list = (from _benhAn in dbcontext.benhAn
                             join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
                             join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
+                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
                             where DateTime.Compare((DateTime)_benhAn.ngayNhapVien, sDate) >= 0
                             && DateTime.Compare((DateTime)_benhAn.ngayNhapVien, eDate) <= 0
                             select new
                             {
+                                ID = _benhNhan.ID,
                                 tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh,
+                                //ngaySinh = _benhNhan.ngaySinh,
                                 CMND = _benhNhan.CMND,
                                 soDienThoai = _benhNhan.sdtBenhNhan,
                                 ngayNhiemBenh = _benhAn.ngayNhapVien,
                                 phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai
-                            }).ToList();
-                var list2 = (from _benhAn in dbcontext.benhAn
-                             join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
-                             join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                             select new
-                             {
-                                 tenBenhNhan = _benhNhan.ten,
-                                 ngaySinh = _benhNhan.ngaySinh.ToString(),
-                                 CMND = _benhNhan.CMND,
-                                 soDienThoai = _benhNhan.sdtBenhNhan,
-                                 ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
-                                 phongBenh = _phongBenh.tenPhong,
-                                 trangThai = _benhAn.trangThai.tinhTrang
-                             }).ToList();
-                return Json(new { code = 200, data = list2 }, JsonRequestBehavior.AllowGet);
+                                trangThai = _trangThai.tinhTrang,
+                                
+                            }).GroupBy(x=>x.ID).ToList();     
+                return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
             {
@@ -93,13 +83,14 @@ namespace PttkProject.Controllers
                             && _benhAn.trangThai.ID == 2
                             select new
                             {
+                                ID = _benhNhan.ID,
                                 tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh,
+                                ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
                                 CMND = _benhNhan.CMND,
                                 soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
+                                ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
                                 phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai
+                                trangThai = _benhAn.trangThai.tinhTrang
                             }).ToList();
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }catch(Exception e)
@@ -127,13 +118,14 @@ namespace PttkProject.Controllers
                             where _benhAn.trangThai.ID == 3
                             select new
                             {
+                                ID = _benhNhan.ID,
                                 tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh,
+                                ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
                                 CMND = _benhNhan.CMND,
                                 soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
+                                ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
                                 phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai
+                                trangThai = _benhAn.trangThai.tinhTrang
                             }).ToList();
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
@@ -161,41 +153,21 @@ namespace PttkProject.Controllers
                                      where _benhAn.benhNhanID == a.ID
                                      select new
                                      {
-                                         tenBenhNhan = a.ten,
-                                         ngaySinh = a.ngaySinh,
-                                         CMND = a.CMND,
-                                         soDienThoai = a.sdtBenhNhan,
-                                         ngayNhiemBenh = _benhAn.ngayNhapVien,
-                                         phongBenh = _phongBenh.tenPhong,
-                                         trangThai = _benhAn.trangThai
+                                         tenBenhNhan = a.ten
                                      }
                                        ).Count();
                     if (soLuongBA > 1)
                     {
                         listkq.Add(a);
                     }
-                }
-                var lst = listkq;
-                //lấy các thông tin cho vào datatable
-                var list = (from _benhNhan in listkq
-                            join _benhAn in dbcontext.benhAn.ToList() on _benhNhan.ID equals _benhAn.benhNhanID
-                            join _phongBenh in dbcontext.phongBenh.ToList() on _benhAn.phongBenhID equals _phongBenh.ID
-                            select new
-                            {
-                                ID = _benhNhan.ID,
-                                tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh,
-                                CMND = _benhNhan.CMND,
-                                soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
-                                phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai
-                            }).GroupBy(x=> x.ID).ToList();
-                return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
+
+                }                
+               return Json(new { code = 200, data = listkq }, JsonRequestBehavior.AllowGet);
+                
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                return Json(new { code = 404}, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
             }
         }
     }
