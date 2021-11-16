@@ -33,10 +33,10 @@ namespace PttkProject.DatabaseDAO
                         {
                             ID = _benhNhan.ID,
                             tenBenhNhan = _benhNhan.ten,
-                            //ngaySinh = _benhNhan.ngaySinh,
+                            ngaySinh = _benhNhan.ngaySinh.ToString(),
                             CMND = _benhNhan.CMND,
                             soDienThoai = _benhNhan.sdtBenhNhan,
-                            ngayNhiemBenh =_benhAn.ngayNhapVien,
+                            ngayNhiemBenh =_benhAn.ngayNhapVien.ToString(),
                             phongBenh = _phongBenh.tenPhong,
                             trangThai = _trangThai.tinhTrang,
 
@@ -60,10 +60,10 @@ namespace PttkProject.DatabaseDAO
                         {
                             ID = _benhNhan.ID,
                             tenBenhNhan = _benhNhan.ten,
-                            // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
+                            ngaySinh = _benhNhan.ngaySinh.ToString(),
                             CMND = _benhNhan.CMND,
                             soDienThoai = _benhNhan.sdtBenhNhan,
-                            ngayNhiemBenh = _benhAn.ngayNhapVien,
+                            ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
                             phongBenh = _phongBenh.tenPhong,
                             trangThai = _trangThai.tinhTrang
                         }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
@@ -84,10 +84,10 @@ namespace PttkProject.DatabaseDAO
                         {
                             ID = _benhNhan.ID,
                             tenBenhNhan = _benhNhan.ten,
-                            // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
+                            ngaySinh = _benhNhan.ngaySinh.ToString(),
                             CMND = _benhNhan.CMND,
                             soDienThoai = _benhNhan.sdtBenhNhan,
-                            ngayNhiemBenh = _benhAn.ngayNhapVien,
+                            ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
                             phongBenh = _phongBenh.tenPhong,
                             trangThai = _trangThai.tinhTrang
                         }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
@@ -118,6 +118,7 @@ namespace PttkProject.DatabaseDAO
                         {
                             ID = res.ID,
                             ten = res.ten,
+                            ngaySinh = res.ngaySinh.ToString(),
                             CMND = res.CMND,
                             sdtBenhNhan = res.sdtBenhNhan,
                             gioiTinh = res.gioiTinh
