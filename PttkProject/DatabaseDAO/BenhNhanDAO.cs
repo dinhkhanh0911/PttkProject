@@ -63,10 +63,10 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
+        //cái này là cái gì?
         public List<BenhNhan> layDSBenhNhan(string input)
         {
             List<BenhNhan> b = data.benhNhan.Where(x => x.CMND == input || x.ten == input).ToList();
-            
             return b;
         }
         public bool xoaBenhNhan(int ID)
