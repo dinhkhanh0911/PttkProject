@@ -138,8 +138,8 @@ namespace PttkProject
             );
             routes.MapRoute(
                name: "CapNhatTTNhanVienYTe",
-               url: "nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te",
-               defaults: new { controller = "NhanVienYTe", action = "capnhatttnhanvienyte" }
+               url: "nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te/{id}",
+               defaults: new { controller = "NhanVienYTe", action = "capnhatttnhanvienyte", id = UrlParameter.Optional }
            );
             /*Người dùng*/
             routes.MapRoute(
