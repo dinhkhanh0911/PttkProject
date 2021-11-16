@@ -31,7 +31,7 @@ $('form').submit(function (event) {
                                     <a onclick="xem(${item.ID})" class="see" title="Xem" >
                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                     </a>
-                                    <a href="phong-benh/cap-nhat-phong-benh/${item.ID}" class="edit" title="Sửa">
+                                    <a href="/phong-benh/cap-nhat-phong-benh/${item.ID}" class="edit" title="Sửa">
                                         <i class="fa fa-wrench" aria-hidden="true"></i>
                                     </a>
                                     <a onclick="xoa(${item.ID})" class="delete" title="Xóa">
