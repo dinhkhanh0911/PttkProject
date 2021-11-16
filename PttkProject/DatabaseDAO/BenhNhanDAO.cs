@@ -30,6 +30,20 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
+        public BenhNhan layBenhNhan_BA(int idBenhAn)
+        {
+            BenhAn a = benhAn.Find(idBenhAn);
+            try
+            {
+                var s = benhNhan.Find(a.benhNhanID);
+                return s;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+        }
+
         public void capNhatTTBenhNhan(BenhNhan bn)
         {
             data.Entry(bn).State = EntityState.Modified;

@@ -14,13 +14,13 @@
             @using (Html.BeginForm("UpdateBenhAn", "BenhNhan", FormMethod.Post))
             {
                 <div class="row">
-                    @Html.HiddenFor(model => model.ID)
-                    @Html.HiddenFor(model => model.benhNhanID)
+                    <input name="ID" value="@Model.ID" hidden/>
+
 
                 <div class="col l-4 m-6 c-12">
                     <div class="form__import-item">
-                        @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
-                        <input class="form__import-select" value="@Model.ID" readonly />
+                        @Html.Label("Id bệnh nhân", htmlAttributes: new { @class = "form__import-label" })
+                        <input class="form__import-select" value="@Model.benhNhanID" readonly />
                     </div>
                 </div>
 
@@ -138,7 +138,7 @@
             <div class="name__page">
                 <h4 class="name__page-tilte name__page-tilte-button">Thông tin truy vết</h4>
                 <div class="btn-container btn-container-title">
-                    <button class="btn btn-default btn__add btn-submit">
+                    <button class="btn btn-default btn__add btn-submit" onclick="xuatTTTruyVet(@Model.ID)">
                         Xuất file excel
                     </button>
                     <button onclick="themThongTinTruyVet()" class="btn btn-default btn-submit">
@@ -170,7 +170,7 @@
             <div class="name__page">
                 <h4 class="name__page-tilte name__page-tilte-button">Thông tin điều trị</h4>
                 <div class="btn-container btn-container-title">
-                    <button class="btn btn-default btn__add btn-submit">
+                    <button class="btn btn-default btn__add btn-submit" onclick="xuatTTDieuTri(@Model.ID)">
                         Xuất file excel
                     </button>
                     <button onclick="themThongTinDieuTri()" class="btn btn-default btn-submit">

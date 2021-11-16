@@ -26,18 +26,7 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
-        public BenhAn layBenhAn(int id)
-        {
-            try
-            {
-                BenhAn BA = benhAn.Where(s => s.ID == id).FirstOrDefault();
-                return BA;
-            }
-            catch(Exception e)
-            {
-                return null;
-            }
-        }
+       
         
         public bool capNhatTTBenhAn(BenhAn ba)
         {
