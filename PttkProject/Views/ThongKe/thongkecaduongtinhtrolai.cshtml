@@ -4,23 +4,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script>
+
     $(document).ready(function () {
-        //$('#datatable').DataTable({
-        //    "language": {
-        //        "search": "Tìm kiếm",
-        //        "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
-        //        "zeroRecords": "Không tìm thấy dữ liệu",
-        //        "info": "Hiển thị _PAGE_ trên _PAGES_",
-        //        "infoEmpty": "Không có dữ liệu tương ứng",
-        //        "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
-        //        "paginate": {
-        //            "first": "Đầu",
-        //            "last": "Cuối",
-        //            "next": "Sau",
-        //            "previous": "Trước"
-        //        },
-        //    }
-        //});
+        $('#datatable').DataTable({
+            "language": {
+                "search": "Tìm kiếm",
+                "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
+                "zeroRecords": "Không tìm thấy dữ liệu",
+                "info": "Hiển thị _PAGE_ trên _PAGES_",
+                "infoEmpty": "Không có dữ liệu tương ứng",
+                "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
+                "paginate": {
+                    "first": "Đầu",
+                    "last": "Cuối",
+                    "next": "Sau",
+                    "previous": "Trước"
+                },
+            },
+            $.ajax({
+                type: "POST",
+                url: "/ThongKe/thongKeCaDuongTinhTroLai",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }                
+            });
+            columns:
+                [
+                    { 'data': 'ID' },
+                    { 'data': 'ten' },
+                    { 'data': 'ngaySinh' },
+                    { 'data': 'CMND' },
+                    { 'data': 'gioiTinh' },
+                    { 'data': 'sdtBenhNhan' },
+                    { 'data': 'maBHYT'}
+            ]
+            
+        });
 
     });
 </script>
@@ -87,13 +113,13 @@
         <table id="datatable">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Họ tên</th>
                     <th>Ngày sinh</th>
                     <th>Số CMND</th>
+                    <th>Giới tính</th>
                     <th>Số điện thoại</th>
-                    <th>Ngày nhiễm bệnh</th>
-                    <th>Phòng bệnh</th>
-                    <th>Trạng thái</th>
+                    <th>Mã BHYT</th>
                 </tr>
             </thead>
             <tbody id="tbody_thongke">
