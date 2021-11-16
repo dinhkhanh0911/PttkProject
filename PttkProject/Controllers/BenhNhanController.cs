@@ -216,21 +216,22 @@ namespace PttkProject.Controllers
                 setViewBagInfo(BA.ID, id);
                 return View(BA);
             }
-            return RedirectToAction("capnhatbenhan","BenhNhan", new { id = id, mgs = "Không có bệnh án" });
+            return RedirectToAction("capnhatTTbenhnhan", "BenhNhan", new { id = id, mgs = "Không có bệnh án" });
         }
         public void setViewBagInfo(int id, int idBN)
         {
             ViewBag.BenhNhan = benhNhan.layBenhNhan(idBN);
-            List<PhongBenh> p = phong.layDSPhongBenh();
-            ViewBag.phong = new SelectList(p, "ID", "tenPhong");
+            ViewBag.phong = new SelectList(phong.layDSPhongTrong(), "ID", "tenPhong");
+            ViewBag.dsTTDieuTri = benhAn.layDSTTDieuTri(id);
+            ViewBag.dsTTTruyVet = benhAn.layDSTTTruyVet(id);
             ViewBag.trangThai = new SelectList(benhAn.layDSTrangThai(), "ID", "tinhTrang");
-            
         }
         [HttpPost]
         public ActionResult UpdateBenhAn(BenhAn bn)
         {
             int id = bn.benhNhanID;
             bool check = benhAn.capNhatTTBenhAn(bn);
+            phong.capNhatSoGiuong();
             string mgs;
             if (check) mgs = "chỉnh sửa thành công";
             else mgs = "chỉnh sửa thất bại";

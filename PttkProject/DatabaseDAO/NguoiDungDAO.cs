@@ -14,7 +14,7 @@ namespace PttkProject.DatabaseDAO
         {
             return nguoiDung.Where(s=>s.ID==id).FirstOrDefault();
         }
-        public List<NguoiDung> layDSNguoiDung(string name)
+        public List<NguoiDung> timNguoiDung(string name)
         {
             try
             {

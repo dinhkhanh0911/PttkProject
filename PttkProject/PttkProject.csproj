@@ -498,6 +498,9 @@
     <Compile Include="DatabaseDAO\NhanVienYTeDAO.cs" />
     <Compile Include="DatabaseDAO\PhongBenhDAO.cs" />
     <Compile Include="DatabaseDAO\ThongKeDAO.cs" />
+    <Compile Include="DatabaseDAO\TrangThaiDAO.cs" />
+    <Compile Include="DatabaseDAO\TTDieuTriDAO.cs" />
+    <Compile Include="DatabaseDAO\TTTruyVetDAO.cs" />
     <Compile Include="DatabaseDAO\XuatDuLieuDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -513,6 +516,7 @@
     <Content Include="Assets\js\capNhatBenhAn.js" />
     <Content Include="Assets\js\home.js" />
     <Content Include="Assets\js\thongKeCaNhiem.js" />
+    <Content Include="Assets\js\thongKe.js" />
     <Content Include="Assets\js\timKiemNguoiDung.js" />
     <Content Include="Assets\js\themBenhAn.js" />
     <Content Include="Assets\js\themThongTinDieuTri.js" />
@@ -779,6 +783,7 @@
     <Content Include="Views\XuatDuLieu\baocaocanhiem.cshtml" />
     <Content Include="Views\XuatDuLieu\baocaocatuvong.cshtml" />
     <Content Include="Views\XuatDuLieu\baocaocakhoibenh.cshtml" />
+    <Content Include="Views\XuatDuLieu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

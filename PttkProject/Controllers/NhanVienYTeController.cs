@@ -56,7 +56,7 @@ namespace PttkProject.Controllers
             }
         }
         [HttpPost]
-        public JsonResult xoaNguoiDung(int ID)
+        public JsonResult xoaNvYte(int ID)
         {
             try
             {

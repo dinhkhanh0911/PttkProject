@@ -167,6 +167,12 @@ namespace PttkProject
                 url: "nguoi-dung/tim-kiem-nguoi-dung",
                 defaults: new { controller = "NguoiDung", action = "timkiemnguoidung" }
             );
+            /*Xuất dữ liệu*/
+            routes.MapRoute(
+                name: "XuatDuLieu",
+                url: "xuat-du-lieu/index",
+                defaults: new { controller = "XuatDuLieu", action = "Index" }
+            );
             /*Thống kê*/
             routes.MapRoute(
                 name: "ThongKe",

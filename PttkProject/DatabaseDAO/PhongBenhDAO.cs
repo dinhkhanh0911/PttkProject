@@ -25,6 +25,18 @@ namespace PttkProject.DatabaseDAO
             List<LoaiPhong> l = loaiPhong.ToList();
             return l;
         }
+        public List<PhongBenh> layDSPhongTrong()
+        {
+            try
+            {
+                var list = phongBenh.Where(s => s.soGiuongHienTai < s.soGiuongToiDa).ToList();
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public List<PhongBenh> timKiemPhong(string ten)
         {
             List<PhongBenh> l = (from s in phongBenh
@@ -48,6 +60,19 @@ namespace PttkProject.DatabaseDAO
             catch
             {
                 return null;
+            }
+        }
+        public void capNhatSoGiuong()
+        {
+            foreach(var s in phongBenh)
+            {
+                s.soGiuongHienTai = (from ba in benhAn 
+                                     join tt in trangThai
+                                     on ba.trangThaiID equals tt.ID
+                                     where tt.ID==1
+                                     select ba).ToList().Count;
+                Entry(s).State = EntityState.Modified;
+                SaveChanges();
             }
         }
         public bool capNhatPhongBenh(PhongBenh pb)

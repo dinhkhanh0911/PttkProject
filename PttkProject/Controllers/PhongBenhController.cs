@@ -40,7 +40,6 @@ namespace PttkProject.Controllers
             }
         }
 
-
         public ActionResult suaphong(int id, string mgs)
         {
             var pb = phongbenhDAO.layPhongBenh(id);

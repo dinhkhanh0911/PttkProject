@@ -3,27 +3,73 @@
     ViewBag.Title = "thongkecanhiem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script>
-    $(document).ready(function () {
-        //$('#datatable').DataTable({
-        //    "language": {
-        //        "search": "Tìm kiếm",
-        //        "lengthMenu": "Hiển thị _MENU_ bản ghi trên 1 trang",
-        //        "zeroRecords": "Không tìm thấy dữ liệu",
-        //        "info": "Hiển thị _PAGE_ trên _PAGES_",
-        //        "infoEmpty": "Không có dữ liệu tương ứng",
-        //        "infoFiltered": "(Tìm từ _MAX_ bản ghi)",
-        //        "paginate": {
-        //            "first": "Đầu",
-        //            "last": "Cuối",
-        //            "next": "Sau",
-        //            "previous": "Trước"
-        //        },
-        //    }
-        //});
-        
-    });
-</script>
+
+
+
+<!--Chart-->
+<div class="container-content">
+    <h1>
+        THỐNG KÊ CA NHIỄM
+    </h1>
+
+    <div class="container-fluid">
+        <div class="card">
+            
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <canvas id="myChart2" width="100%"></canvas>
+                        </div>
+                        <div class="col-sm-4">
+                            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
+                            {
+                                
+                                <h4>Chọn khoảng thời gian</h4>
+                                <label for="startdate">Ngày bắt đầu:</label>
+                                <input type="date" id="startdate" name="startdate">
+                                <br />
+                                <label for="enddate">Ngày kết thúc:</label>
+                                <input type="date" id="enddate" name="enddate">
+                                <br />
+                                <button class="btn btn-outline-success">Hiển thị</button>
+
+                            }
+                            </div>
+                    </div>
+            
+        </div>
+    </div>
+    <!-- /.chat-->
+    <!--Datatable-->
+    <div class="container-fluid">
+        <table id="datatable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ tên</th>
+                    <th>Số CMND</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày nhiễm bệnh</th>
+                    <th>Phòng bệnh</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_thongke">
+                <tr>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
 <script>
     //đồ thị
     $(document).ready(function () {
@@ -57,66 +103,4 @@
     });
 
 </script>
-
-<!--Chart-->
-<div class="container-content">
-    <h1>
-        THỐNG KÊ CA NHIỄM
-    </h1>
-
-    <div class="container-fluid">
-        <div class="card">
-            
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <canvas id="myChart2" width="100%"></canvas>
-                        </div>
-                        <div class="col-sm-4">
-                            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
-                            {
-                                <h4>Chọn khoảng thời gian</h4>
-                                <label for="startdate">Ngày bắt đầu:</label>
-                                <input type="date" id="startdate" name="startdate">
-                                <br />
-                                <label for="enddate">Ngày kết thúc:</label>
-                                <input type="date" id="enddate" name="enddate">
-                                <br />
-                                <button class="btn btn-outline-success" type="submit">Hiển thị</button>
-                            }
-                            </div>
-                    </div>
-            
-        </div>
-    </div>
-    <!-- /.chat-->
-    <!--Datatable-->
-    <div class="container-fluid">
-        <table id="datatable">
-            <thead>
-                <tr>
-                    <th>Họ tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Số CMND</th>
-                    <th>Số điện thoại</th>
-                    <th>Ngày nhiễm bệnh</th>
-                    <th>Phòng bệnh</th>
-                    <th>Trạng thái</th>
-                </tr>
-            </thead>
-            <tbody id="tbody_thongke">
-                <tr>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
-    </div>
-</div>
+<script src="~/Assets/js/thongKe.js"></script>
