@@ -13,10 +13,21 @@
                 {
                     <h4>Chọn khoảng thời gian</h4>
                     <label for="startdate">Ngày bắt đầu:</label>
-                    <input type="date" id="startdate" name="startdate">
+                    <input class="form-control" type="date" id="startdate" name="startdate">
                     <br />
                     <label for="enddate">Ngày kết thúc:</label>
-                    <input type="date" id="enddate" name="enddate">
+                    <input class="form-control" type="date" id="enddate" name="enddate">
+                    <br />
+                    <label>Loại báo cáo:</label>
+                    <select onchange="xuat(this)" class="form-control" name="loaiBC">
+                        <option value="1">Xuất báo cáo ca nhiễm</option>
+                        <option value="2">Xuất báo cáo ca tử vong</option>
+                        <option value="3">Xuất báo cáo ca khỏi bệnh</option>
+                        <option value="4">Xuất thông tin truy vết</option>
+                        <option value="5">Xuất thông tin điều trị</option>
+                        <option value="6">Xuất Bệnh án</option>
+
+                    </select>
                     <br />
                     <button class="btn btn-outline-success" type="submit">Hiển thị</button>
                 }
@@ -25,3 +36,11 @@
 
     </div>
 </div>
+<script>
+    function xuat(res) {
+        let s = res.value;
+        if (s > 3) {
+            window.location = "/benh-nhan/tim-kiem-benh-nhan";
+        }
+    }
+</script>

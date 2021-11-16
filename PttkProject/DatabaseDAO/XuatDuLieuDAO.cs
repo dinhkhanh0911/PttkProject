@@ -17,6 +17,9 @@ namespace PttkProject.DatabaseDAO
                 foreach(var s in BA)
                 {
                     s.benhNhan = benhNhan.Where(ss => ss.ID == s.benhNhanID).FirstOrDefault();
+                    s.benhNhan.xa = xa.Find(s.benhNhan.xaID);
+                    s.benhNhan.xa.huyen = huyen.Find(s.benhNhan.xa.huyenID);
+                    s.benhNhan.xa.huyen.tinh = tinh.Find(s.benhNhan.xa.huyen.tinhID);
                 }
                 return BA;
             }
@@ -33,6 +36,22 @@ namespace PttkProject.DatabaseDAO
                 foreach(var s in tv)
                 {
                     s.benhAn = benhAn.Where(ss => ss.ID == s.benhAnID).FirstOrDefault();
+                }
+                return tv;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+        public List<ThongTinDieuTri> xuatTTDieuTri(int idBenhAn)
+        {
+            try
+            {
+                List<ThongTinDieuTri> tv = thongtinDieuTri.Where(s => s.benhAnID == idBenhAn).ToList();
+                foreach(var s in tv)
+                {
+                    s.benhAn = benhAn.Find(idBenhAn);
                 }
                 return tv;
             }

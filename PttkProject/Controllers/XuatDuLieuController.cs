@@ -18,7 +18,6 @@ namespace PttkProject.Controllers
         BenhNhanDAO benhNhan = new BenhNhanDAO();
         DiaChiDAO diaChi = new DiaChiDAO();
         NhanVienYTeDAO nvyte = new NhanVienYTeDAO();
-        DBCovidContext dbcontext = new DBCovidContext();
         // GET: XuatDuLieu
         public ActionResult Index()
         {
@@ -57,7 +56,7 @@ namespace PttkProject.Controllers
             try
             {
                 BenhNhan bn = benhNhan.layBenhNhan_BA(id);
-                List<ThongTinTruyVet> tv = benhAn.layDSTTTruyVet(id);
+                List<ThongTinTruyVet> tv = xuatDuLieu.xuatTTTruyVet(id);
                 foreach(var s in tv)
                 {
                     s.xa = diaChi.layXa(s.xaID);
@@ -76,7 +75,7 @@ namespace PttkProject.Controllers
             try
             {
                 BenhNhan bn = benhNhan.layBenhNhan_BA(id);
-                List<ThongTinDieuTri> dt = benhAn.layDSTTDieuTri(id);
+                List<ThongTinDieuTri> dt = xuatDuLieu.xuatTTDieuTri(id);
                 foreach(var s in dt)
                 {
                     s.nhanVienYTe = nvyte.layNhanVienYTe(s.nhanVienYTeID);
@@ -97,11 +96,11 @@ namespace PttkProject.Controllers
                 if(loaiBC==1)file = xuatBaoCaoCaNhiem(xuatDuLieu.xuatBaoCaoCaNhiem(startdate, enddate));
                 if (loaiBC == 2) file = xuatBaoCaoCaTuVong(xuatDuLieu.xuatBaoCaoCaTuVong(startdate, enddate));
                 else file = xuatBaoCaoCaKhoiBenh(xuatDuLieu.xuatBaoCaoCaKhoiBenh(startdate,enddate));
-                return File(file, "doc/docx", "test.docx");
+                return File(file, "doc/docx", "Báo cáo.docx");
             }
             catch (Exception e)
             {
-                return RedirectToAction("timkiembenhnhan", "BenhNhan");
+                return RedirectToAction("XuatDuLieu", "index");
             }
         }
 
