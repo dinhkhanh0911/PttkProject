@@ -11,8 +11,7 @@ namespace PttkProject.Controllers
 {
     public class ThongKeController : Controller
     {
-        private BenhNhanDAO benhNhanDAO = new BenhNhanDAO();
-        private BenhAnDAO benhAnDAO = new BenhAnDAO();
+        private ThongKeDAO thongke = new ThongKeDAO();
         private DBCovidContext dbcontext = new DBCovidContext();
         // GET: ThongKe
         public ActionResult Index()
@@ -29,32 +28,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                DateTime sDate = Convert.ToDateTime(startdate);
-                DateTime eDate = Convert.ToDateTime(enddate);
-                /*test chuyển đổi thời gian*/
-                DateTime d = (DateTime)benhNhanDAO.layBenhNhan(3).ngaySinh;
-                var date = d.ToString("yyyy-MM-dd");
-                var result = DateTime.Compare(d, sDate); //<0 sớm hơn,  ==0 bằng, >0 muộn hơn
-
-                //lấy các bệnh án có ngày vào viện nằm trong khoảng thời gian đã chọn
-                var list = (from _benhAn in dbcontext.benhAn
-                            join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
-                            join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
-                            where DateTime.Compare((DateTime)_benhAn.ngayNhapVien, sDate) >= 0
-                            && DateTime.Compare((DateTime)_benhAn.ngayNhapVien, eDate) <= 0
-                            select new
-                            {
-                                ID = _benhNhan.ID,
-                                tenBenhNhan = _benhNhan.ten,
-                                //ngaySinh = _benhNhan.ngaySinh,
-                                CMND = _benhNhan.CMND,
-                                soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
-                                phongBenh = _phongBenh.tenPhong,
-                                trangThai = _trangThai.tinhTrang,
-                                
-                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();     
+                var list = thongke.layDSCaNhiem(startdate, enddate);                
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
@@ -71,28 +45,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                DateTime sDate = Convert.ToDateTime(startdate);
-                DateTime eDate = Convert.ToDateTime(enddate);
-                //lấy các bệnh án có ngày ra viện nằm trong khoảng thời gian đã chọn
-                //và trạng thái là khỏi bệnh
-                var list = (from _benhAn in dbcontext.benhAn
-                            join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
-                            join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
-                            where DateTime.Compare((DateTime)_benhAn.ngayXuatVien, sDate) >= 0
-                            && DateTime.Compare((DateTime)_benhAn.ngayXuatVien, eDate) <= 0
-                            && _trangThai.ID == 2
-                            select new
-                            {
-                                ID = _benhNhan.ID,
-                                tenBenhNhan = _benhNhan.ten,
-                               // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
-                                CMND = _benhNhan.CMND,
-                                soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
-                                phongBenh = _phongBenh.tenPhong,
-                                trangThai = _trangThai.tinhTrang
-                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
+                var list = thongke.layDSCaKhoiBenh(startdate, enddate);
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }catch(Exception e)
             {
@@ -109,26 +62,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                DateTime sDate = Convert.ToDateTime(startdate);
-                DateTime eDate = Convert.ToDateTime(enddate);
-                //lấy các bệnh án có trạng thái là tử vong trong khoảng thời gian đã chọn
-                //
-                var list = (from _benhAn in dbcontext.benhAn
-                            join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
-                            join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
-                            where _trangThai.ID == 3
-                            select new
-                            {
-                                ID = _benhNhan.ID,
-                                tenBenhNhan = _benhNhan.ten,
-                               // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
-                                CMND = _benhNhan.CMND,
-                                soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien,
-                                phongBenh = _phongBenh.tenPhong,
-                                trangThai = _trangThai.tinhTrang
-                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
+                var list = thongke.layDSCaTuVong(startdate, enddate);
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e) {
@@ -145,33 +79,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                var listBN = benhNhanDAO.layDSBenhNhan();
-                var listBA = benhAnDAO.layDSBenhAn();
-                List<BenhNhan> listkq = new List<BenhNhan>();
-                foreach (BenhNhan a in listBN)
-                {
-                    int soLuongBA = (from _benhAn in dbcontext.benhAn
-                                     join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                                     where _benhAn.benhNhanID == a.ID
-                                     select new
-                                     {
-                                         tenBenhNhan = a.ten
-                                     }
-                                       ).Count();
-                    if (soLuongBA > 1)
-                    {
-                        listkq.Add(a);
-                    }
-                }
-                var list = (from res in listkq
-                            select new
-                            {
-                                ID = res.ID,
-                                ten = res.ten,
-                                CMND = res.CMND,
-                                sdtBenhNhan = res.sdtBenhNhan,
-                                gioiTinh = res.gioiTinh
-            }).ToList();
+                var list = thongke.layDSCaDuongTinhTroLai();   
                return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
                 
             }
