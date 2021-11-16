@@ -141,11 +141,6 @@ namespace PttkProject
                url: "nhan-vien-y-te/cap-nhat-thong-tin-nhan-vien-y-te",
                defaults: new { controller = "NhanVienYTe", action = "capnhatttnhanvienyte" }
            );
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
             /*Người dùng*/
             routes.MapRoute(
                 name: "QuanLyNguoiDung",
@@ -193,6 +188,12 @@ namespace PttkProject
                 url: "thong-ke/thong-ke-ca-duong-tinh-tro-lai",
                 defaults: new { controller = "ThongKe", action = "thongkecaduongtinhtrolai" }
             );
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+            
         }
     }
 }
