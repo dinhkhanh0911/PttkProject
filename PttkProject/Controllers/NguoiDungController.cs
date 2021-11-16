@@ -70,7 +70,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                var data = nguoiDung.layDSNguoiDung(search);
+                var data = nguoiDung.timNguoiDung(search);
                 return Json(new { code = 200, data = data }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
