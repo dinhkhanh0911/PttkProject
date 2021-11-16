@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html lang="vi">
 
 <head>
@@ -77,36 +81,12 @@
                         <li class="nav-item nav-active">
                             <a href="../BenhNhan/Index" class="nav-item__link">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                <span>Quản lý bệnh nhân</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../PhongBenh/Index" class="nav-item__link">
-                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                                <span>Quản lý phòng bệnh</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../NhanVienYTe/Index" class="nav-item__link">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                <span>Quản lý nhân viên y tế</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../ThongKe/Index" class="nav-item__link">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                                <span>Thống kê</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-item__link">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                                <span>Xuất dữ liệu</span>
+                                <span>Quản lý người dùng</span>
                             </a>
                         </li>
                         <div class="border-bottom body-navbar__border-bottom"></div>
                         <li class="nav-item">
-                            <a href="/dang-nhap/dang-xuat" class="nav-item__link">
+                            <a href="../User/Login" class="nav-item__link">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                                 <span>Đăng xuất</span>
                             </a>
@@ -196,35 +176,12 @@
                                 @*Divider*@
                                 <div class="border-bottom body-navbar__border-bottom"></div>
                                 <li class="nav-item">
-                                    <a href="/benh-nhan/index" class="nav-item__link">
+                                    <a href="/nguoi-dung/index" class="nav-item__link">
                                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                        <span>Quản lý bệnh nhân</span>
+                                        <span>Quản lý người dùng</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="/phong-benh/index" class="nav-item__link">
-                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                                        <span>Quản lý phòng bệnh</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/nhan-vien-y-te/index" class="nav-item__link">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        <span>Quản lý nhân viên y tế</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/thong-ke/index" class="nav-item__link">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Thống kê</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-item__link" href="/xuat-du-lieu/index">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Xuất dữ liệu</span>
-                                    </a>
-                                </li>
+                                
                                 <div class="border-bottom body-navbar__border-bottom"></div>
                                 <li class="nav-item">
                                     <a href="/dang-nhap/dang-xuat" class="nav-item__link">
@@ -290,7 +247,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <!--/.DataTable-->
-
     <!-- Core plugin JavaScript-->
     <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
 

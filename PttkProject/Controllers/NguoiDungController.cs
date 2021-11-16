@@ -1,4 +1,5 @@
 ﻿using DBCovid.models;
+using PttkProject.Common;
 using PttkProject.DatabaseDAO;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class NguoiDungController : Controller
+    public class NguoiDungController : BaseAdminController
     {
         // GET: Uesr
         private NguoiDungDAO nguoiDung = new NguoiDungDAO();
@@ -30,8 +31,18 @@ namespace PttkProject.Controllers
         {
             try
             {
-                nguoiDung.themNguoiDung(nd);
-                return RedirectToAction("themnguoidung", "NguoiDung", new { mgs = "Thêm thành công" });
+                NguoiDung a = nd;
+                //if (ModelState.IsValid)
+                //{
+                    if (nguoiDung.isNguoiDung(nd.taiKhoan))
+                    {
+                        return RedirectToAction("Index", "NguoiDung", new { mgs = "Tài khoản đã tồn tại" });
+                    }
+                    nd.matKhau = Encypter.MD5Hash(nd.matKhau);
+                    nguoiDung.themNguoiDung(nd);
+                    return RedirectToAction("themnguoidung", "NguoiDung", new { mgs = "Thêm thành công" });
+                //}
+                //return RedirectToAction("Index", "NguoiDung", new { mgs = "Thêm thất bại" });
             }
             catch (Exception e)
             {

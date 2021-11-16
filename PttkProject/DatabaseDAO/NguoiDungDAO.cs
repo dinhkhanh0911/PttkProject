@@ -10,6 +10,33 @@ namespace PttkProject.DatabaseDAO
 {
     public class NguoiDungDAO:DBCovidContext
     {
+        public bool isNguoiDung(string taiKhoan)
+        {
+            var ok = this.nguoiDung.Where(n => n.taiKhoan == taiKhoan).FirstOrDefault();
+            if(ok != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool isTaiKhoan(string taiKhoan,string matKhau)
+        {
+            var ok = this.nguoiDung.Where(n => n.taiKhoan == taiKhoan && n.matKhau == matKhau).FirstOrDefault();
+            if (ok != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool isAdmin(string taiKhoan)
+        {
+            var ok = this.nguoiDung.Where(n => n.taiKhoan == taiKhoan && n.viTriLamViecID == 3).FirstOrDefault();
+            if (ok != null)
+            {
+                return true;
+            }
+            return false;
+        }
         public NguoiDung layNguoiDung(int id)
         {
             return nguoiDung.Where(s=>s.ID==id).FirstOrDefault();

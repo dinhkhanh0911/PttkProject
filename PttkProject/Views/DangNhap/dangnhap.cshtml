@@ -1,4 +1,4 @@
-﻿
+﻿@model PttkProject.models.User
 @{
     ViewBag.Title = "dangnhap";
     Layout = null;
@@ -42,9 +42,9 @@
                 </h4>
             </div>
             <div class="container__page-content">
-                <div class="form">
-                    <input class="form__input" placeholder="Tài khoản" />
-                    <input class="form__input" placeholder="Mật khẩu" type="password" />
+                <form class="form" action="/dang-nhap/dang-nhap" method="post" >
+                    @Html.TextBoxFor(model => model.taiKhoan, htmlAttributes: new { @class = "form__input", @placeholder = "Tài khoản" })
+                    @Html.TextBoxFor(model => model.matKhau, htmlAttributes: new { @class = "form__input", @placeholder = "Mật khẩu" })
                     <div class="form__sub-option">
                         <a href="./ForgotPassword" class="form__sub-option-text">Quên mật khẩu</a>
                     </div>
@@ -54,7 +54,7 @@
                             Đăng nhập
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
 
 

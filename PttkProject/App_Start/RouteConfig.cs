@@ -199,6 +199,24 @@ namespace PttkProject
                 url: "thong-ke/thong-ke-ca-duong-tinh-tro-lai",
                 defaults: new { controller = "ThongKe", action = "thongkecaduongtinhtrolai" }
             );
+            /* Đăng nhập */
+            routes.MapRoute(
+                name: "DangNhap",
+                url: "dang-nhap/dang-nhap",
+                defaults: new { controller = "DangNhap", action = "dangnhap" }
+            );
+
+            routes.MapRoute(
+                name: "DangXuat",
+                url: "dang-nhap/dang-xuat",
+                defaults: new { controller = "DangNhap", action = "dangxuat" }
+            );
+            /* Admin */
+            routes.MapRoute(
+                name: "Trang chủ admin",
+                url: "admin/index",
+                defaults: new { controller = "Admin", action = "Index" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
