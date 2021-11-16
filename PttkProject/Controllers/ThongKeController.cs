@@ -78,20 +78,21 @@ namespace PttkProject.Controllers
                 var list = (from _benhAn in dbcontext.benhAn
                             join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
                             join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
+                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
                             where DateTime.Compare((DateTime)_benhAn.ngayXuatVien, sDate) >= 0
                             && DateTime.Compare((DateTime)_benhAn.ngayXuatVien, eDate) <= 0
-                            && _benhAn.trangThai.ID == 2
+                            && _trangThai.ID == 2
                             select new
                             {
                                 ID = _benhNhan.ID,
                                 tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
+                               // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
                                 CMND = _benhNhan.CMND,
                                 soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
+                                ngayNhiemBenh = _benhAn.ngayNhapVien,
                                 phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai.tinhTrang
-                            }).ToList();
+                                trangThai = _trangThai.tinhTrang
+                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }catch(Exception e)
             {
@@ -115,18 +116,19 @@ namespace PttkProject.Controllers
                 var list = (from _benhAn in dbcontext.benhAn
                             join _benhNhan in dbcontext.benhNhan on _benhAn.benhNhanID equals _benhNhan.ID
                             join _phongBenh in dbcontext.phongBenh on _benhAn.phongBenhID equals _phongBenh.ID
-                            where _benhAn.trangThai.ID == 3
+                            join _trangThai in dbcontext.trangThai on _benhAn.trangThaiID equals _trangThai.ID
+                            where _trangThai.ID == 3
                             select new
                             {
                                 ID = _benhNhan.ID,
                                 tenBenhNhan = _benhNhan.ten,
-                                ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
+                               // ngaySinh = _benhNhan.ngaySinh == null ? _benhNhan.ngaySinh.ToString() : DateTime.Today.ToString("dd:MM:yyyy"),
                                 CMND = _benhNhan.CMND,
                                 soDienThoai = _benhNhan.sdtBenhNhan,
-                                ngayNhiemBenh = _benhAn.ngayNhapVien.ToString(),
+                                ngayNhiemBenh = _benhAn.ngayNhapVien,
                                 phongBenh = _phongBenh.tenPhong,
-                                trangThai = _benhAn.trangThai.tinhTrang
-                            }).ToList();
+                                trangThai = _trangThai.tinhTrang
+                            }).GroupBy(o => o.ID).Select(g => g.FirstOrDefault()).ToList();
                 return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e) {
@@ -160,9 +162,17 @@ namespace PttkProject.Controllers
                     {
                         listkq.Add(a);
                     }
-
-                }                
-               return Json(new { code = 200, data = listkq }, JsonRequestBehavior.AllowGet);
+                }
+                var list = (from res in listkq
+                            select new
+                            {
+                                ID = res.ID,
+                                ten = res.ten,
+                                CMND = res.CMND,
+                                sdtBenhNhan = res.sdtBenhNhan,
+                                gioiTinh = res.gioiTinh
+            }).ToList();
+               return Json(new { code = 200, data = list }, JsonRequestBehavior.AllowGet);
                 
             }
             catch (Exception e)

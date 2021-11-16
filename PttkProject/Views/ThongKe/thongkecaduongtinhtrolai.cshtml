@@ -3,8 +3,60 @@
     ViewBag.Title = "thongkecaduongtinhtrolai";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script>
 
+
+<!--Chart-->
+<div class="container-content">
+    <h1>
+        THỐNG KÊ CA DƯƠNG TÍNH TRỞ LẠI
+    </h1>
+
+    <div class="container-fluid">
+        <div class="card">
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <canvas id="myChart" width="100%"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    @using (Html.BeginForm("thongKeCaDuongTinhTroLai", "ThongKe", FormMethod.Post))
+                    {                       
+                        <button class="btn btn-outline-success">Hiển thị</button>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.chat-->
+    <!--Datatable-->
+    <div class="container-fluid">
+        <table id="datatable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ tên</th>
+                    <th>Số CMND</th>
+                    <th>Số điện thoại</th>
+                    <th>Giới tính</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_thongke">
+                <tr>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                    <td>STT</td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script>
     $(document).ready(function () {
         $('#datatable').DataTable({
             "language": {
@@ -20,34 +72,35 @@
                     "next": "Sau",
                     "previous": "Trước"
                 },
-            },
-            $.ajax({
-                type: "POST",
-                url: "/ThongKe/thongKeCaDuongTinhTroLai",
-                data: '{}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: OnSuccess,
-                failure: function (response) {
-                    alert(response.d);
-                },
-                error: function (response) {
-                    alert(response.d);
-                }                
-            });
-            columns:
-                [
-                    { 'data': 'ID' },
-                    { 'data': 'ten' },
-                    { 'data': 'ngaySinh' },
-                    { 'data': 'CMND' },
-                    { 'data': 'gioiTinh' },
-                    { 'data': 'sdtBenhNhan' },
-                    { 'data': 'maBHYT'}
-            ]
-            
+            }            
         });
 
+    });
+    $('form').submit(function (event) {
+        $.ajax({
+            method: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            type: 'POST',
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr);
+                console.log(ajaxOptions);
+                console.log(thrownError);
+            },
+
+        }).done(function (response) {
+            if (response.code == 200) {
+                console.log(response.data);
+                let data1 = response.data.map(obj => Object.values(obj));
+                $("#datatable").DataTable().clear();
+                $("#datatable").DataTable().rows.add(data1);
+                $("#datatable").DataTable().draw();
+
+            }
+            else {
+            }
+        });
+        event.preventDefault();
     });
 </script>
 <script>
@@ -83,59 +136,3 @@
     });
 
 </script>
-
-<!--Chart-->
-<div class="container-content">
-    <h1>
-        THỐNG KÊ CA DƯƠNG TÍNH TRỞ LẠI
-    </h1>
-
-    <div class="container-fluid">
-        <div class="card">
-
-            <div class="row">
-                <div class="col-sm-8">
-                    <canvas id="myChart" width="100%"></canvas>
-                </div>
-                <div class="col-sm-4">
-                    @using (Html.BeginForm("thongKeCaDuongTinhTroLai", "ThongKe", FormMethod.Post))
-                    {                       
-                        <button class="btn btn-outline-success" type="submit">Hiển thị</button>
-                    }
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- /.chat-->
-    <!--Datatable-->
-    <div class="container-fluid">
-        <table id="datatable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Họ tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Số CMND</th>
-                    <th>Giới tính</th>
-                    <th>Số điện thoại</th>
-                    <th>Mã BHYT</th>
-                </tr>
-            </thead>
-            <tbody id="tbody_thongke">
-                <tr>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
-    </div>
-</div>
