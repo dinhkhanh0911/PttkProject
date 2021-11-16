@@ -12,7 +12,7 @@
             </h4>
         </div>
         <div class="container__page-content">
-            @using (Html.BeginForm("themBenhNhan", "BenhNhan", FormMethod.Post))
+            @using (Html.BeginForm("themBenhNhan", "BenhNhan", FormMethod.Post, new { @class = "form" }))
             {
                 <div class="form">
                     <div class="row">
@@ -24,12 +24,12 @@
                             </div>
                         </div>
                         <div class="col l-4 m-6 c-12">
+                            
                             <div class="form__import-item">
-                                <div class="form__import-item">
-                                    @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
-                                    @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
-                                </div>
+                                @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
+                                @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                             </div>
+                            
                         </div>
                         <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
@@ -93,7 +93,7 @@
                                 @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
                             </div>
                         </div>
-                        <div class="col l-12 m-6 c-12">
+                        <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
                                 @Html.Label("Địa chỉ chi tiết", htmlAttributes: new { @class = "form__import-label" })
                                 @Html.TextBoxFor(model => model.diaChichiTiet, htmlAttributes: new { @class = "form__import-select" })

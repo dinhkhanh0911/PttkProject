@@ -83,5 +83,47 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
+        public int demSoCaDangNhiemBenh()
+        {
+            int count = 0;
+            try
+            {
+                count = this.benhAn.Count(x => x.trangThaiID == 1);
+                return count;
+            }
+            catch (Exception e)
+            {
+                count = 0;
+                return count;
+            }
+        }
+        public int demSoCaKhoiBenh()
+        {
+            int count = 0;
+            try
+            {
+                count = this.benhAn.Count(x => x.trangThaiID == 2);
+                return count;
+            }
+            catch (Exception e)
+            {
+                count = 0;
+                return count;
+            }
+        }
+        public int demSoCaTuVong()
+        {
+            int count = 0;
+            try
+            {
+                count = this.benhAn.Count(x => x.trangThaiID == 3);
+                return count;
+            }
+            catch (Exception e)
+            {
+                count = 0;
+                return count;
+            }
+        }
     }
 }

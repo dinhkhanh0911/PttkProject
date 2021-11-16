@@ -138,6 +138,7 @@ namespace PttkProject.Controllers
                 return Json(new { code = 500, msg = "Xóa không thành công" }, JsonRequestBehavior.AllowGet);
             }
         }
+
         public ActionResult thembenhan(int id)
         {
             
@@ -160,6 +161,7 @@ namespace PttkProject.Controllers
             {
                 setViewBagImportMedicalRecord();
                 var ok = dBIO.themBenhAn(model);
+                
                 if (ok)
                 {
                     return Json(new { code = 200, model = model,msg ="Thêm thành công"}, JsonRequestBehavior.AllowGet);
@@ -221,8 +223,6 @@ namespace PttkProject.Controllers
             ViewBag.BenhNhan = benhNhan.layBenhNhan(idBN);
             List<PhongBenh> p = phong.layDSPhongBenh();
             ViewBag.phong = new SelectList(p, "ID", "tenPhong");
-            ViewBag.dsTTDieuTri = benhAn.layDSTTDieuTri(id);
-            ViewBag.dsTTTruyVet = benhAn.layDSTTTruyVet(id);
             ViewBag.trangThai = new SelectList(benhAn.layDSTrangThai(), "ID", "tinhTrang");
             
         }
@@ -266,7 +266,7 @@ namespace PttkProject.Controllers
                 thongTinDieuTri.benhAnID = ID;
                 return View(thongTinDieuTri);
             }
-            return Redirect("ImportInformation");
+            return Redirect("/benh-nhan/cap-nhat-benh-an/"+ID.ToString());
         }
         [HttpPost]
         public JsonResult themThongTinDieuTri(ThongTinDieuTri model)
@@ -323,9 +323,9 @@ namespace PttkProject.Controllers
                 thongTinTruyVet.benhAnID = ID;
                 return View(thongTinTruyVet);
             }
-            return Redirect("ImportInformation");
+            return Redirect("/benh-nhan/cap-nhat-benh-an/" + ID.ToString());
         }
-        
+        [HttpPost]
         public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
         {
             if (ModelState.IsValid)

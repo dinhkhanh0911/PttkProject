@@ -338,6 +338,7 @@ a{
     border-radius: 3px 3px 0 0;
     display: flex;
     justify-content: space-between;
+    width:100%;
 }
 .name__page-tilte {
     display: flex;

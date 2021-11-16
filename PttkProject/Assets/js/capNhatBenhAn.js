@@ -259,7 +259,7 @@ function deleteTTDT(element) {
 }
 function themThongTinTruyVet() {
     var benhAnID = document.querySelector('#ID').value;
-    
+    console.log(benhAnID)
     window.location.href = `/benh-nhan/them-thong-tin-truy-vet/${benhAnID}`
 }
 function themThongTinDieuTri() {

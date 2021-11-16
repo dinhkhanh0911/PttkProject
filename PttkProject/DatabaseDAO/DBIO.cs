@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using DBCovid.Data;
@@ -29,12 +30,12 @@ namespace PttkProject.DatabaseDAO
         
         public List<PhongBenh> layDSPhongBenh()
         {
-            List<PhongBenh> p = data.phongBenh.ToList();
+            List<PhongBenh> p = data.phongBenh.Where(x => x.soGiuongHienTai < x.soGiuongToiDa).ToList();
             return p;
         }
         public List<PhongBenh> layDSPhongBenh(int loaiPhongID)
         {
-            List<PhongBenh> p = data.phongBenh.Where(x => x.loaiPhongID == loaiPhongID).ToList();
+            List<PhongBenh> p = data.phongBenh.Where(x => x.loaiPhongID == loaiPhongID && x.soGiuongHienTai < x.soGiuongToiDa).ToList();
             return p;
         }
         public List<LoaiPhong> layDSLoaiPhong()
@@ -42,6 +43,7 @@ namespace PttkProject.DatabaseDAO
             List<LoaiPhong> l= data.loaiPhong.ToList();
             return l;
         }
+        
         public List<TrangThai> layDSTrangThai()
         {
             List<TrangThai> t = data.trangThai.ToList();

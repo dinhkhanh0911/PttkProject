@@ -2,11 +2,80 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="row">
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                    <div class="name__page">
+                        <h4 class="name__page-tilte">
+                            Mức độ tăng trưởng
+                        </h4>
+                    </div>
 
-<h2>Trang Chủ</h2>
-<button class="btn btn-success" onclick="xuat()">xuat</button>
-<script>
-    function xuat() {
-        window.location = "/XuatDuLieu/XuatThongTinBenhAn/?id=" + 7;
-    }
-</script>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <canvas id="bieu_do_tang_truong"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                    <div class="name__page">
+                        <h4 class="name__page-tilte">
+                            Số lượng bệnh nhân
+                        </h4>
+                    </div>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body chart-setting">
+                    <canvas id="myChart"></canvas>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 container__DataMedicalRecord">
+            <div class="card shadow mb-4 ">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                    <div class="name__page">
+                        <h4 class="name__page-tilte">
+                            Mức độ tăng trưởng
+                        </h4>
+                    </div>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <canvas id="iChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 container__DataMedicalRecord">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                    <div class="name__page">
+                        <h4 class="name__page-tilte">
+                            Danh sách khách hàng
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="~/Assets/js/home.js"></script>

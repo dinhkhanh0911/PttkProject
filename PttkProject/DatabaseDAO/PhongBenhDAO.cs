@@ -77,5 +77,21 @@ namespace PttkProject.DatabaseDAO
                 return false;
             }
         }
+        public void tangPhong(int phongID)
+        {
+            PhongBenh p = this.phongBenh.Where(x => x.ID == phongID).FirstOrDefault();
+            if (p != null)
+            {
+                p.soGiuongHienTai = p.soGiuongHienTai + 1;
+                try
+                {
+                    Entry(p).State = EntityState.Modified;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
+        }
     }
 }

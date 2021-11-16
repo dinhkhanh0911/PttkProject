@@ -12,11 +12,16 @@ namespace PttkProject
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            /* Trang chủ */
             routes.MapRoute(
                 name: "Home",
                 url: "trang-chu/index",
                 defaults: new { controller = "Home", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "LayDuLieuBieuDoTron",
+                url: "trang-chu/lay-du-lieu-bieu-do-tron",
+                defaults: new { controller = "Home", action = "layDuLieuBieuDoTron" }
             );
             routes.MapRoute(
                 name: "QuanLyBenhNhan",
