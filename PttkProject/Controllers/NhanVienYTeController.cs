@@ -12,7 +12,6 @@ namespace PttkProject.Controllers
     public class NhanVienYTeController : Controller
     {
         private DiaChiDAO diaChi = new DiaChiDAO();
-        private DBIO dBIO = new DBIO();
         private NhanVienYTeDAO nvYTe = new NhanVienYTeDAO();
 
         public ActionResult Index()
@@ -23,7 +22,7 @@ namespace PttkProject.Controllers
         {
             ViewBag.message = mgs;
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nvYTe.layDSViTriLamViec(), "ID", "tenVitri");
             return View();
         }
         [HttpPost]
@@ -74,7 +73,7 @@ namespace PttkProject.Controllers
             ViewBag.message = mgs;
             NhanVienYTe nv = nvYTe.layNhanVienYTe(id);
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nvYTe.layDSViTriLamViec(), "ID", "tenVitri");
             return View(nv);
         }
         [HttpPost]

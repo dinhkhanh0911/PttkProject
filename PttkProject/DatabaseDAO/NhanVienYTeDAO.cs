@@ -59,6 +59,9 @@ namespace PttkProject.DatabaseDAO
             Entry(nv).State = EntityState.Modified;
             SaveChanges();
         }
-
+        public List<ViTriLamViec> layDSViTriLamViec()
+        {
+            return viTriLamViec.ToList();
+        }
     }
 }
