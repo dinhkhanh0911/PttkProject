@@ -14,19 +14,19 @@
             @using (Html.BeginForm("UpdateBenhAn", "BenhNhan", FormMethod.Post))
             {
                 <div class="row">
-                    <input id="ID" name="ID" value="@Model.ID" hidden/>
+                    <input  id="ID" name="ID" value="@Model.ID" hidden/>
 
 
                 <div class="col l-4 m-6 c-12">
                     <div class="form__import-item">
                         @Html.Label("Id bệnh nhân", htmlAttributes: new { @class = "form__import-label" })
-                        <input class="form__import-select" value="@Model.benhNhanID" readonly />
+                        <input class="form__import-select" name="benhNhanID" value="@Model.benhNhanID" readonly />
                     </div>
                 </div>
 
                 <div class="col l-4 m-6 c-12">
                     <div class="form__import-item">
-                        @Html.Label("Tên bênh nhân", htmlAttributes: new { @class = "form__import-label" })
+                        <label class="form__import-label">Tên bênh nhân</label>
                         <input class="form__import-select" value="@ViewBag.BenhNhan.ten" readonly />
                     </div>
                 </div>

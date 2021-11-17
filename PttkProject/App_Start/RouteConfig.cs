@@ -66,7 +66,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "CapNhatBenhAn",
                 url: "benh-nhan/cap-nhat-benh-an/{id}",
-                defaults: new { controller = "BenhNhan", action = "capnhatbenhan" }
+                defaults: new { controller = "BenhNhan", action = "capnhatbenhan", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "LayDanhSachThongtin",
@@ -77,7 +77,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "ThemThongTinTruyVet",
                 url: "benh-nhan/them-thong-tin-truy-vet/{id}",
-                defaults: new { controller = "BenhNhan", action = "ThemThongTinTruyVet" }
+                defaults: new { controller = "BenhNhan", action = "ThemThongTinTruyVet", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "ThemThongTinTruyVetPost",

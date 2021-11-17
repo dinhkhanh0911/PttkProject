@@ -112,13 +112,13 @@ namespace PttkProject.DatabaseDAO
                 {
                     listkq.Add(a);
                 }
-            }
+            }            
             var list = (from res in listkq
                         select new
                         {
                             ID = res.ID,
                             ten = res.ten,
-                            ngaySinh = res.ngaySinh.ToString(),
+                            ngaySinh = ((DateTime)res.ngaySinh).ToString("dd-MM-yyyy"),
                             CMND = res.CMND,
                             sdtBenhNhan = res.sdtBenhNhan,
                             gioiTinh = res.gioiTinh
