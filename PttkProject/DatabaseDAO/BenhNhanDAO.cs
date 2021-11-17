@@ -44,10 +44,18 @@ namespace PttkProject.DatabaseDAO
             }
         }
 
-        public void capNhatTTBenhNhan(BenhNhan bn)
+        public bool capNhatTTBenhNhan(BenhNhan bn)
         {
-            data.Entry(bn).State = EntityState.Modified;
-            data.SaveChanges();
+            try
+            {
+                data.Entry(bn).State = EntityState.Modified;
+                data.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool themBenhNhan(BenhNhan bn)
