@@ -72,8 +72,8 @@ namespace PttkProject.DatabaseDAO
                                      where tt.ID==1
                                      select ba).ToList().Count;
                 Entry(s).State = EntityState.Modified;
-                SaveChanges();
             }
+            SaveChanges();
         }
         public bool capNhatPhongBenh(PhongBenh pb)
         {

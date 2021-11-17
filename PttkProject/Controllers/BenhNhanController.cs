@@ -212,7 +212,7 @@ namespace PttkProject.Controllers
             if (BA != null)
             {
                 ViewBag.message = mgs;
-                setViewBagInfo(BA.ID, id);
+                setViewBagInfo(BA.ID, BA.benhNhanID);
                 return View(BA);
             }
             return RedirectToAction("capnhatTTbenhnhan", "BenhNhan", new { id = id, mgs = "Không có bệnh án" });
@@ -327,7 +327,7 @@ namespace PttkProject.Controllers
             }
             return Redirect("ImportInformation");
         }
-        
+        [HttpPost]
         public ActionResult ThemThongTinTruyVet(ThongTinTruyVet model)
         {
             if (ModelState.IsValid)
