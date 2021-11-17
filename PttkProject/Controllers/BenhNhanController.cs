@@ -70,6 +70,7 @@ namespace PttkProject.Controllers
             {
                 BenhNhan bn = benhNhan.layBenhNhan(id);
                 ViewBag.message = mgs;
+                ViewBag.ba = new SelectList(benhAn.layDSBenhAn(id), "ID", "ngayNhapVien");
                 setViewBagDiaChi();
                 if(bn==null)return RedirectToAction("Index", "BenhNhan");
                 return View(bn);
@@ -207,7 +208,7 @@ namespace PttkProject.Controllers
         /*Cập nhật bệnh án*/
         public ActionResult capnhatbenhan(int id, string mgs)
         {
-            BenhAn BA = benhAn.layBenhAnMoiNhat(id);
+            BenhAn BA = benhAn.layBenhAn(id);
             if (BA != null)
             {
                 ViewBag.message = mgs;
@@ -219,15 +220,17 @@ namespace PttkProject.Controllers
         public void setViewBagInfo(int id, int idBN)
         {
             ViewBag.BenhNhan = benhNhan.layBenhNhan(idBN);
-            ViewBag.phong = new SelectList(phong.layDSPhongTrong(), "ID", "tenPhong");
+            var l = phong.layDSPhongTrong();
+            ViewBag.phong = new SelectList(l!=null? l :new List<PhongBenh>(), "ID", "tenPhong");
             ViewBag.dsTTDieuTri = benhAn.layDSTTDieuTri(id);
             ViewBag.dsTTTruyVet = benhAn.layDSTTTruyVet(id);
-            ViewBag.trangThai = new SelectList(benhAn.layDSTrangThai(), "ID", "tinhTrang");
+            var tt = benhAn.layDSTrangThai();
+            ViewBag.trangThai = new SelectList(tt!=null?tt:new List<TrangThai>(), "ID", "tinhTrang");
         }
         [HttpPost]
         public ActionResult UpdateBenhAn(BenhAn bn)
         {
-            int id = bn.benhNhanID;
+            int id = bn.ID;
             bool check = benhAn.capNhatTTBenhAn(bn);
             phong.capNhatSoGiuong();
             string mgs;
