@@ -64,7 +64,7 @@ namespace PttkProject.Controllers
                     s.xa.huyen.tinh = diaChi.layTinh(s.xa.huyen.tinhID);
                 }
                 var file = xuatTTTruyVet(tv, bn);
-                return File(file, "doc/docx", "test.docx");
+                return File(file, "xls/xlsx", "Báo cáo.xlsx");
             }
             catch(Exception e) { 
                 return RedirectToAction("timkiembenhnhan", "BenhNhan");
@@ -81,7 +81,7 @@ namespace PttkProject.Controllers
                     s.nhanVienYTe = nvyte.layNhanVienYTe(s.nhanVienYTeID);
                 }
                 var file = xuatTTDieuTri(dt, bn);
-                return File(file, "doc/docx", "test.docx");
+                return File(file, "xls/xlsx", "Báo cáo.xlsx");
             }
             catch(Exception e) { 
                 return RedirectToAction("timkiembenhnhan", "BenhNhan");

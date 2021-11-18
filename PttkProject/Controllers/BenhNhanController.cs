@@ -367,17 +367,18 @@ namespace PttkProject.Controllers
         private void setViewBagDiaChi()
         {
             List<Tinh> tinhs = diaChi.layDSTinh();
-            List<Huyen> huyens = new List<Huyen>();
-            List<Xa> xas = new List<Xa>();
-            if (tinhs.Count > 0)
-            {
-                huyens = diaChi.layDSHuyen(tinhs[0].ID);
-            }
-            if(huyens.Count > 0)
-            {
-                xas = diaChi.layDSXa(huyens[0].ID);
-            }
-
+            //List<Huyen> huyens = new List<Huyen>();
+            //List<Xa> xas = new List<Xa>();
+            //if (tinhs.Count > 0)
+            //{
+            //    huyens = diaChi.layDSHuyen(tinhs[0].ID);
+            //}
+            //if(huyens.Count > 0)
+            //{
+            //    xas = diaChi.layDSXa(huyens[0].ID);
+            //}
+            List<Huyen> huyens = diaChi.huyen.ToList();
+            List<Xa> xas = diaChi.xa.ToList();
             ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
             ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
             ViewBag.xas = new SelectList(xas, "ID", "tenXa");
