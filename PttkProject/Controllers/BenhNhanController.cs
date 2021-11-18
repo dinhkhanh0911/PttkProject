@@ -122,6 +122,20 @@ namespace PttkProject.Controllers
 
         }
         [HttpPost]
+        public JsonResult layBenhNhan(int id)
+        {
+            try
+            {
+                BenhNhan bn = benhNhan.layBenhNhan(id);
+                return Json(new { code = 200, data = bn }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+        [HttpPost]
         public JsonResult xoaBenhNhan(int ID)
         {
             try
