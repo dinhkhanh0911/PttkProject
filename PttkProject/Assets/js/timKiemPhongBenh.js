@@ -59,19 +59,14 @@ function xem(id) {
     $('#patient-modal-body').empty();
     $('#patient-modal-body').append(`<div class="modal-group">
              <label class="modal-lable">Tên phòng:</label>
-             <label class="modal-value">${data.tenPhong || "Không có"}</label></div>
+             <label class="modal-value">${data.tenPhong}</label></div>
              <div class="modal-group">
             <label class="modal-lable">số giường hiện tại:</label>
-            <label class="modal-value">${data.soGiuongHienTai || "Không có"}</label></div>
+            <label class="modal-value">${data.soGiuongHienTai}</label></div>
             <div class="modal-group">
             <label class="modal-lable">Số giường tối đa:</label>
-             <label class="modal-value">${data.soGiuongToiDa || "Không có"}</label>
-             </div>
-            <div class="modal-group">
-            <label class="modal-lable">ID Loại phòng:</label>
-            <label class="modal-value">${data.loaiPhongID || "Không có"}</label>
-            </div>
-            </div>`);
+             <label class="modal-value">${data.soGiuongToiDa}</label>
+             </div>`);
 
     $('#patient-modal').modal();
 }
