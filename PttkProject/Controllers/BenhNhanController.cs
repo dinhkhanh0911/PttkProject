@@ -194,7 +194,7 @@ namespace PttkProject.Controllers
             ViewBag.tenBenhNhan = tenBenhNhan;
         }
         [HttpPost]
-        public JsonResult getListRoom(int loaiPhongID)
+        public JsonResult layDSPhongBenh(int loaiPhongID)
         {
             try
             {

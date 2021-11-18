@@ -17,7 +17,7 @@ namespace PttkProject.DatabaseDAO
         }
         public List<PhongBenh> layDSPhongBenh(int loaiPhongID)
         {
-            List<PhongBenh> p = phongBenh.Where(x => x.loaiPhongID == loaiPhongID).ToList();
+            List<PhongBenh> p = phongBenh.Where(x => x.loaiPhongID == loaiPhongID && x.soGiuongHienTai<x.soGiuongToiDa).ToList();
             return p;
         }
         public List<LoaiPhong> layDSLoaiPhong()
