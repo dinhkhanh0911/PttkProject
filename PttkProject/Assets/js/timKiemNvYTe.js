@@ -96,7 +96,7 @@ function xem(id) {
 }
 function xoa(id) {
     $.ajax({
-        url: 'xoaNguoiDung',
+        url: 'xoaNvYte',
         dataType: 'json',
         data: {
             ID: id
