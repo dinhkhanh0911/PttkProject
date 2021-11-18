@@ -33,6 +33,7 @@ $(document).ready(function () {
         //        }
         //    }
         //})
+        $("#patien-modal-body").empty();
         $("#patien-modal-body").append("<h2>"+ idBenhNhan + "</h2>");
         $("#patient-modal").modal();
     });
