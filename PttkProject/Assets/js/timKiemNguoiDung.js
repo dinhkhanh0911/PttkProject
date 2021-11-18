@@ -102,6 +102,7 @@ function xoa(id) {
             console.log(thrownError);
         },
         success: function (res) {
+            $(`#${id}`).remove();
             $('#patient-modal-body').empty();
             $('#patient-modal-body').text(res.mgs);
             $('#patient-modal').modal();
