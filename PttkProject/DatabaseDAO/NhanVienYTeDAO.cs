@@ -15,7 +15,7 @@ namespace PttkProject.DatabaseDAO
         {
             return nhanVienYTe.ToList();
         }
-        public NhanVienYTe layNhanVienYTe(int id)
+        public NhanVienYTe layNhanVienYTe(int? id)
         {
             return nhanVienYTe.Where(s=>s.ID==id).FirstOrDefault();
         }

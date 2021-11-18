@@ -25,7 +25,7 @@ namespace DBCovid.models
         
         public int benhNhanID { get; set; }
         [Range(1, Int32.MaxValue, ErrorMessage = "Vui lòng chọn phòng bệnh"),]
-        public int? phongBenhID { get; set; }
+        public int phongBenhID { get; set; }
         [Range(1, Int32.MaxValue, ErrorMessage = "Vui lòng chọn trạng thái"),]
         public int trangThaiID { get; set; }
 
