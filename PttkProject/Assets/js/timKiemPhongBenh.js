@@ -72,7 +72,7 @@ function xem(id) {
 }
 function xoa(id) {
     $.ajax({
-        url: 'xoaPhong',
+        url: '/phong-benh/xoa-phong-benh',
         dataType: 'json',
         data: {
             ID: id
@@ -83,7 +83,7 @@ function xoa(id) {
             console.log(ajaxOptions);
             console.log(thrownError);
             $('#patient-modal-body').empty();
-            $('#patient-modal-body').text("Xóa thất bại do lỗi thệ thống");
+            $('#patient-modal-body').text("Xóa thất bại do lỗi hệ thống");
             $('#patient-modal').modal();
         },
         success: function (res) {
