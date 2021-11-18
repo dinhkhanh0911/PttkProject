@@ -518,6 +518,7 @@
     <Content Include="Assets\js\capNhatBenhAn.js" />
     <Content Include="Assets\js\diaChi.js" />
     <Content Include="Assets\js\home.js" />
+    <Content Include="Assets\js\layout.js" />
     <Content Include="Assets\js\thongKe.js" />
     <Content Include="Assets\js\timKiemNguoiDung.js" />
     <Content Include="Assets\js\themBenhAn.js" />

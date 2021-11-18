@@ -35,7 +35,7 @@ namespace PttkProject.Controllers
                     if (nguoiDung.isAdmin(u.taiKhoan))
                     {
                         Session.Add(CommonConstant.ADMIN_SESSION, userSession);
-                        return Redirect("/admin/index");
+                        return Redirect("/trang-chu/index");
                     }
                     Session.Add(CommonConstant.USER_SESSION, userSession);
                     return Redirect("/trang-chu/index");

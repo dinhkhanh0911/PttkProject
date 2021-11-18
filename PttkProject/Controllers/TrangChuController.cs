@@ -1,7 +1,9 @@
 ﻿using DBCovid.Data;
 using DBCovid.models;
 using Newtonsoft.Json;
+using PttkProject.Common;
 using PttkProject.DatabaseDAO;
+using PttkProject.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace PttkProject.Controllers
     public class TrangChuController : Controller
     {
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
+        private NguoiDungDAO nguoiDung = new NguoiDungDAO();
         public ActionResult Index()
         {
             return View();
@@ -40,6 +43,23 @@ namespace PttkProject.Controllers
             catch(Exception e)
             {
                 return Json(new { code = 404, msg = "Loi lay du lieu" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        [HttpGet]
+        public JsonResult layCoockie()
+        {
+            try
+            {
+                var session = (User)Session[CommonConstant.ADMIN_SESSION];
+                if (session != null)
+                {
+                    return Json(new { code = 1 }, JsonRequestBehavior.AllowGet);
+                }
+                else return Json(new { code = 2 }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new {code = 0},JsonRequestBehavior.AllowGet);
             }
         }
     }
