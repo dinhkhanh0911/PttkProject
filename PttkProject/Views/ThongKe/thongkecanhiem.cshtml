@@ -98,11 +98,8 @@
     <div class="container-fluid">
         <div class="card">
 
-            <div class="row">
-                <div class="col-sm-8">
-                    <canvas id="myChart2" width="100%"></canvas>
-                </div>
-                <div class="col-sm-4">
+            <div class="row text-center">
+                <div class="col-sm-12">
                     @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
                     {
 
@@ -154,38 +151,58 @@
             </tfoot>
         </table>
     </div>
-</div>-->
-<script>
-    //đồ thị
-    $(document).ready(function () {
-        const labels = [
-            'Tháng 1',
-            'Tháng 2',
-            'Tháng 3',
-            'Tháng 4',
-            'Tháng 5',
-            'Tháng 6',
-        ];
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Số ca tửng vong',
-                backgroundColor: '#4E73DF',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [29128, 15812, 4939, 30905, 16612, 52459, 37734],
-            }]
-        };
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {},
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                        <div class="name__page">
+                            <h4 class="name__page-tilte">
+                                Biểu đồ số ca theo ngày
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <canvas id="bieudotheongay"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                        <div class="name__page">
+                            <h4 class="name__page-tilte">
+                                Biểu đồ số ca theo độ tuổi
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <canvas id="bieudotheodotuoi"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                        <div class="name__page">
+                            <h4 class="name__page-tilte">
+                                Biểu đồ tỉ lệ nam nữ
+                            </h4>
+                        </div>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <canvas id="bieudonamnu"></canvas>
+                    </div>
+                </div>
+            </div>
 
-        };
-        const myChart = new Chart(
-            document.getElementById('myChart2'),
-            config
-        );
-    });
-
-</script>
+        </div>
+    </div>
+</div>
 <script src="~/Assets/js/thongKe.js"></script>
