@@ -497,7 +497,6 @@
     <Compile Include="Controllers\XuatDuLieuController.cs" />
     <Compile Include="DatabaseDAO\BenhAnDAO.cs" />
     <Compile Include="DatabaseDAO\BenhNhanDAO.cs" />
-    <Compile Include="DatabaseDAO\DBIO.cs" />
     <Compile Include="DatabaseDAO\DiaChiDAO.cs" />
     <Compile Include="DatabaseDAO\NguoiDungDAO.cs" />
     <Compile Include="DatabaseDAO\NhanVienYTeDAO.cs" />
@@ -754,7 +753,6 @@
     <Content Include="Views\BenhNhan\thembenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\capnhatTTbenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\timkiembenhnhan.cshtml" />
-    <Content Include="Views\MedicalStaff\Index.cshtml" />
     <Content Include="Views\BenhNhan\Index.cshtml" />
     <Content Include="Views\NguoiDung\themnguoidung.cshtml" />
     <Content Include="Views\NguoiDung\suanguoidung.cshtml" />
