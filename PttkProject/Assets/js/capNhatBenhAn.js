@@ -37,8 +37,8 @@ function load() {
             
             if (data.code === 200) {
                 
-                fillDataTTTV(data.thongTinTruyVets)
-                fillDataTTDT(data.thongTinDieuTris)
+                dieuDuLieuTTTV(data.thongTinTruyVets)
+                dienDuLieuTTDT(data.thongTinDieuTris)
                 
                 DSThongTinTruyVet.setData(data.thongTinTruyVets)
                 DSThongTinDieuTri.setData(data.thongTinDieuTris)
@@ -48,7 +48,7 @@ function load() {
         }
     })
 }
-function fillDataTTTV(thongTinTruyVets) {
+function dieuDuLieuTTTV(thongTinTruyVets) {
     thongTinTruyVets.sort(function (a, b) {
         var date1 = new Date(Number(a.thoiGian.slice(6, a.thoiGian.length - 2)))
         var date2 = new Date(Number(b.thoiGian.slice(6, b.thoiGian.length - 2)))
@@ -80,7 +80,7 @@ function fillDataTTTV(thongTinTruyVets) {
         $('#tbodyThongTinTruyVet').append(row)
     }
 }
-function fillDataTTDT(thongTinDieuTris) {
+function dienDuLieuTTDT(thongTinDieuTris) {
     thongTinDieuTris.sort(function (a, b) {
         var date1 = new Date(Number(a.ngay.slice(6, a.ngay.length - 2)))
         var date2 = new Date(Number(b.ngay.slice(6, b.ngay.length - 2)))
@@ -118,14 +118,14 @@ function fillDataTTDT(thongTinDieuTris) {
 function handerSeeClick() {
     var seeElement = document.querySelectorAll('.see-tttv')
     for (var item of seeElement) {
-        item.addEventListener('click', show)
+        item.addEventListener('click', hienthi)
     }
     var seeElement = document.querySelectorAll('.see-ttdt')
     for (var item of seeElement) {
-        item.addEventListener('click', show)
+        item.addEventListener('click', hienthi)
     }
 }
-function show() {
+function hienthi() {
     var element = document.querySelector(`#${this.id}`)
     var parent = element.parentElement
     var dataValue = parent.attributes["data-value"].value
@@ -138,13 +138,13 @@ function show() {
     else {
         data = DSThongTinTruyVet.getData(dataValue)
         
-        showModalTTTV(data)
+        hienthiModalTTTV(data)
     }
     
     
 
 }
-function showModalTTDT(data) {
+function hienthiModalTTDT(data) {
     var modalTitle = document.querySelector('#infor-modal-tittle')
     modalTitle.textContent= "Thông tin điều trị"
     var modal = document.querySelector('#infor-modal-body')
@@ -216,14 +216,14 @@ function confirmDelete() {
         var element = document.querySelector(`#${this.id}`)
         var parent = element.parentElement.parentElement
         if (element.className === "delete-tttv") {
-            deleteTTTV(parent)
+            xoaTTTV(parent)
         }
         else {
-            deleteTTDT(parent)
+            xoaTTDT(parent)
         }
     }
 }
-function deleteTTTV(element) {
+function xoaTTTV(element) {
     var ID = element.attributes["data-value"].value
     $.ajax({
         url: '/benh-nhan/xoa-thong-tin-truy-vet',
@@ -240,7 +240,7 @@ function deleteTTTV(element) {
         }
     })
 }
-function deleteTTDT(element) {
+function xoaTTDT(element) {
     var ID = element.attributes["data-value"].value
     $.ajax({
         url: '/benh-nhan/xoa-thong-tin-dieu-tri',
