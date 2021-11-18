@@ -9,11 +9,11 @@ namespace PttkProject.DatabaseDAO
 {
     public class XuatDuLieuDAO: DBCovidContext
     {
-        public List<BenhAn> xuatBenhAn(int idBenhNhan)
+        public List<BenhAn> xuatBenhAn(int id)
         {
             try
             {
-                List<BenhAn> BA = benhAn.Where(s => s.benhNhanID == idBenhNhan).ToList();
+                List<BenhAn> BA = benhAn.Where(s => s.ID == id).ToList();
                 foreach(var s in BA)
                 {
                     s.benhNhan = benhNhan.Where(ss => ss.ID == s.benhNhanID).FirstOrDefault();
