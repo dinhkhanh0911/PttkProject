@@ -43,13 +43,13 @@
     <div class="container__page-fullWidth">
         <div class="name__page">
             <h4 class="name__page-tilte">
-               Thêm nhân viên y tế
+                Thêm nhân viên y tế
             </h4>
         </div>
         <div class="container__page-content">
             @using (Html.BeginForm("themNhanVienYTe", "NhanVienYTe", FormMethod.Post))
             {
-                <div class="row">                   
+                <div class="row">
                     <div class="col l-4 m-6 c-12">
                         <div class="form__import-item">
                             @Html.TextBoxFor(model => model.ID, htmlAttributes: new { @readonly = "readonly", style = "display:none" })
@@ -92,9 +92,15 @@
                     <div class="col l-8 m-6 c-12">
                         <div class="form__import-item">
                             @Html.Label("Địa chỉ", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
-                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
-                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
+                            <select name="tinhID" id="tinhID" class="form__import-select" onchange="tinhchange(this)">
+                                <option>Tỉnh</option>
+                            </select>
+                            <select name="huyenID" id="huyenID" class="form__import-select" style="margin-left:15px" onchange="huyenchange(this)">
+                                <option>Huyện</option>
+                            </select>
+                            <select name="xaID" id="xaID" class="form__import-select" style="margin-left:15px">
+                                <option>Xã</option>
+                            </select>
 
                         </div>
                     </div>
@@ -128,3 +134,9 @@
     </div>
 
 </div>
+<script>
+    var tinh = @Html.Raw(Json.Encode(ViewBag.tinhs));
+    var huyen = @Html.Raw(Json.Encode(ViewBag.huyens));
+    var xa = @Html.Raw(Json.Encode(ViewBag.xas));
+</script>
+<script src="~/Assets/js/diaChi.js"></script>
