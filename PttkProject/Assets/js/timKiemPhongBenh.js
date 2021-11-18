@@ -24,9 +24,8 @@ $('form').submit(function (event) {
                     $('#tbPhong').append(`
                             <tr id="${item.ID}">
                                 <td>${item.tenPhong}</td>
-                                <td>${item.soGiuongHienTai || "Không có"}</td>
+                                <td>${item.soGiuongHienTai}</td>
                                 <td>${item.soGiuongToiDa}</td>
-                                <td>${item.loaiPhongID}</td>
                                 <td>
                                     <a onclick="xem(${item.ID})" class="see" title="Xem" >
                                         <i class="fa fa-eye" aria-hidden="true"></i>
