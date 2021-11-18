@@ -60,17 +60,17 @@ function xem(id) {
     $('#patient-modal-body').empty();
     $('#patient-modal-body').append(`<div class="modal-group">
              <label class="modal-lable">Họ và tên:</label>
-             <label class="modal-value">${data.ten || "Không có"}</label></div>
+             <label class="modal-value">${data.ten}</label></div>
              <div class="modal-group">
             <label class="modal-lable">Ngày sinh:</label>
             <label class="modal-value">${data.ngaySinh != null ? new Date(Number(data.ngaySinh.slice(6, data.ngaySinh.length - 2))).toLocaleDateString() : "Không có"}</label></div>
             <div class="modal-group">
             <label class="modal-lable">Giới tính:</label>
-             <label class="modal-value">${data.gioiTinh || "Không có"}</label>
+             <label class="modal-value">${data.gioiTinh}</label>
              </div>
             <div class="modal-group">
             <label class="modal-lable">Số CCCD:</label>
-            <label class="modal-value">${data.CMND || "Không có"}</label>
+            <label class="modal-value">${data.CMND}</label>
             </div>
             <div class="modal-group">
             <label class="modal-lable">Địa chỉ:</label>
@@ -83,7 +83,7 @@ function xem(id) {
             
             <div class="modal-group">
             <label class="modal-lable">Số điện thoại:</label>
-            <label class="modal-value">${data.sdt || "Không có"}</label>
+            <label class="modal-value">${data.sdt}</label>
             </div>`);
 
     $('#patient-modal').modal();
