@@ -45,7 +45,9 @@
                             <span class="form__import-label">
                                 Tỉnh
                             </span>
-                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, new { @class = "form__import-select", @id = "tinh" })
+                            <select name="tinhID" id="tinhID" class="form__import-select" onchange="tinhchange(this)">
+                                <option>Tỉnh</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
@@ -53,7 +55,9 @@
                             <span class="form__import-label">
                                 Huyện
                             </span>
-                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, new { @class = "form__import-select", @id = "huyen" })
+                            <select name="huyenID" id="huyenID" class="form__import-select" style="margin-left:15px" onchange="huyenchange(this)">
+                                <option>Huyện</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">
@@ -61,7 +65,9 @@
                             <span class="form__import-label">
                                 Xã
                             </span>
-                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, new { @class = "form__import-select", @id = "xa" })
+                            <select name="xaID" id="xaID" class="form__import-select" style="margin-left:15px">
+                                <option>Xã</option>
+                            </select>
                         </div>
                     </div>
 
@@ -70,12 +76,12 @@
                     <button class="btn btn-primary btn__save btn-submit">
                         Lưu thông tin
                     </button>
-                    <button class="btn btn__reset btn-submit btn-default">
+                    <button class="btn btn__reset btn-submit btn-default" type="reset">
                         Đặt lại
                     </button>
-                    <button class="btn btn__cancel btn-submit btn-default">
+                    <a href="/benh-nhan/cap-nhat-benh-an/@Model.benhAnID" class="btn btn__cancel btn-submit btn-default">
                         Hủy
-                    </button>
+                    </a>
                 </div>
             </form>
         </div>
@@ -84,4 +90,9 @@
 
 </div>
 <script src="~/Assets/js/themThongTinTruyVet.js"></script>
-
+<script>
+    var tinh = @Html.Raw(Json.Encode(ViewBag.tinhs));
+    var huyen = @Html.Raw(Json.Encode(ViewBag.huyens));
+    var xa = @Html.Raw(Json.Encode(ViewBag.xas));
+</script>
+<script src="~/Assets/js/diaChi.js"></script>
