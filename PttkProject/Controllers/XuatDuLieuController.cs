@@ -96,7 +96,7 @@ namespace PttkProject.Controllers
                 if(loaiBC==1)file = xuatBaoCaoCaNhiem(xuatDuLieu.xuatBaoCaoCaNhiem(startdate, enddate));
                 if (loaiBC == 2) file = xuatBaoCaoCaTuVong(xuatDuLieu.xuatBaoCaoCaTuVong(startdate, enddate));
                 else file = xuatBaoCaoCaKhoiBenh(xuatDuLieu.xuatBaoCaoCaKhoiBenh(startdate,enddate));
-                return File(file, "doc/docx", "Báo cáo.docx");
+                return File(file, "xlsx/xls", "Báo cáo.xlsx");
             }
             catch (Exception e)
             {
