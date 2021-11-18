@@ -379,9 +379,28 @@ namespace PttkProject.Controllers
             //}
             List<Huyen> huyens = diaChi.huyen.ToList();
             List<Xa> xas = diaChi.xa.ToList();
-            ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
-            ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
-            ViewBag.xas = new SelectList(xas, "ID", "tenXa");
+            ViewBag.tinhs = (from s in tinhs 
+                             select new {
+                                 s.ID,
+                                 s.tenTinh
+                            });
+            ViewBag.huyens = (from s in huyens
+                              select new
+                              {
+                                  s.ID,
+                                  s.tenHuyen,
+                                  s.tinhID
+                              });
+            ViewBag.xas = (from s in xas
+                           select new
+                           {
+                               s.ID,
+                               s.tenXa,
+                               s.huyenID
+                           });
+            //ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
+            //ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
+            //ViewBag.xas = new SelectList(xas, "ID", "tenXa");
 
         }
         
