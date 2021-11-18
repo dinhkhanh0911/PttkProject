@@ -14,14 +14,14 @@ namespace PttkProject
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             /* Trang chủ */
             routes.MapRoute(
-                name: "Home",
+                name: "TrangChu",
                 url: "trang-chu/index",
-                defaults: new { controller = "Home", action = "Index" }
+                defaults: new { controller = "TrangChu", action = "Index" }
             );
             routes.MapRoute(
                 name: "LayDuLieuBieuDoTron",
                 url: "trang-chu/lay-du-lieu-bieu-do-tron",
-                defaults: new { controller = "Home", action = "layDuLieuBieuDoTron" }
+                defaults: new { controller = "TrangChu", action = "layDuLieuBieuDoTron" }
             );
             routes.MapRoute(
                 name: "QuanLyBenhNhan",
@@ -220,7 +220,7 @@ namespace PttkProject
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "TrangChu", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

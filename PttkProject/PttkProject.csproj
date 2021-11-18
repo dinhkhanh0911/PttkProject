@@ -488,7 +488,7 @@
     <Compile Include="Controllers\BaseAdminController.cs" />
     <Compile Include="Controllers\BaseUserController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\NhanVienYTeController.cs" />
     <Compile Include="Controllers\BenhNhanController.cs" />
     <Compile Include="Controllers\PhongBenhController.cs" />
@@ -750,7 +750,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\BenhNhan\thembenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\capnhatTTbenhnhan.cshtml" />
     <Content Include="Views\BenhNhan\timkiembenhnhan.cshtml" />
