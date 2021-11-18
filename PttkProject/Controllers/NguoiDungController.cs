@@ -13,7 +13,6 @@ namespace PttkProject.Controllers
     {
         // GET: Uesr
         private NguoiDungDAO nguoiDung = new NguoiDungDAO();
-        private DBIO dBIO = new DBIO();
         private DiaChiDAO diaChi = new DiaChiDAO();
         public ActionResult Index()
         {
@@ -23,7 +22,7 @@ namespace PttkProject.Controllers
         {
             ViewBag.message = mgs;
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
             return View();
         }
         [HttpPost]
@@ -54,7 +53,7 @@ namespace PttkProject.Controllers
             int id = 9;
             NguoiDung nd = nguoiDung.layNguoiDung(id);
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
             return View(nd);
         }
         [HttpPost]
