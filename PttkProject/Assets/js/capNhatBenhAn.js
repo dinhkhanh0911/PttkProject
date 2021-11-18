@@ -133,7 +133,7 @@ function hienthi() {
     if (parent.className === "ttdt") {
         data = DSThongTinDieuTri.getData(dataValue)
         
-        showModalTTDT(data)
+        hienthiModalTTDT(data)
     }
     else {
         data = DSThongTinTruyVet.getData(dataValue)
@@ -170,7 +170,7 @@ function hienthiModalTTDT(data) {
     `
 
 }
-function showModalTTTV(data) {
+function hienthiModalTTTV(data) {
     var modalTitle = document.querySelector('#infor-modal-tittle')
     modalTitle.textContent = "Thông tin truy vết"
     var modal = document.querySelector('#infor-modal-body')
