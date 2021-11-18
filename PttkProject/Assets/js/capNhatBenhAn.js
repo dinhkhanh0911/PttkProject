@@ -274,5 +274,5 @@ function xuatTTDieuTri(id) {
     window.location = "/XuatDuLieu/XuatTTTDieuTri/" + id;
 }
 function xuatbenhan(id) {
-    window.location = "/XuatDuLieu/xuatThongTinBenhAn" + id;
+    window.location = "/XuatDuLieu/xuatThongTinBenhAn/" + id;
 }
