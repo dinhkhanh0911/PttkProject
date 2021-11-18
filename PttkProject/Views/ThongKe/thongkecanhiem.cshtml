@@ -6,8 +6,74 @@
 
 
 
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Thống kê số ca dương tính trở lại
+            </h4>
+        </div>
+        <div class="container__page-content">
+            <div class="card" style="margin-bottom:30px">
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <canvas id="myChart2" width="100%"></canvas>
+                    </div>
+                    <div class="col-sm-4">
+                        @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
+                        {
+
+                            <h4>Chọn khoảng thời gian</h4>
+                            <label for="startdate">Ngày bắt đầu:</label>
+                            <input type="date" id="startdate" name="startdate">
+                            <br />
+                            <label for="enddate">Ngày kết thúc:</label>
+                            <input type="date" id="enddate" name="enddate">
+                            <br />
+                            <button class="btn btn-primary btn__save btn-submit">Hiển thị</button>
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <table id="datatable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Số CMND</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày nhiễm bệnh</th>
+                        <th>Phòng bệnh</th>
+                        <th>Trạng thái hiện tại</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_thongke">
+                    <tr>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+</div>
 <!--Chart-->
-<div class="container-content">
+<!--<div class="container-content">
     <h1>
         THỐNG KÊ CA NHIỄM
     </h1>
@@ -37,10 +103,10 @@
                     </div>
             
         </div>
-    </div>
+    </div>-->
     <!-- /.chat-->
     <!--Datatable-->
-    <div class="container-fluid">
+    <!--<div class="container-fluid">
         <table id="datatable">
             <thead>
                 <tr>
@@ -71,7 +137,7 @@
             </tfoot>
         </table>
     </div>
-</div>
+</div>-->
 <script>
     //đồ thị
     $(document).ready(function () {
@@ -86,8 +152,8 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: '#17a2b8',
+                label: 'Số ca tửng vong',
+                backgroundColor: '#4E73DF',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [29128, 15812, 4939, 30905, 16612, 52459, 37734],
             }]
