@@ -97,7 +97,7 @@ namespace PttkProject.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { code = 404, mgs = "Xóa thất bại"}, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 404, mgs = "Không thể xóa người dùng này"}, JsonRequestBehavior.AllowGet);
             }
         }
 
