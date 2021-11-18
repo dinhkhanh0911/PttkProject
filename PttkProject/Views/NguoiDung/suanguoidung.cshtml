@@ -85,10 +85,15 @@
                     <div class="col l-8 m-6 c-12">
                         <div class="form__import-item">
                             @Html.Label("Địa chỉ", htmlAttributes: new { @class = "form__import-label" })
-                            @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
-                            @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
-                            @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
-
+                            <select name="tinhID" id="tinhID" class="form__import-select" onchange="tinhchange(this)">
+                                <option>Tỉnh</option>
+                            </select>
+                            <select name="huyenID" id="huyenID" class="form__import-select" style="margin-left:15px" onchange="huyenchange(this)">
+                                <option>Huyện</option>
+                            </select>
+                            <select name="xaID" id="xaID" class="form__import-select" style="margin-left:15px">
+                                <option>Xã</option>
+                            </select>
                         </div>
                     </div>
 
@@ -121,3 +126,71 @@
     </div>
 
 </div>
+<script>
+    var tinh = @Html.Raw(Json.Encode(ViewBag.tinhs));
+    var huyen = @Html.Raw(Json.Encode(ViewBag.huyens));
+    var xa = @Html.Raw(Json.Encode(ViewBag.xas));
+    var dsTinh = [];
+    var dsHuyen = [];
+    var dsXa = [];
+    var idXa = @Html.Raw(Json.Encode(Model.xaID));
+    var idHuyen = xa.find(val => val["ID"] == idXa).huyenID;
+    var idTinh = huyen.find(val => val["ID"] == idHuyen).tinhID;
+
+    function update(res) {
+        if(res.value!=null)window.location ="/benh-nhan/cap-nhat-benh-an/"+ res.value;
+    }
+    function tinhchange(res) {
+        let id = res.value;
+        let slHuyen = $("#huyenID");
+        slHuyen.empty();
+        slHuyen.append(`<option>Huyện</option>`);
+        huyen.map((val) => {
+            if(val.tinhID==id)slHuyen.append(`<option value="${val.ID}">${val["tenHuyen"]}</option>`);
+        })
+
+    }
+    function huyenchange(res) {
+        let id = res.value;
+        let slxa = $("#xaID");
+        slxa.empty();
+        slxa.append(`<option>Xã</option>`);
+        xa.map((val) => {
+            if (val.huyenID == id) slxa.append(`<option value="${val.ID}">${val["tenXa"]}</option>`);
+        })
+    }
+    function loadDC() {
+        let slTinh = $("#tinhID");
+        let slHuyen = $("#huyenID");
+        let slXa = $("#xaID");
+        dsTinh = tinh;
+        huyen.map((val) => {if(val.tinhID==idTinh)dsHuyen.push(val) });
+        xa.map((val) => { if (val.huyenID == idHuyen) dsXa.push(val) });
+
+        if (typeof(idTinh)!="undefined") {
+            slTinh.empty();
+            slTinh.append(`<option>Tỉnh</option>`);
+            for (let temp of dsTinh) {
+                if (temp["ID"] != idTinh) slTinh.append(`<option value="${temp["ID"]}">${temp["tenTinh"]}</option>`);
+                else slTinh.append(`<option value="${temp["ID"]}" selected="selected">${temp["tenTinh"]}</option>`);
+            }
+        }
+        if (typeof(idHuyen)!="undefined") {
+            slHuyen.empty();
+            slHuyen.append(`<option>Huyện</option>`);
+            for (let temp of dsHuyen) {
+                if (temp["ID"] != idHuyen) slHuyen.append(`<option value="${temp["ID"]}">${temp["tenHuyen"]}</option>`);
+                else slHuyen.append(`<option value="${temp["ID"]}" selected="selected">${temp["tenHuyen"]}</option>`);
+            }
+        }
+        if (typeof(idXa)!="undefined") {
+            slXa.empty();
+            slXa.append(`<option>Xã</option>`);
+            for (let temp of dsXa) {
+                if (temp["ID"] != idXa) slXa.append(`<option value="${temp["ID"]}">${temp["tenXa"]}</option>`);
+                else slXa.append(`<option value="${temp["ID"]}" selected="selected">${temp["tenXa"]}</option>`);
+            }
+        }
+    };
+    loadDC();
+</script>

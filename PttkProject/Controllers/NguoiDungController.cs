@@ -48,9 +48,9 @@ namespace PttkProject.Controllers
                 return RedirectToAction("Index", "NguoiDung", new {mgs = "Thêm thất bại" });
             }
         }
-        public ActionResult suanguoidung()
+        public ActionResult suanguoidung(int id)
         {
-            int id = 9;
+
             NguoiDung nd = nguoiDung.layNguoiDung(id);
             setViewBagDiaChi();
             ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
