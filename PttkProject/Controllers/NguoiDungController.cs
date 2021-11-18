@@ -31,7 +31,6 @@ namespace PttkProject.Controllers
         {
             try
             {
-                NguoiDung a = nd;
                 //if (ModelState.IsValid)
                 //{
                     if (nguoiDung.isNguoiDung(nd.taiKhoan))
