@@ -13,7 +13,6 @@ namespace PttkProject.Controllers
     {
         // GET: Uesr
         private NguoiDungDAO nguoiDung = new NguoiDungDAO();
-        private DBIO dBIO = new DBIO();
         private DiaChiDAO diaChi = new DiaChiDAO();
         public ActionResult Index()
         {
@@ -23,7 +22,7 @@ namespace PttkProject.Controllers
         {
             ViewBag.message = mgs;
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
             return View();
         }
         [HttpPost]
@@ -31,7 +30,6 @@ namespace PttkProject.Controllers
         {
             try
             {
-                NguoiDung a = nd;
                 //if (ModelState.IsValid)
                 //{
                     if (nguoiDung.isNguoiDung(nd.taiKhoan))
@@ -55,7 +53,7 @@ namespace PttkProject.Controllers
             int id = 9;
             NguoiDung nd = nguoiDung.layNguoiDung(id);
             setViewBagDiaChi();
-            ViewBag.viTriLamViec = new SelectList(dBIO.layDSViTriLamViec(), "ID", "tenVitri");
+            ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
             return View(nd);
         }
         [HttpPost]
@@ -118,16 +116,8 @@ namespace PttkProject.Controllers
         private void setViewBagDiaChi()
         {
             List<Tinh> tinhs = diaChi.layDSTinh();
-            List<Huyen> huyens = new List<Huyen>();
-            List<Xa> xas = new List<Xa>();
-            if (tinhs.Count > 0)
-            {
-                huyens = diaChi.layDSHuyen(tinhs[0].ID);
-            }
-            if (huyens.Count > 0)
-            {
-                xas = diaChi.layDSXa(huyens[0].ID);
-            }
+            List<Huyen> huyens = diaChi.huyen.ToList();
+            List<Xa> xas = diaChi.xa.ToList();
 
             ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
             ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");

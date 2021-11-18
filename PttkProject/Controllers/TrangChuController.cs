@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class HomeController : Controller
+    public class TrangChuController : Controller
     {
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
         public ActionResult Index()
