@@ -10,6 +10,22 @@ namespace PttkProject.DatabaseDAO
 {
     public class BenhAnDAO : DBCovidContext
     {
+        public bool themBenhAn(BenhAn model)
+        {
+
+            try
+            {
+                this.benhAn.Add(model);
+                this.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+
+        }
 
         public BenhAn layBenhAn(int id)
         {

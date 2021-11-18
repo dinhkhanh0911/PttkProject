@@ -13,7 +13,6 @@ namespace PttkProject.Controllers
 {
     public class BenhNhanController : Controller
     {
-        private DBIO dBIO = new DBIO();
         private DiaChiDAO diaChi = new DiaChiDAO();
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
         private BenhAnDAO benhAn = new BenhAnDAO();
@@ -156,12 +155,12 @@ namespace PttkProject.Controllers
 
         public ActionResult thembenhan(int id)
         {
-            
-            string tenBenhNhan = dBIO.layTenBenhNhan(id);
+
+            string tenBenhNhan = benhNhan.layTenBenhNhan(id);
             if(tenBenhNhan != "")
             {
                 setViewBagTenBenhNhan(tenBenhNhan);
-                setViewBagImportMedicalRecord();
+                setViewBagThemBenhAn();
                 BenhAn model = new BenhAn();
                 model.benhNhanID = id;
                 return View(model);
@@ -174,8 +173,8 @@ namespace PttkProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                setViewBagImportMedicalRecord();
-                var ok = dBIO.themBenhAn(model);
+                setViewBagThemBenhAn();
+                var ok = benhAn.themBenhAn(model);
                 
                 if (ok)
                 {
@@ -185,7 +184,7 @@ namespace PttkProject.Controllers
             }
             else
             {
-                setViewBagImportMedicalRecord();
+                setViewBagThemBenhAn();
                 return Json(new { code = 500,model = model,msg = "Thuộc tính chưa chính xác"}, JsonRequestBehavior.AllowGet);
             }
             
@@ -200,7 +199,7 @@ namespace PttkProject.Controllers
             try
             {
 
-                List<PhongBenh> data = dBIO.layDSPhongBenh(loaiPhongID) ;
+                List<PhongBenh> data = phong.layDSPhongBenh(loaiPhongID) ;
                 return Json(new { code = 200, listRoom = data }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -208,14 +207,14 @@ namespace PttkProject.Controllers
                 return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
             }
         }
-        private void setViewBagImportMedicalRecord()
+        private void setViewBagThemBenhAn()
         {
-            List<LoaiPhong> l = dBIO.layDSLoaiPhong();
+            List<LoaiPhong> l = phong.layDSLoaiPhong();
             List<PhongBenh> p = new List<PhongBenh>();
-            List<TrangThai> t = dBIO.layDSTrangThai();
+            List<TrangThai> t = benhNhan.layDSTrangThai();
             if (l.Count() > 0)
             {
-                p = dBIO.layDSPhongBenh(l[0].ID);
+                p = phong.layDSPhongBenh(l[0].ID);
             }
             ViewBag.loaiPhong = new SelectList(l, "ID", "tenLoaiPhong");
             ViewBag.phongBenh = new SelectList(p, "ID", "tenPhong");
@@ -259,8 +258,8 @@ namespace PttkProject.Controllers
         {
             try
             {
-                List<ThongTinDieuTri> thongTinDieuTris = dBIO.layDSThongTinDieuTri(benhAnID);
-                var thongTinTruyVets = dBIO.layDSThongTinTruyVet(benhAnID);
+                List<ThongTinDieuTri> thongTinDieuTris = benhNhan.layDSThongTinDieuTri(benhAnID);
+                var thongTinTruyVets = benhNhan.layDSThongTinTruyVet(benhAnID);
                 return Json(new { code = 200, thongTinDieuTris = thongTinDieuTris, thongTinTruyVets = thongTinTruyVets }, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
@@ -273,9 +272,9 @@ namespace PttkProject.Controllers
         /*Thông tin điều trị */
         public ActionResult themThongTinDieuTri(int ID)
         {
-            
-            int benhNhanID = dBIO.layBenhNhanID(ID);
-            string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
+
+            int benhNhanID = benhNhan.layBenhNhanID(ID);
+            string tenBenhNhan = benhNhan.layTenBenhNhan(benhNhanID);
             if(tenBenhNhan != null)
             {
                 setViewBagTenBenhNhan(tenBenhNhan);
@@ -292,7 +291,7 @@ namespace PttkProject.Controllers
             if (ModelState.IsValid)
             {
                 bool oke = false;
-                oke = dBIO.themThongTinDieuTri(model);
+                oke = benhNhan.themThongTinDieuTri(model);
                 if (oke)
                 {
                     return Json(new { code = 200, msg = "Thêm thành công", model = model }, JsonRequestBehavior.AllowGet);
@@ -308,7 +307,7 @@ namespace PttkProject.Controllers
             try
             {
                 bool ok = false;
-                ok = dBIO.xoaThongTinDieuTri(ID);
+                ok = benhNhan.xoaThongTinDieuTri(ID);
                 if (ok)
                 {
                     return Json(new { code = 200, msg = "Xóa thành công" }, JsonRequestBehavior.AllowGet);
@@ -331,8 +330,8 @@ namespace PttkProject.Controllers
         /*Thông tin truy vết*/
         public ActionResult ThemThongTinTruyVet(int ID)
         {
-            int benhNhanID = dBIO.layBenhNhanID(ID);
-            string tenBenhNhan = dBIO.layTenBenhNhan(benhNhanID);
+            int benhNhanID = benhNhan.layBenhNhanID(ID);
+            string tenBenhNhan = benhNhan.layTenBenhNhan(benhNhanID);
             if (tenBenhNhan != null)
             {
                 setViewBagTenBenhNhan(tenBenhNhan);
@@ -349,7 +348,7 @@ namespace PttkProject.Controllers
             if (ModelState.IsValid)
             {
                 bool oke = false;
-                oke = dBIO.themThongTinTruyVet(model);
+                oke = benhNhan.themThongTinTruyVet(model);
                 if (oke)
                 {
                     return Json(new { code = 200, msg = "Thêm thành công", model = model }, JsonRequestBehavior.AllowGet);
@@ -366,7 +365,7 @@ namespace PttkProject.Controllers
             try
             {
                 bool ok = false;
-                ok = dBIO.xoaThongTinTruyVet(ID);
+                ok = benhNhan.xoaThongTinTruyVet(ID);
                 if (ok)
                 {
                     return Json(new { code = 200, msg = "Xóa thành công"}, JsonRequestBehavior.AllowGet);

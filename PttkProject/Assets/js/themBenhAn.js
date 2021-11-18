@@ -57,6 +57,7 @@ function fill(data) {
                 console.log(response.model)
                 console.log(response.code)
                 if (response.code === 200) {
+                    console.log(response.model)
                     window.location.href = `/benh-nhan/cap-nhat-benh-an/${response.model.ID}`
                 }
                 
