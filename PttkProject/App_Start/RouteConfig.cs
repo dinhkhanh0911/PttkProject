@@ -121,6 +121,11 @@ namespace PttkProject
                 defaults: new { controller = "PhongBenh", action = "themphong" }
             );
             routes.MapRoute(
+                name: "xoaPhong",
+                url: "phong-benh/xoa-phong-benh/{id}",
+                defaults: new { controller = "PhongBenh", action = "xoaPhong", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "TimKiemPhongBenh",
                 url: "phong-benh/tim-kiem-phong-benh",
                 defaults: new { controller = "PhongBenh", action = "timkiemphong" }
@@ -135,6 +140,11 @@ namespace PttkProject
                 name: "QuanLyNhanVienYTe",
                 url: "nhan-vien-y-te/index",
                 defaults: new { controller = "NhanVienYTe", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "xoaNvYte",
+                url: "nhan-vien-y-te/xoa-nhan-vien-y-te/{id}",
+                defaults: new { controller = "NhanVienYTe", action = "xoaNvYte", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "ThemNhanVienYTe",
@@ -156,6 +166,11 @@ namespace PttkProject
                 name: "QuanLyNguoiDung",
                 url: "nguoi-dung/index",
                 defaults: new { controller = "NguoiDung", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "xoaNguoiDung",
+                url: "nguoi-dung/xoa-nguoi-dung/{id}",
+                defaults: new { controller = "NguoiDung", action = "xoaNguoiDung", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "ThemNguoiDung",

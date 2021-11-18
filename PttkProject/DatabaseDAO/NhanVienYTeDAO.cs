@@ -15,7 +15,7 @@ namespace PttkProject.DatabaseDAO
         {
             return nhanVienYTe.ToList();
         }
-        public NhanVienYTe layNhanVienYTe(int id)
+        public NhanVienYTe layNhanVienYTe(int? id)
         {
             return nhanVienYTe.Where(s=>s.ID==id).FirstOrDefault();
         }
@@ -51,7 +51,7 @@ namespace PttkProject.DatabaseDAO
         public void xoaNvYTe(int id)
         {
             var nv = nhanVienYTe.Where(s => s.ID == id).FirstOrDefault();
-            Entry(nv).State = EntityState.Deleted;
+            nhanVienYTe.Remove(nv);
             SaveChanges();
         }
         public void capNhatTTNhanVien(NhanVienYTe nv)
