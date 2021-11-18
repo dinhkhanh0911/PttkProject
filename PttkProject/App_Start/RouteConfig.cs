@@ -19,6 +19,11 @@ namespace PttkProject
                 defaults: new { controller = "TrangChu", action = "Index" }
             );
             routes.MapRoute(
+                name: "CheckCoockie",
+                url: "trang-chu/lay-coockie",
+                defaults: new { controller = "TrangChu", action = "layCoockie" }
+            );
+            routes.MapRoute(
                 name: "LayDuLieuBieuDoTron",
                 url: "trang-chu/lay-du-lieu-bieu-do-tron",
                 defaults: new { controller = "TrangChu", action = "layDuLieuBieuDoTron" }

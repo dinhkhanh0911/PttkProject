@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class BenhNhanController : BaseUserController
+    public class BenhNhanController : Controller
     {
         private DBIO dBIO = new DBIO();
         private DiaChiDAO diaChi = new DiaChiDAO();
@@ -112,7 +112,7 @@ namespace PttkProject.Controllers
                 {
                     return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
                 }
-                List<BenhNhan> data = benhNhan.layDSBenhNhan();
+                List<BenhNhan> data = benhNhan.layDSBenhNhan(input);
                 return Json(new { code = 200, data = data }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

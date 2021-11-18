@@ -30,12 +30,19 @@ namespace PttkProject.DatabaseDAO
         }
         public bool isAdmin(string taiKhoan)
         {
-            var ok = this.nguoiDung.Where(n => n.taiKhoan == taiKhoan && n.viTriLamViecID == 3).FirstOrDefault();
-            if (ok != null)
+            try
             {
-                return true;
+                var ok = this.nguoiDung.Where(n => n.taiKhoan == taiKhoan && n.viTriLamViecID == 3).FirstOrDefault();
+                if (ok != null)
+                {
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         public NguoiDung layNguoiDung(int id)
         {

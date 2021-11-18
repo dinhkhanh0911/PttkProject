@@ -58,12 +58,13 @@
                         <span data-valmsg-for="phongBenhID"
                               data-valmsg-replace="true" />
                     </div>
-                    <div class="col l-4 m-6 c-12">
-                        <div class="form__import-item">
+                    <div class="col l-4 m-6 c-12" >
+                        <div class="form__import-item" hidden>
                             <span class="form__import-label">
                                 Trạng thái
                             </span>
-                            @Html.DropDownList("trangThaiID", (IEnumerable<SelectListItem>)ViewBag.trangThai, new { @class = "form__import-select", @id = "trangThai", @name = "trangThaiID" })
+                            
+                            @Html.DropDownList("trangThaiID", (IEnumerable<SelectListItem>)ViewBag.trangThai, new { @class = "form__import-select", @id = "trangThai", @name = "trangThaiID", @hidden="hidden" })
                         </div>
                     </div>
                     <div class="col l-4 m-6 c-12">

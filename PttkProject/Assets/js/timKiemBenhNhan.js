@@ -91,7 +91,7 @@ function hienThiBenhNhan() {
 }
 function hienThiModal(data) {
     var modal = document.querySelector('#patien-modal-body')
-    console.log(data.ngaySinh)
+    console.log(data)
     var dateString = data.ngaySinh
     var date;
     if (dateString != null) {
@@ -116,7 +116,7 @@ function hienThiModal(data) {
         </div>
         <div class="modal-group">
             <label class="modal-lable">Địa chỉ:</label>
-            <label class="modal-value">${data.diaChiID || "Không có"}</label>
+            <label class="modal-value">${data.xaID || "Không có"}</label>
         </div>
         <div class="modal-group">
             <label class="modal-lable">Số điện thoại:</label>

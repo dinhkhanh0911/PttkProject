@@ -66,7 +66,7 @@
                     <label for="navbar-checkbox" class="overlay"></label>
 
                     @*mobile navbar*@
-                    <ul class="navbar-nav sidebar-mobile body-navbar">
+                    <ul class="navbar-nav sidebar-mobile body-navbar" id="mobile-body-navbar">
                         <li class="nav-item nav-active">
                             <a href="trang-chu/index" class="nav-item__link nav-item__home-page">
                                 <h6>Trang chủ</h6>
@@ -187,58 +187,65 @@
                             <label for="navbar-checkbox" class="overlay"></label>
 
                             @*pc navbar*@
-                            <ul class="navbar-nav sidebar-2 body-navbar" id="accordionSidebar">
-                                <li class="nav-item">
-                                    <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
-                                        <h6>Trang chủ</h6>
-                                    </a>
-                                </li>
-                                @*Divider*@
-                                <div class="border-bottom body-navbar__border-bottom"></div>
-                                <li class="nav-item">
-                                    <a href="/benh-nhan/index" class="nav-item__link">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                        <span>Quản lý bệnh nhân</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/phong-benh/index" class="nav-item__link">
-                                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                                        <span>Quản lý phòng bệnh</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/nhan-vien-y-te/index" class="nav-item__link">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        <span>Quản lý nhân viên y tế</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/thong-ke/index" class="nav-item__link">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Thống kê</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-item__link" href="/xuat-du-lieu/index">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Xuất dữ liệu</span>
-                                    </a>
-                                </li>
-                                <div class="border-bottom body-navbar__border-bottom"></div>
-                                <li class="nav-item">
-                                    <a href="/dang-nhap/dang-xuat" class="nav-item__link">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Đăng xuất</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../User/ChangePassword" class="nav-item__link">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                        <span>Đổi mật khẩu</span>
-                                    </a>
-                                </li>
-                            </ul>
+                        <ul class="navbar-nav sidebar-2 body-navbar" id="pc-body-navbar">
+                            <li class="nav-item">
+                                <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
+                                    <h6>Trang chủ</h6>
+                                </a>
+                            </li>
+                            @*Divider*@
+                            <div class="border-bottom body-navbar__border-bottom"></div>
+                            <li class="nav-item">
+                                <a href="/nguoi-dung/index" class="nav-item__link">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    <span>Quản lý người dùng</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/benh-nhan/index" class="nav-item__link">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    <span>Quản lý bệnh nhân</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/phong-benh/index" class="nav-item__link">
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                    <span>Quản lý phòng bệnh</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/nhan-vien-y-te/index" class="nav-item__link">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    <span>Quản lý nhân viên y tế</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/thong-ke/index" class="nav-item__link">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <span>Thống kê</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-item__link" href="/xuat-du-lieu/index">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <span>Xuất dữ liệu</span>
+                                </a>
+                            </li>
+                            <div class="border-bottom body-navbar__border-bottom"></div>
+                            <li class="nav-item">
+                                <a href="/dang-nhap/dang-xuat" class="nav-item__link">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../User/ChangePassword" class="nav-item__link">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    <span>Đổi mật khẩu</span>
+                                </a>
+                            </li>
+                            <script src="~/Assets/js/layout.js"></script>
+                        </ul>
                             <div class="border-left"></div>
 
                             @RenderBody()
@@ -303,7 +310,7 @@
     <!-- Page level custom scripts -->
     <script src="~/Content/js/demo/chart-area-demo.js"></script>
     <script src="~/Content/js/demo/chart-pie-demo.js"></script>
-
+    
 </body>
 
 </html>
