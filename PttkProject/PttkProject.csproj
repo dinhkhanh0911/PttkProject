@@ -503,9 +503,6 @@
     <Compile Include="DatabaseDAO\NhanVienYTeDAO.cs" />
     <Compile Include="DatabaseDAO\PhongBenhDAO.cs" />
     <Compile Include="DatabaseDAO\ThongKeDAO.cs" />
-    <Compile Include="DatabaseDAO\TrangThaiDAO.cs" />
-    <Compile Include="DatabaseDAO\TTDieuTriDAO.cs" />
-    <Compile Include="DatabaseDAO\TTTruyVetDAO.cs" />
     <Compile Include="DatabaseDAO\XuatDuLieuDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

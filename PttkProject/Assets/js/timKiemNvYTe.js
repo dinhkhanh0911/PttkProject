@@ -96,7 +96,7 @@ function xem(id) {
 }
 function xoa(id) {
     $.ajax({
-        url: 'xoaNguoiDung',
+        url: 'xoaNvYte',
         dataType: 'json',
         data: {
             ID: id
@@ -106,6 +106,9 @@ function xoa(id) {
             console.log(xhr);
             console.log(ajaxOptions);
             console.log(thrownError);
+            $('#patient-modal-body').empty();
+            $('#patient-modal-body').text("Xóa thất bại do lỗi thệ thống");
+            $('#patient-modal').modal();
         },
         success: function (res) {
             $(`#${id}`).remove();

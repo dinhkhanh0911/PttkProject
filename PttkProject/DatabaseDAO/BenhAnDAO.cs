@@ -10,22 +10,7 @@ namespace PttkProject.DatabaseDAO
 {
     public class BenhAnDAO : DBCovidContext
     {
-        public BenhAn layBenhAnMoiNhat(int idBenhNhan)
-        {
-            try
-            {
-                BenhAn BA = (from ba in benhAn
-                             join tt in trangThai
-                             on ba.trangThaiID equals tt.ID
-                             where tt.ID == 1 && ba.benhNhanID==idBenhNhan
-                             select ba).FirstOrDefault();
-                return BA;
-            }
-            catch(Exception e)
-            {
-                return null;
-            }
-        }
+
         public BenhAn layBenhAn(int id)
         {
             try
