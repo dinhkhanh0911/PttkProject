@@ -24,9 +24,8 @@ $('form').submit(function (event) {
                     $('#tbPhong').append(`
                             <tr id="${item.ID}">
                                 <td>${item.tenPhong}</td>
-                                <td>${item.soGiuongHienTai || "Không có"}</td>
+                                <td>${item.soGiuongHienTai}</td>
                                 <td>${item.soGiuongToiDa}</td>
-                                <td>${item.loaiPhongID}</td>
                                 <td>
                                     <a onclick="xem(${item.ID})" class="see" title="Xem" >
                                         <i class="fa fa-eye" aria-hidden="true"></i>
@@ -60,19 +59,14 @@ function xem(id) {
     $('#patient-modal-body').empty();
     $('#patient-modal-body').append(`<div class="modal-group">
              <label class="modal-lable">Tên phòng:</label>
-             <label class="modal-value">${data.tenPhong || "Không có"}</label></div>
+             <label class="modal-value">${data.tenPhong}</label></div>
              <div class="modal-group">
             <label class="modal-lable">số giường hiện tại:</label>
-            <label class="modal-value">${data.soGiuongHienTai || "Không có"}</label></div>
+            <label class="modal-value">${data.soGiuongHienTai}</label></div>
             <div class="modal-group">
             <label class="modal-lable">Số giường tối đa:</label>
-             <label class="modal-value">${data.soGiuongToiDa || "Không có"}</label>
-             </div>
-            <div class="modal-group">
-            <label class="modal-lable">ID Loại phòng:</label>
-            <label class="modal-value">${data.loaiPhongID || "Không có"}</label>
-            </div>
-            </div>`);
+             <label class="modal-value">${data.soGiuongToiDa}</label>
+             </div>`);
 
     $('#patient-modal').modal();
 }
@@ -90,6 +84,7 @@ function xoa(id) {
             console.log(thrownError);
         },
         success: function (res) {
+            $(`#${id}`).remove();
             $('#patient-modal-body').empty();
             $('#patient-modal-body').text(res.mgs);
             $('#patient-modal').modal();

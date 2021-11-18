@@ -48,9 +48,9 @@ namespace PttkProject.Controllers
                 return RedirectToAction("Index", "NguoiDung", new {mgs = "Thêm thất bại" });
             }
         }
-        public ActionResult suanguoidung()
+        public ActionResult suanguoidung(int id)
         {
-            int id = 9;
+
             NguoiDung nd = nguoiDung.layNguoiDung(id);
             setViewBagDiaChi();
             ViewBag.viTriLamViec = new SelectList(nguoiDung.layDSViTriLamViec(), "ID", "tenVitri");
@@ -116,12 +116,41 @@ namespace PttkProject.Controllers
         private void setViewBagDiaChi()
         {
             List<Tinh> tinhs = diaChi.layDSTinh();
+            //List<Huyen> huyens = new List<Huyen>();
+            //List<Xa> xas = new List<Xa>();
+            //if (tinhs.Count > 0)
+            //{
+            //    huyens = diaChi.layDSHuyen(tinhs[0].ID);
+            //}
+            //if(huyens.Count > 0)
+            //{
+            //    xas = diaChi.layDSXa(huyens[0].ID);
+            //}
             List<Huyen> huyens = diaChi.huyen.ToList();
             List<Xa> xas = diaChi.xa.ToList();
-
-            ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
-            ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
-            ViewBag.xas = new SelectList(xas, "ID", "tenXa");
+            ViewBag.tinhs = (from s in tinhs
+                             select new
+                             {
+                                 s.ID,
+                                 s.tenTinh
+                             });
+            ViewBag.huyens = (from s in huyens
+                              select new
+                              {
+                                  s.ID,
+                                  s.tenHuyen,
+                                  s.tinhID
+                              });
+            ViewBag.xas = (from s in xas
+                           select new
+                           {
+                               s.ID,
+                               s.tenXa,
+                               s.huyenID
+                           });
+            //ViewBag.tinhs = new SelectList(tinhs, "ID", "tenTinh");
+            //ViewBag.huyens = new SelectList(huyens, "ID", "tenHuyen");
+            //ViewBag.xas = new SelectList(xas, "ID", "tenXa");
 
         }
     }

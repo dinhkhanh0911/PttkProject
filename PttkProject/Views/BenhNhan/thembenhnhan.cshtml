@@ -24,12 +24,12 @@
                             </div>
                         </div>
                         <div class="col l-4 m-6 c-12">
-                            
+
                             <div class="form__import-item">
                                 @Html.Label("Số CMND", htmlAttributes: new { @class = "form__import-label" })
                                 @Html.TextBoxFor(model => model.CMND, htmlAttributes: new { @class = "form__import-select", @placeholder = "Nhập dữ liệu" })
                             </div>
-                            
+
                         </div>
                         <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
@@ -78,19 +78,25 @@
                         <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
                                 @Html.Label("Tỉnh", htmlAttributes: new { @class = "form__import-label" })
-                                @Html.DropDownList("tinhID", (IEnumerable<SelectListItem>)ViewBag.tinhs, "Tỉnh", new { @class = "form__import-select" })
+                                <select name="tinhID" id="tinhID" class="form__import-select" onchange="tinhchange(this)">
+                                    <option>Tỉnh</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
                                 @Html.Label("Huyện", htmlAttributes: new { @class = "form__import-label" })
-                                @Html.DropDownList("huyenID", (IEnumerable<SelectListItem>)ViewBag.huyens, "Huyện", new { @class = "form__import-select", @style = "margin-left:15px" })
+                                <select name="huyenID" id="huyenID" class="form__import-select" style="margin-left:15px" onchange="huyenchange(this)">
+                                    <option>Huyện</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col l-4 m-6 c-12">
                             <div class="form__import-item">
                                 @Html.Label("Xã", htmlAttributes: new { @class = "form__import-label" })
-                                @Html.DropDownList("xaID", (IEnumerable<SelectListItem>)ViewBag.xas, "Xã", new { @class = "form__import-select", @style = "margin-left:15px" })
+                                <select name="xaID" id="xaID" class="form__import-select" style="margin-left:15px">
+                                    <option>Xã</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col l-4 m-6 c-12">
@@ -118,3 +124,9 @@
 
 
 </div>
+<script>
+    var tinh = @Html.Raw(Json.Encode(ViewBag.tinhs));
+    var huyen = @Html.Raw(Json.Encode(ViewBag.huyens));
+    var xa = @Html.Raw(Json.Encode(ViewBag.xas));
+</script>
+<script src="~/Assets/js/diaChi.js"></script>
