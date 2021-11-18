@@ -45,7 +45,7 @@ namespace PttkProject.Controllers
             {
                 List<BenhAn> ba = xuatDuLieu.xuatBenhAn(id);
                 var file = xuatBenhAn(ba);
-                return File(file, "doc/docx", "test.docx");
+                return File(file, "xls/xlsx", "test.xlsx");
             }
             catch(Exception e) { 
                 return RedirectToAction("timkiembenhnhan", "BenhNhan");
