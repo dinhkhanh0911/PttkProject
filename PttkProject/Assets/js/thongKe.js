@@ -20,21 +20,29 @@ $(document).ready(function () {
     });
     var idBenhNhan;
     $('#datatable tbody').on('click', 'tr', function () {
-        idBenhNhan = table.row(this).data()[0];
+        idBenhNhan = table.row(this).data();
         console.log(table.row(this).data());
-        //$.ajax({
-        //    url: '@Url..Action("BenhNhan","layBenhNhan")',
-        //    type: 'post',
-        //    datatype: 'json',
-        //    data: d,
-        //    success: function (data) {
-        //        if (data.code === 200) {
-        //            fill(data.listRoom)
-        //        }
-        //    }
-        //})
         $("#patien-modal-body").empty();
-        $("#patien-modal-body").append("<h2>"+ idBenhNhan + "</h2>");
+
+        $("#patien-modal-body").append(`<div class="modal-group">
+             <label class="modal-lable">Họ và tên:</label>
+             <label class="modal-value">${table.row(this).data()[1]}</label></div>
+             <div class="modal-group">
+            <label class="modal-lable">Ngày sinh:</label>
+            <label class="modal-value">${table.row(this).data()[2]}</label></div>
+            <div class="modal-group">
+            <label class="modal-lable">Giới tính:</label>
+             <label class="modal-value">${table.row(this).data()[5]}</label>
+             </div>
+            <div class="modal-group">
+            <label class="modal-lable">Số điện thoại:</label>
+            <label class="modal-value">${table.row(this).data()[4]}</label>
+            </div>
+            <div class="modal-group">
+            <label class="modal-lable">Số CMND:</label>
+            <label class="modal-value">${table.row(this).data()[3]}</label>
+            </div>
+            </div>`);
         $("#patient-modal").modal();
     });
     bieudotheongay()
