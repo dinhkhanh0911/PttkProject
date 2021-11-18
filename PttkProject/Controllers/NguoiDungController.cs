@@ -126,8 +126,8 @@ namespace PttkProject.Controllers
             //{
             //    xas = diaChi.layDSXa(huyens[0].ID);
             //}
-            List<Huyen> huyens = diaChi.huyen.ToList();
-            List<Xa> xas = diaChi.xa.ToList();
+            List<Huyen> huyens = diaChi.layDSHuyen();
+            List<Xa> xas = diaChi.layDSXa();
             ViewBag.tinhs = (from s in tinhs
                              select new
                              {

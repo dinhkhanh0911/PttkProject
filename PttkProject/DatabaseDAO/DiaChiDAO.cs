@@ -22,12 +22,12 @@ namespace PttkProject.DatabaseDAO
             }
             return list;
         }
-        public List<Huyen> layDSHuyen(int tinhID)
+        public List<Huyen> layDSHuyen()
         {
             List<Huyen> list;
             try
             {
-                list = huyen.Where(h => h.tinhID == tinhID).ToList();
+                list = huyen.ToList();
             }
             catch (Exception e)
             {
@@ -35,12 +35,12 @@ namespace PttkProject.DatabaseDAO
             }
             return list;
         }
-        public List<Xa> layDSXa(int huyenID)
+        public List<Xa> layDSXa()
         {
             List<Xa> list;
             try
             {
-                list = xa.Where(x => x.huyenID == huyenID).ToList();
+                list = xa.ToList();
             }
             catch (Exception e)
             {
