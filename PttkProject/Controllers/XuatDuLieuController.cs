@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace PttkProject.Controllers
 {
-    public class XuatDuLieuController : Controller
+    public class XuatDuLieuController : BaseUserController
     {
         XuatDuLieuDAO xuatDuLieu = new XuatDuLieuDAO();
         BenhAnDAO benhAn = new BenhAnDAO();

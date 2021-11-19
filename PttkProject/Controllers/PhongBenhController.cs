@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class PhongBenhController : Controller
+    public class PhongBenhController : BaseUserController
     {
         private PhongBenhDAO phongbenhDAO = new PhongBenhDAO();
         // GET: Room

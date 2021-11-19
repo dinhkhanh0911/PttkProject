@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace PttkProject.Controllers
 {
     
-    public class NhanVienYTeController : Controller
+    public class NhanVienYTeController : BaseUserController
     {
         private DiaChiDAO diaChi = new DiaChiDAO();
         private NhanVienYTeDAO nvYTe = new NhanVienYTeDAO();

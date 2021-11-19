@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class ThongKeController : Controller
+    public class ThongKeController : BaseUserController
     {
         private ThongKeDAO thongke = new ThongKeDAO();
         private DBCovidContext dbcontext = new DBCovidContext();
