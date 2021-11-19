@@ -2,142 +2,140 @@
     ViewBag.Title = "thongkecanhiem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+        <div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="patien-modal-body">
 
-<div class="modal fade" id="patient-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" id="patien-modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        <!--Chart-->
+        <div class="container-content">
+            <h1>
+                THỐNG KÊ CA NHIỄM
+            </h1>
 
-<!--Chart-->
-<div class="container-content">
-    <h1>
-        THỐNG KÊ CA NHIỄM
-    </h1>
+            <div class="container-fluid">
+                <div class="card">
 
-    <div class="container-fluid">
-        <div class="card">
+                    <div class="row text-center">
+                        <div class="col-sm-12">
+                            @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
+                            {
 
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    @using (Html.BeginForm("thongKeCaNhiem", "ThongKe", FormMethod.Post))
-                    {
+                                <h4>Chọn khoảng thời gian</h4>
+                                <label for="startdate">Ngày bắt đầu:</label>
+                                <input type="date" id="startdate" name="startdate" required>
+                                <br />
+                                <label for="enddate">Ngày kết thúc:</label>
+                                <input type="date" id="enddate" name="enddate" required>
+                                <br />
+                                <button class="btn btn-outline-success">Hiển thị</button>
 
-                        <h4>Chọn khoảng thời gian</h4>
-                        <label for="startdate">Ngày bắt đầu:</label>
-                        <input type="date" id="startdate" name="startdate">
-                        <br />
-                        <label for="enddate">Ngày kết thúc:</label>
-                        <input type="date" id="enddate" name="enddate">
-                        <br />
-                        <button class="btn btn-outline-success">Hiển thị</button>
+                            }
+                        </div>
+                    </div>
 
-                    }
                 </div>
             </div>
+            <!-- /.chat-->
+            <!--Datatable-->
+            <div class="container-fluid">
+                <table id="datatable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Họ tên</th>
+                            <th>Ngày sinh</th>
+                            <th>Số CMND</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày nhiễm bệnh</th>
+                            <th>Phòng bệnh</th>
+                            <th>Trạng thái hiện tại</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_thongke">
+                        <tr>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                            <td>STT</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
 
+                    </tfoot>
+                </table>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                                <div class="name__page">
+                                    <h4 class="name__page-tilte">
+                                        Biểu đồ số ca theo ngày
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <canvas id="bieudotheongay"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                                <div class="name__page">
+                                    <h4 class="name__page-tilte">
+                                        Biểu đồ số ca theo độ tuổi
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <canvas id="bieudotheodotuoi"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                                <div class="name__page">
+                                    <h4 class="name__page-tilte">
+                                        Biểu đồ tỉ lệ nam nữ
+                                    </h4>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <canvas id="bieudonamnu"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- /.chat-->
-    <!--Datatable-->
-    <div class="container-fluid">
-        <table id="datatable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Họ tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Số CMND</th>
-                    <th>Số điện thoại</th>
-                    <th>Ngày nhiễm bệnh</th>
-                    <th>Phòng bệnh</th>
-                    <th>Trạng thái hiện tại</th>
-                </tr>
-            </thead>
-            <tbody id="tbody_thongke">
-                <tr>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ số ca theo ngày
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudotheongay"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ số ca theo độ tuổi
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudotheodotuoi"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ tỉ lệ nam nữ
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudonamnu"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-<script src="~/Assets/js/thongKe.js"></script>
-<script src="~/Assets/js/xemChiTietBn.js"></script>
+        <script src="~/Assets/js/thongKe.js"></script>
+        <script src="~/Assets/js/xemChiTietBn.js"></script>
 

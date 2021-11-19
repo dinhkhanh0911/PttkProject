@@ -78,7 +78,11 @@ namespace PttkProject
                 url: "benh-nhan/lay-danh-sach-thong-tin",
                 defaults: new { controller = "BenhNhan", action = "layDSThongTin" }
             );
-
+            routes.MapRoute(
+                name: "LayDanhSachPhongBenhTheoLoaiPhong",
+                url: "benh-nhan/lay-danh-sach-phong-benh",
+                defaults: new { controller = "BenhNhan", action = "layDSPhongBenh" }
+            );
             routes.MapRoute(
                 name: "ThemThongTinTruyVet",
                 url: "benh-nhan/them-thong-tin-truy-vet/{id}",

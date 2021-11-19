@@ -19,8 +19,9 @@ namespace PttkProject.Controllers
             return View();
         }
 
-        public ActionResult thongkecanhiem()
+        public ActionResult thongkecanhiem(string mgs)
         {
+            ViewBag.message = mgs;
             return View();
         }
         [HttpPost]
@@ -36,8 +37,9 @@ namespace PttkProject.Controllers
                 return Json(new { code = 404, mgs = "lỗi" }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult thongkecakhoibenh()
-        {            
+        public ActionResult thongkecakhoibenh(string mgs)
+        {
+            ViewBag.message = mgs;
             return View();
         }
         [HttpPost]
@@ -52,9 +54,9 @@ namespace PttkProject.Controllers
                 return Json(new { code = 404 }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult thongkecatuvong()
+        public ActionResult thongkecatuvong(string mgs)
         {
-            
+            ViewBag.message = mgs;
             return View();
         }
         [HttpPost]

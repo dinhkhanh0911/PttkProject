@@ -7,8 +7,9 @@ function handerchangeTypeRoom() {
 }
 function fillDataRoom() {
     var val = $(this).find('option:selected').val()
+    console.log(val)
     $.ajax({
-        url:'./getListRoom',
+        url:'/benh-nhan/lay-danh-sach-phong-benh',
         type: 'post',
         datatype: 'json',
         data: {
@@ -58,7 +59,7 @@ function fill(data) {
                 console.log(response.code)
                 if (response.code === 200) {
                     console.log(response.model)
-                    /*window.location.href = `/benh-nhan/cap-nhat-benh-an/${response.model.ID}`*/
+                    window.location.href = `/benh-nhan/cap-nhat-benh-an/${response.model.ID}`
                 }
                 
             }
