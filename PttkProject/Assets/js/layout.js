@@ -10,7 +10,7 @@ function setMenu() {
         success: function (data) {
             var elementPC = document.querySelector('#pc-body-navbar');
             var elementMB = document.querySelector('#mobile-body-navbar');
-            var menuUser = `
+            var menuUserPC = `
 
                     <li class="nav-item">
                         <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
@@ -49,6 +49,8 @@ function setMenu() {
                             <span>Xuất dữ liệu</span>
                         </a>
                     </li>
+                `
+            var menuUserMobile = menuUserPC + `
                     <div class="border-bottom body-navbar__border-bottom"></div>
                     <li class="nav-item">
                         <a href="/dang-nhap/dang-xuat" class="nav-item__link">
@@ -61,9 +63,8 @@ function setMenu() {
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <span>Đổi mật khẩu</span>
                         </a>
-                    </li>
-                `
-            var menuAdmin = `
+                    </li>`
+            var menuAdminPC = `
 
                     <li class="nav-item">
                         <a href="/trang-chu/index" class="nav-item__link nav-item__home-page">
@@ -78,6 +79,8 @@ function setMenu() {
                             <span>Quản lý người dùng</span>
                         </a>
                     </li>
+                `
+            var menuAdminMobile = menuAdminPC + `
                     <div class="border-bottom body-navbar__border-bottom"></div>
                     <li class="nav-item">
                         <a href="/dang-nhap/dang-xuat" class="nav-item__link">
@@ -90,15 +93,14 @@ function setMenu() {
                             <i class="fa fa-search" aria-hidden="true"></i>
                             <span>Đổi mật khẩu</span>
                         </a>
-                    </li>
-                `
+                    </li>`
             if (data.code == 1) {
-                elementPC.innerHTML = menuAdmin
-                elementMB.innerHTML = menuAdmin
+                elementPC.innerHTML = menuAdminPC
+                elementMB.innerHTML = menuAdminMobile
             }
             else if (data.code == 2) {
-                elementPC.innerHTML = menuUser
-                elementMB.innerHTML = menuUser
+                elementPC.innerHTML = menuUserPC
+                elementMB.innerHTML = menuUserMobile
             }
         }
     })

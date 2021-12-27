@@ -23,7 +23,108 @@
     </div>
 </div>
 <!--Chart-->
-<div class="container-content">
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Thống kê ca dương tính trở lại
+            </h4>
+        </div>
+        <div class="container__page-content">
+            <form action="/thong-ke/thong-ke-ca-duong-tinh-tro-lai" class="form" method="post" id="importMedicalRecord">
+                <div class="btn-container">
+                    <button class="btn btn-primary btn__save btn-submit">
+                        Xuất
+                    </button>
+
+                </div>
+            </form>
+        </div>
+        <div class="container-fluid mt-10">
+            <table id="datatable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ tên</th>
+                        <th>Ngày sinh</th>
+                        <th>Số CMND</th>
+                        <th>Số điện thoại</th>
+                        <th>Giới tính</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_thongke">
+                    <tr>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                        <td>STT</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                            <div class="name__page">
+                                <h4 class="name__page-tilte">
+                                    Biểu đồ số ca theo ngày
+                                </h4>
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <canvas id="bieudotheongay"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                            <div class="name__page">
+                                <h4 class="name__page-tilte">
+                                    Biểu đồ số ca theo độ tuổi
+                                </h4>
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <canvas id="bieudotheodotuoi"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card shadow mb-4">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
+                            <div class="name__page">
+                                <h4 class="name__page-tilte">
+                                    Biểu đồ tỉ lệ nam nữ
+                                </h4>
+                            </div>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <canvas id="bieudonamnu"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--<div class="container-content">
     <h1>
         THỐNG KÊ CA DƯƠNG TÍNH TRỞ LẠI
     </h1>
@@ -33,90 +134,11 @@
         {
             <button class="btn btn-outline-success">Hiển thị</button>
         }
-    </div>
+    </div>-->
     <!-- /.chat-->
     <!--Datatable-->
-    <div class="container-fluid mt-10">
-        <table id="datatable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Họ tên</th>
-                    <th>Ngày sinh</th>
-                    <th>Số CMND</th>
-                    <th>Số điện thoại</th>
-                    <th>Giới tính</th>
-                </tr>
-            </thead>
-            <tbody id="tbody_thongke">
-                <tr>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                    <td>STT</td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ số ca theo ngày
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudotheongay"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ số ca theo độ tuổi
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudotheodotuoi"></canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card shadow mb-4">
-                    <!-- Card Header - Dropdown -->
-                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-white">
-                        <div class="name__page">
-                            <h4 class="name__page-tilte">
-                                Biểu đồ tỉ lệ nam nữ
-                            </h4>
-                        </div>
-                    </div>
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <canvas id="bieudonamnu"></canvas>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
+    
+<!--</div>-->
 <script>
 
     var table;
