@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class NguoiDungController : BaseAdminController
+    public class NguoiDungController : Controller
     {
         // GET: Uesr
         private NguoiDungDAO nguoiDung = new NguoiDungDAO();

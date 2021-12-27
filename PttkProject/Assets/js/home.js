@@ -92,7 +92,7 @@ function taiDuLieuBieuDo3(){
     legend: {display: false},
     title: {
         display: true,
-    text: "World Wine Production 2018"
+    text: "Số liệu 2021"
             }
         }
     });
