@@ -193,9 +193,14 @@ namespace PttkProject
             );
             /*Xuất dữ liệu*/
             routes.MapRoute(
-                name: "XuatDuLieu",
+                name: "XuatDuLieuTrangChinh",
                 url: "xuat-du-lieu/index",
                 defaults: new { controller = "XuatDuLieu", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "XuatDuLieu",
+                url: "xuat-du-lieu/xuat-bao-cao",
+                defaults: new { controller = "XuatDuLieu", action = "xuatBaoCao" }
             );
             /*Thống kê*/
             routes.MapRoute(

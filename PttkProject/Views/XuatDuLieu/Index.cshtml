@@ -2,9 +2,65 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="wrapper wrapper__custom-height wrapper-block">
+    <div class="container__page-fullWidth">
+        <div class="name__page">
+            <h4 class="name__page-tilte">
+                Xuất dữ liệu
+            </h4>
+        </div>
+        <div class="container__page-content">
+            <form action="/xuat-du-lieu/xuat-bao-cao" class="form" method="post" id="importMedicalRecord">
+                <div class="row">
+
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Ngày bắt đầu
+                            </span>
+                            <input class="form__import-select" type="date" id="startdate" name="startdate">
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Ngày kết thúc
+                            </span>
+                            <input class="form__import-select" type="date" id="enddate" name="enddate">
+                        </div>
+                    </div>
+                    <div class="col l-4 m-6 c-12">
+                        <div class="form__import-item">
+                            <span class="form__import-label">
+                                Loại báo cáo
+                            </span>
+                            <select onchange="xuat(this)" class="form-control" name="loaiBC">
+                                <option value="1">Xuất báo cáo ca nhiễm</option>
+                                <option value="2">Xuất báo cáo ca tử vong</option>
+                                <option value="3">Xuất báo cáo ca khỏi bệnh</option>
+                                <option value="4">Xuất thông tin truy vết</option>
+                                <option value="5">Xuất thông tin điều trị</option>
+                                <option value="6">Xuất Bệnh án</option>
+
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button class="btn btn-primary btn__save btn-submit">
+                        Xuất
+                    </button>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
 
 
-<div class="container-fluid">
+</div>
+
+@*<div class="container-fluid">
     <div class="card">
 
         <div class="row d-flex justify-content-center"  style="padding:10%">
@@ -35,7 +91,7 @@
         </div>
 
     </div>
-</div>
+</div>*@
 <script>
     function xuat(res) {
         let s = res.value;
