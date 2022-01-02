@@ -28,8 +28,7 @@ namespace PttkProject.Controllers
         {
             try
             {
-                setViewBagDiaChi();
-                setViewBagDoiTuongCachLy();                
+                setViewBagDiaChi();             
             }
             catch(Exception e)
             {
@@ -54,13 +53,6 @@ namespace PttkProject.Controllers
                 return RedirectToAction("Index", "BenhNhan");
             }
 
-        }
-        private void setViewBagDoiTuongCachLy()
-        {
-            List<string> doituongcachly = new List<string>();
-            doituongcachly.Add("F0");
-            doituongcachly.Add("F1");
-            ViewBag.doituongcachly = new SelectList(doituongcachly);
         }
         /*GD cập nhật bệnh nhân*/
         public ActionResult capnhatTTbenhnhan(int id, string mgs)

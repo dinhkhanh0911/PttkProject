@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace PttkProject.Controllers
 {
-    public class TrangChuController : BaseUserController
+    public class TrangChuController: Controller
     {
         private BenhNhanDAO benhNhan = new BenhNhanDAO();
         private NguoiDungDAO nguoiDung = new NguoiDungDAO();
