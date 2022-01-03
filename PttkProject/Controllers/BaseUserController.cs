@@ -15,8 +15,9 @@ namespace PttkProject.Controllers
         // GET: Base
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var session = (User)Session[CommonConstant.USER_SESSION];
-            if (session == null)
+            var sessionU = (User)Session[CommonConstant.USER_SESSION];
+            var sessionA = (User)Session[CommonConstant.ADMIN_SESSION];
+            if (sessionU == null && sessionA == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     System.Web.Routing.RouteValueDictionary(new { controller = "DangNhap", action = "dangnhap" }));
