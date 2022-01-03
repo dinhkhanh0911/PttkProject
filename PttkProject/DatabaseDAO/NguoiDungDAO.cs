@@ -66,6 +66,17 @@ namespace PttkProject.DatabaseDAO
                 return null;
             }
         }
+        public string timNguoiDung()
+        {
+            try
+            {
+                return "abc";
+            }
+            catch (Exception e)
+            {
+                return "";
+            }
+        }
         public void xoaNguoiDung(int id)
         {
             var nd = nguoiDung.Where(s => s.ID == id).FirstOrDefault();
